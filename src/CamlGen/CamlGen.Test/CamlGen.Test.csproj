@@ -74,7 +74,7 @@
     <Compile Include="..\..\..\resources\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AttributeTests.cs" />
+    <Compile Include="CtorTests.cs" />
     <Compile Include="EqTests.cs" />
     <Compile Include="Features\Feature1.cs" />
     <Compile Include="FieldRefTests.cs" />

@@ -43,6 +43,15 @@
     <Compile Include="..\..\..\resources\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="CamlEq.cs" />
+    <Compile Include="CamlFieldRef.cs" />
+    <Compile Include="CamlJoin.cs" />
+    <Compile Include="CamlJoins.cs" />
+    <Compile Include="CamlProjectedField.cs" />
+    <Compile Include="CamlProjectedFields.cs" />
+    <Compile Include="CamlQuery.cs" />
+    <Compile Include="CamlView.cs" />
+    <Compile Include="CamlViewFields.cs" />
     <Compile Include="CG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,8 +10,18 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
-[assembly: AssemblyTitle("FluentCamlGen.CamlGen.Test")]
-[assembly: Guid("10fbd7dd-8402-4de4-a0ae-ec68d85e1fc9")]
+namespace FluentCamlGen.CamlGen
+{
+    /// <summary>
+    /// Create &lt;View> ... &lt;/View> for ViewXml
+    /// </summary>
+    internal class CamlView : CG
+    {
+        internal CamlView(IEnumerable<CG> inner)
+            : base("View", null, inner)
+        {
+        }
+    }
+}

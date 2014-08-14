@@ -9,6 +9,7 @@ THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
+
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
@@ -33,7 +34,7 @@ namespace FluentCamlGen.CamlGen.Test
         {
             var outerTag = Fixture.Create<string>();
             var innerTag = Fixture.Create<string>();
-            
+
             var sut = new CG(outerTag);
             sut.Childs.Add(new CG(innerTag));
 
@@ -63,5 +64,6 @@ namespace FluentCamlGen.CamlGen.Test
 ", outerTag, middleTag, innerTag));
         }
     }
+
     // ReSharper restore InconsistentNaming
 }

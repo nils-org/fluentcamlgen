@@ -9,9 +9,9 @@ THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace FluentCamlGen.CamlGen
@@ -22,21 +22,25 @@ namespace FluentCamlGen.CamlGen
     public class CG
     {
         #region the CG-code
+
         internal string TagName { get; private set; }
         internal IList<CG> Childs { get; private set; }
         internal IList<Tuple<string, string>> Attributes { get; private set; }
 
         internal CG(string tagName)
-            : this(tagName, null, (CG[])null)
-        { }
+            : this(tagName, null, (CG[]) null)
+        {
+        }
 
         internal CG(string tagName, params Tuple<string, string>[] attributes)
             : this(tagName, attributes, null)
-        { }
+        {
+        }
 
         internal CG(string tagName, params CG[] children)
             : this(tagName, null, children)
-        { }
+        {
+        }
 
         internal CG(string tagName, IEnumerable<Tuple<string, string>> attributes, IEnumerable<CG> children)
         {
@@ -98,7 +102,7 @@ namespace FluentCamlGen.CamlGen
 
         #endregion
 
-        #region Statics
+        #region Static-Generators
 
         /// <summary>
         /// Create &lt;View> ... &lt;/View> for ViewXml
@@ -106,7 +110,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG View(params CG[] inner)
         {
-            return new CG("View", inner);
+            return new CamlView(inner);
         }
 
         /// <summary>
@@ -115,7 +119,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG Query(params CG[] inner)
         {
-            return new CG("Query", inner);
+            return new CamlQuery(inner);
         }
 
         /// <summary>
@@ -124,7 +128,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG ViewFields(params CG[] inner)
         {
-            return new CG("ViewFields", inner);
+            return new CamlViewFields(inner);
         }
 
         /// <summary>
@@ -133,7 +137,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG ProjectedFields(params CG[] inner)
         {
-            return new CG("ProjectedFields", inner);
+            return new CamlProjectedFields(inner);
         }
 
         /// <summary>
@@ -142,7 +146,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG Joins(params CG[] inner)
         {
-            return new CG("Joins", inner);
+            return new CamlJoins(inner);
         }
 
         /// <summary>
@@ -151,10 +155,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG FieldRef(string name, params Tuple<string, string>[] additionalAttributes)
         {
-            var attrs = new[] { new Tuple<string, string>("Name", name) }
-                .Union(additionalAttributes)
-                .ToArray();
-            return new CG("FieldRef", attrs);
+            return new CamlFieldRef(name, additionalAttributes);
         }
 
         /// <summary>
@@ -163,13 +164,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG ProjectedField(string name, string type, string list, string showFileld)
         {
-            //TODO: Are Params always like this??
-            return new CG("Field", new[]{
-                new Tuple<string, string>("Name", name),
-                new Tuple<string, string>("Type", type),
-                new Tuple<string, string>("List", list),
-                new Tuple<string, string>("ShowField", showFileld),
-            });
+            return new CamlProjectedField(name, type, list, showFileld);
         }
 
 
@@ -179,11 +174,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG Join(string listName, params CG[] inner)
         {
-            //TODO: What about other Types??
-            return new CG("Join", new[]{
-                new Tuple<string, string>("Type", "INNER"),
-                new Tuple<string, string>("ListAlias", listName)
-            }, inner);
+            return new CamlJoin(listName, inner);
         }
 
         /// <summary>
@@ -192,8 +183,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="CG"/></returns>
         public static CG Eq(CG lhs, CG rhs)
         {
-            //TODO: Is this really alwas left & right??
-            return new CG("Eq", lhs, rhs);
+            return new CamlEq(lhs, rhs);
         }
 
         #endregion
