@@ -10,23 +10,17 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System.Collections.Generic;
+using System;
 
 namespace FluentCamlGen.CamlGen
 {
-    /// <summary>
-    /// Create &lt;Query> ... &lt;/Query>
-    /// </summary>
-    public class CamlQuery : CG
+    public static class CGFluentExtensions
     {
-        internal CamlQuery()
-            : this(null)
+        public static T AddAttribute<T>(this T @this, string name, string value)
+            where T : CG
         {
-        }
-
-        internal CamlQuery(IEnumerable<CG> inner)
-            : base("Query", null, inner)
-        {
+            @this.Attributes.Add(new Tuple<string, string>(name, value));
+            return @this;
         }
     }
 }

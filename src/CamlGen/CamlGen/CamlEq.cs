@@ -10,17 +10,37 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using System;
+using System.Collections.Generic;
+
 namespace FluentCamlGen.CamlGen
 {
     /// <summary>
     /// &lt;Eq> ... &lt;/Eq>
+    /// <seealso cref="http://msdn.microsoft.com/en-us/library/ms479601(v=office.15).aspx"/>
     /// </summary>
     public class CamlEq : CG
     {
-        //TODO: Is this really alwas left & right??
-        public CamlEq(CG lhs, CG rhs)
-            : base("Eq", null, new[] {lhs, rhs})
+        internal CamlEq()
+            : base("Eq", null, (IEnumerable<CG>) null)
         {
         }
+
+        internal CamlEq(CG lhs, CG rhs)
+            : this()
+        {
+            Childs.Add(lhs);
+            Childs.Add(rhs);
+        }
+
+        public CamlEq AddFieldRef(string name, Action<CamlFieldRef> action)
+        {
+            var fieldRef = new CamlFieldRef(name);
+            action(fieldRef);
+            Childs.Add(fieldRef);
+            return this;
+        }
+
+        //TODO: AddValue Fehlt !!!
     }
 }

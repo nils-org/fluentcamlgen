@@ -18,6 +18,7 @@ namespace FluentCamlGen.CamlGen
 {
     /// <summary>
     /// CamlGenerator
+    /// See <seealso cref="http://msdn.microsoft.com/en-us/library/ms462365(v=office.15).aspx"/> for a caml reference
     /// </summary>
     public class CG
     {
@@ -108,7 +109,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;View> ... &lt;/View> for ViewXml
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG View(params CG[] inner)
+        public static CamlView View(params CG[] inner)
         {
             return new CamlView(inner);
         }
@@ -117,7 +118,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;Query> ... &lt;/Query>
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG Query(params CG[] inner)
+        public static CamlQuery Query(params CG[] inner)
         {
             return new CamlQuery(inner);
         }
@@ -126,7 +127,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;ViewFields> ... &lt;/ViewFields>
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG ViewFields(params CG[] inner)
+        public static CamlViewFields ViewFields(params CG[] inner)
         {
             return new CamlViewFields(inner);
         }
@@ -135,7 +136,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;ProjectedFields> ... &lt;/ProjectedFields>
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG ProjectedFields(params CG[] inner)
+        public static CamlProjectedFields ProjectedFields(params CG[] inner)
         {
             return new CamlProjectedFields(inner);
         }
@@ -144,7 +145,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;Joins> ... &lt;/Joins>
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG Joins(params CG[] inner)
+        public static CamlJoins Joins(params CG[] inner)
         {
             return new CamlJoins(inner);
         }
@@ -153,7 +154,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;FieldRef Name="..." ... />
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG FieldRef(string name, params Tuple<string, string>[] additionalAttributes)
+        public static CamlFieldRef FieldRef(string name, params Tuple<string, string>[] additionalAttributes)
         {
             return new CamlFieldRef(name, additionalAttributes);
         }
@@ -162,26 +163,44 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;Field Name="..." Type="..." List="..." ShowField="..." />
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG ProjectedField(string name, string type, string list, string showFileld)
+        public static CamlProjectedField ProjectedField(string name, string type, string list, string showFileld)
         {
             return new CamlProjectedField(name, type, list, showFileld);
         }
 
 
         /// <summary>
+        /// Create &lt;Join Type="..." ListAlias="...">
+        /// </summary>
+        /// <returns><see cref="CG"/></returns>
+        public static CamlJoin Join(string listName, CamlJoin.JoinType type, CG lhs, CG rhs)
+        {
+            return new CamlJoin(listName, type, lhs, rhs);
+        }
+
+        /// <summary>
+        /// Create &lt;Join Type="..." ListAlias="...">
+        /// </summary>
+        /// <returns><see cref="CG"/></returns>
+        public static CamlJoin Join(string listName, CamlJoin.JoinType type, string joinField)
+        {
+            return new CamlJoin(listName, type, joinField);
+        }
+
+        /// <summary>
         /// Create &lt;Join Type="INNER" ListAlias="...">
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG Join(string listName, params CG[] inner)
+        public static CamlJoin InnerJoin(string listName, string joinField)
         {
-            return new CamlJoin(listName, inner);
+            return Join(listName, CamlJoin.JoinType.Inner, joinField);
         }
 
         /// <summary>
         /// &lt;Eq> ... &lt;/Eq>
         /// </summary>
         /// <returns><see cref="CG"/></returns>
-        public static CG Eq(CG lhs, CG rhs)
+        public static CamlEq Eq(CG lhs, CG rhs)
         {
             return new CamlEq(lhs, rhs);
         }

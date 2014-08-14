@@ -10,6 +10,7 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using System;
 using System.Collections.Generic;
 
 namespace FluentCamlGen.CamlGen
@@ -17,11 +18,49 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;Joins> ... &lt;/Joins>
     /// </summary>
-    internal class CamlJoins : CG
+    public class CamlJoins : CG
     {
+        internal CamlJoins()
+            : this(null)
+        {
+        }
+
         internal CamlJoins(IEnumerable<CG> inner)
             : base("Joins", null, inner)
         {
+        }
+
+        /// <summary>
+        /// Add Join
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlJoins"/></returns>
+        public CamlJoins AddJoin(string listName, CamlJoin.JoinType type, Action<CamlJoin> action)
+        {
+            var join = new CamlJoin(listName, type);
+            action(join);
+            Childs.Add(join);
+            return this;
+        }
+
+        /// <summary>
+        /// Add Inner-Join
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlJoins"/></returns>
+        public CamlJoins AddInnerJoin(string listName, string fieldname)
+        {
+            return AddInnerJoin(listName, fieldname, x => { });
+        }
+
+        /// <summary>
+        /// Add Inner-Join
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlJoins"/></returns>
+        public CamlJoins AddInnerJoin(string listName, string fieldname, Action<CamlJoin> action)
+        {
+            var join = new CamlJoin(listName, CamlJoin.JoinType.Inner, fieldname);
+            action(join);
+            Childs.Add(join);
+            return this;
         }
     }
 }

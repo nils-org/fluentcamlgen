@@ -10,6 +10,7 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using System;
 using System.Collections.Generic;
 
 namespace FluentCamlGen.CamlGen
@@ -17,11 +18,37 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;ViewFields> ... &lt;/ViewFields>
     /// </summary>
-    internal class CamlViewFields : CG
+    public class CamlViewFields : CG
     {
+        internal CamlViewFields()
+            : this(null)
+        {
+        }
+
         internal CamlViewFields(IEnumerable<CG> inner)
             : base("ViewFields", null, inner)
         {
+        }
+
+        /// <summary>
+        /// Add a FieldRef
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlViewFields"/></returns>
+        public CamlViewFields AddFieldRef(string name)
+        {
+            return AddFieldRef(name, x => { });
+        }
+
+        /// <summary>
+        /// Add a FieldRef
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlViewFields"/></returns>
+        public CamlViewFields AddFieldRef(string name, Action<CamlFieldRef> fieldRefAction)
+        {
+            var fieldRef = new CamlFieldRef(name);
+            fieldRefAction(fieldRef);
+            Childs.Add(fieldRef);
+            return this;
         }
     }
 }

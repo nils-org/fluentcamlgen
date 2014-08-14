@@ -10,7 +10,6 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -63,12 +62,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                     CG.ProjectedField("UserEMail", "Lookup", "User Information List", "EMail"),
                     CG.ProjectedField("UserMobilePhone", "Lookup", "User Information List", "MobilePhone")),
                 CG.Joins(
-                    CG.Join("User Information List",
-                            CG.Eq(
-                                CG.FieldRef("Contact", new Tuple<string, string>("RefType", "Id")),
-                                CG.FieldRef("ID", new Tuple<string, string>("List", "User Information List"))
-                                )
-                        )
+                    CG.InnerJoin("User Information List", "Contact")
                     )
                 );
 
@@ -76,7 +70,6 @@ namespace FluentCamlGen.CamlGen.Test.Features
         }
 
         [TestMethod]
-        [Ignore]
         public void Feature1InFluentPasses()
         {
             const string expected = @"<View>
@@ -103,21 +96,21 @@ namespace FluentCamlGen.CamlGen.Test.Features
   </Joins>
 </View>
 ";
-            var sut = CG.View();
-            /*.Query()
-                .ViewFields(vf => 
-                    vf.AddFieldRef("Title")
-                      .AddFieldRef("Contact"))
-                .ProjectedFields(pf => 
-                    pf.AddField("a", "b")
-                      .AddField("D", "D"))
-                .Joins(js => 
-                    js.AddJoin(Operators.Eq, eq => 
-                        eq.AddFieldRef("Contact", fr => fr.addAttribute("RefType", "Id"))
-                          .AddFieldRef("ID"), fr => fr.addAttribute("List", "Some List")))
-                 * */
+            var sut = CG.View()
+                        .Query()
+                        .ViewFields(vf =>
+                                    vf.AddFieldRef("Title")
+                                      .AddFieldRef("Contact")
+                                      .AddFieldRef("UserName")
+                                      .AddFieldRef("UserEMail")
+                                      .AddFieldRef("UserMobilePhone"))
+                        .ProjectedFields(pf =>
+                                         pf.AddField("UserName", "Lookup", "User Information List", "Name")
+                                           .AddField("UserEMail", "Lookup", "User Information List", "EMail")
+                                           .AddField("UserMobilePhone", "Lookup", "User Information List", "MobilePhone"))
+                        .Joins(js => js.AddInnerJoin("User Information List", "Contact"));
 
-            Assert.Fail("Fluent not implemented");
+            sut.ToString().Should().BeEquivalentTo(expected);
         }
     }
 }

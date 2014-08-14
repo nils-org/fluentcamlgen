@@ -17,11 +17,27 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;ProjectedFields> ... &lt;/ProjectedFields>
     /// </summary>
-    internal class CamlProjectedFields : CG
+    public class CamlProjectedFields : CG
     {
+        internal CamlProjectedFields()
+            : this(null)
+        {
+        }
+
         internal CamlProjectedFields(IEnumerable<CG> inner)
             : base("ProjectedFields", null, inner)
         {
+        }
+
+        /// <summary>
+        /// Add a (projected) Field
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlProjectedFields"/></returns>
+        public CamlProjectedFields AddField(string name, string type, string list, string showField)
+        {
+            var field = new CamlProjectedField(name, type, list, showField);
+            Childs.Add(field);
+            return this;
         }
     }
 }

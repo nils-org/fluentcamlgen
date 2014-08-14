@@ -17,7 +17,7 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;Field Name="..." Type="..." List="..." ShowField="..." />
     /// </summary>
-    internal class CamlProjectedField : CG
+    public class CamlProjectedField : CG
     {
         //TODO: Are Params always like this??
         internal CamlProjectedField(string name, string type, string list, string showFileld)
