@@ -22,8 +22,7 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgViewReturnsAViewTagWithNoAttributes()
         {
             var sut = CG.View();
-            sut.ToString().Should().BeEquivalentTo(@"<View />
-");
+            sut.ToString().Should().BeEquivalentTo(@"<View />");
         }
     }
 }

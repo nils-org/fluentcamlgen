@@ -22,8 +22,7 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgViewFieldsReturnsAViewFieldsTagWithNoAttributes()
         {
             var sut = CG.ViewFields();
-            sut.ToString().Should().BeEquivalentTo(@"<ViewFields />
-");
+            sut.ToString().Should().BeEquivalentTo(@"<ViewFields />");
         }
     }
 }

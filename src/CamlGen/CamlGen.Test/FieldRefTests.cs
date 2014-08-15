@@ -25,8 +25,7 @@ namespace FluentCamlGen.CamlGen.Test
         {
             var name = Fixture.Create<string>();
             var sut = CG.FieldRef(name);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" />
-", name));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" />", name));
         }
 
         [TestMethod]
@@ -36,8 +35,7 @@ namespace FluentCamlGen.CamlGen.Test
             var additionalName = Fixture.Create<string>();
             var additionalValue = Fixture.Create<string>();
             var sut = CG.FieldRef(name, new Tuple<string, string>(additionalName, additionalValue));
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" {1}=""{2}"" />
-", name, additionalName, additionalValue));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" {1}=""{2}"" />", name, additionalName, additionalValue));
         }
     }
 }

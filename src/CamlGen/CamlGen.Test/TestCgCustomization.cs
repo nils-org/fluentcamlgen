@@ -10,20 +10,15 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test
 {
-    public class TestBase
+    internal class TestCgCustomization : ICustomization
     {
-        protected Fixture Fixture;
-
-        [TestInitialize]
-        public void SetUp()
+        public void Customize(IFixture fixture)
         {
-            Fixture = new Fixture();
-            Fixture.Customize(new TestCgCustomization());
+            fixture.Register(() => new CG(fixture.Create<string>()));
         }
     }
 }

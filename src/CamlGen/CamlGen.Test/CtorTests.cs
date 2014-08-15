@@ -25,8 +25,7 @@ namespace FluentCamlGen.CamlGen.Test
         {
             var tag = Fixture.Create<string>();
             var sut = new CG(tag);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />
-", tag));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
         }
 
         [TestMethod]
@@ -37,20 +36,17 @@ namespace FluentCamlGen.CamlGen.Test
             var attrVal = Fixture.Create<string>();
 
             var sut = new CG(tag, new Tuple<string, string>(attrName, attrVal));
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"" />
-", tag, attrName, attrVal));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"" />", tag, attrName, attrVal));
         }
 
         [TestMethod]
         public void CgWithInnerCgReturnsTheTagAndTheNestedCg()
         {
             var tag = Fixture.Create<string>();
-            var inner = new CG(Fixture.Create<string>());
+            var inner = Fixture.Create<CG>();
 
             var sut = new CG(tag, inner);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>
-  {1}</{0}>
-", tag, inner));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>{1}</{0}>", tag, inner));
         }
 
         [TestMethod]
@@ -59,14 +55,12 @@ namespace FluentCamlGen.CamlGen.Test
             var tag = Fixture.Create<string>();
             var attrName = Fixture.Create<string>();
             var attrVal = Fixture.Create<string>();
-            var inner = new CG(Fixture.Create<string>());
+            var inner = Fixture.Create<CG>();
             var attrs = new[] {new Tuple<string, string>(attrName, attrVal)};
             var inners = new[] {inner};
 
             var sut = new CG(tag, attrs, inners);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"">
-  {3}</{0}>
-", tag, attrName, attrVal, inner));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"">{3}</{0}>", tag, attrName, attrVal, inner));
         }
     }
 }

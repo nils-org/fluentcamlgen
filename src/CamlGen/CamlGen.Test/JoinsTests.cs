@@ -22,8 +22,7 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgJoinsReturnsAJoinsTagWithNoAttributes()
         {
             var sut = CG.Joins();
-            sut.ToString().Should().BeEquivalentTo(@"<Joins />
-");
+            sut.ToString().Should().BeEquivalentTo(@"<Joins />");
         }
     }
 }

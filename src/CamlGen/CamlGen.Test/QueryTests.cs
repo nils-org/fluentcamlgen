@@ -22,8 +22,7 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgQueryReturnsAQueryTagWithNoAttributes()
         {
             var sut = CG.Query();
-            sut.ToString().Should().BeEquivalentTo(@"<Query />
-");
+            sut.ToString().Should().BeEquivalentTo(@"<Query />");
         }
     }
 }

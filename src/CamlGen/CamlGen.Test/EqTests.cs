@@ -22,12 +22,10 @@ namespace FluentCamlGen.CamlGen.Test
         [TestMethod]
         public void BareCgJoinReturnsAJoinTagWithNoAttributes()
         {
-            var lhs = new CG(Fixture.Create<string>());
-            var rhs = new CG(Fixture.Create<string>());
+            var lhs = Fixture.Create<CG>();
+            var rhs = Fixture.Create<CG>();
             var sut = CG.Eq(lhs, rhs);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq>
-  {0}  {1}</Eq>
-", lhs, rhs));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq>{0}{1}</Eq>", lhs, rhs));
         }
     }
 }

@@ -68,16 +68,30 @@ namespace FluentCamlGen.CamlGen
 
         /// <summary>
         /// Call this to get the Caml-String
+        /// <seealso cref="ToString(bool)"/>
         /// </summary>
         /// <returns>CAML</returns>
         public override string ToString()
         {
-            return ToString(0);
+            return ToString(false, 0);
         }
 
-        internal string ToString(int indent)
+        /// <summary>
+        /// Call this to get the Caml-String
+        /// </summary>
+        /// <param name="formatCaml">true, if CAML should be pretty formatted</param>
+        /// <returns></returns>
+        public string ToString(bool formatCaml)
         {
-            var spaces = new string(' ', indent);
+            return ToString(formatCaml, 0);
+        }
+
+        internal virtual string ToString(bool formatCaml, int indent)
+        {
+            var newLine = formatCaml ? "\\n" : string.Empty;
+            var spaces = formatCaml ? new string(' ', indent) : string.Empty;
+            var nextIndent = formatCaml ? indent + 2 : 0;
+
             var sb = new StringBuilder();
             sb.Append(string.Format("{0}<{1}", spaces, TagName));
             foreach (var attribute in Attributes)
@@ -86,16 +100,16 @@ namespace FluentCamlGen.CamlGen
             }
             if (Childs.Count == 0)
             {
-                sb.AppendLine(" />");
+                sb.Append(string.Format(" />{0}", newLine));
             }
             else
             {
-                sb.AppendLine(">");
+                sb.Append(string.Format(">{0}", newLine));
                 foreach (var cg in Childs)
                 {
-                    sb.Append(cg.ToString(indent + 2));
+                    sb.Append(cg.ToString(formatCaml, nextIndent));
                 }
-                sb.AppendLine(string.Format("{0}</{1}>", spaces, TagName));
+                sb.Append(string.Format("{0}</{1}>{2}", spaces, TagName, newLine));
             }
 
             return sb.ToString();

@@ -25,8 +25,7 @@ namespace FluentCamlGen.CamlGen.Test
         {
             var tag = Fixture.Create<string>();
             var sut = new CG(tag);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />
-", tag));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
         }
 
         [TestMethod]
@@ -38,10 +37,7 @@ namespace FluentCamlGen.CamlGen.Test
             var sut = new CG(outerTag);
             sut.Childs.Add(new CG(innerTag));
 
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>
-  <{1} />
-</{0}>
-", outerTag, innerTag));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1} /></{0}>", outerTag, innerTag));
         }
 
         [TestMethod]
@@ -56,12 +52,7 @@ namespace FluentCamlGen.CamlGen.Test
             middleSut.Childs.Add(new CG(innerTag));
             outerSut.Childs.Add(middleSut);
 
-            outerSut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>
-  <{1}>
-    <{2} />
-  </{1}>
-</{0}>
-", outerTag, middleTag, innerTag));
+            outerSut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1}><{2} /></{1}></{0}>", outerTag, middleTag, innerTag));
         }
     }
 

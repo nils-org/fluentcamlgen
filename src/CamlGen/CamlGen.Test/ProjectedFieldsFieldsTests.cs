@@ -22,8 +22,7 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgProjectedFieldsReturnsAProjectedFieldsTagWithNoAttributes()
         {
             var sut = CG.ProjectedFields();
-            sut.ToString().Should().BeEquivalentTo(@"<ProjectedFields />
-");
+            sut.ToString().Should().BeEquivalentTo(@"<ProjectedFields />");
         }
     }
 }

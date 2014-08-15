@@ -78,6 +78,7 @@
     <Compile Include="EqTests.cs" />
     <Compile Include="Features\Feature1.cs" />
     <Compile Include="FieldRefTests.cs" />
+    <Compile Include="FormatTests.cs" />
     <Compile Include="JoinsTests.cs" />
     <Compile Include="JoinTests.cs" />
     <Compile Include="NestingTests.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryTests.cs" />
     <Compile Include="TestBase.cs" />
+    <Compile Include="TestCgCustomization.cs" />
     <Compile Include="ViewFieldsTests.cs" />
     <Compile Include="ViewTests.cs" />
   </ItemGroup>

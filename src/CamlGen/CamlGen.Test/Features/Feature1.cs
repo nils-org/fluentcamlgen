@@ -10,6 +10,7 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using System.Text.RegularExpressions;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,7 +25,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
         [TestMethod]
         public void Feature1Passes()
         {
-            const string expected = @"<View>
+            const string expectedXml = @"<View>
   <Query />
   <ViewFields>
     <FieldRef Name=""Title"" />
@@ -46,8 +47,8 @@ namespace FluentCamlGen.CamlGen.Test.Features
       </Eq>
     </Join>
   </Joins>
-</View>
-";
+</View>";
+            var expected = (new Regex(">\\s+<")).Replace(expectedXml, "><");
 
             var sut = CG.View(
                 CG.Query(),
@@ -72,7 +73,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
         [TestMethod]
         public void Feature1InFluentPasses()
         {
-            const string expected = @"<View>
+            const string expectedXml = @"<View>
   <Query />
   <ViewFields>
     <FieldRef Name=""Title"" />
@@ -94,8 +95,9 @@ namespace FluentCamlGen.CamlGen.Test.Features
       </Eq>
     </Join>
   </Joins>
-</View>
-";
+</View>";
+            var expected = (new Regex(">\\s+<")).Replace(expectedXml, "><");
+
             var sut = CG.View()
                         .Query()
                         .ViewFields(vf =>

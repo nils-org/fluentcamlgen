@@ -29,8 +29,7 @@ namespace FluentCamlGen.CamlGen.Test
             var sut = CG.ProjectedField(name, type, list, showFileld);
             sut.ToString()
                .Should()
-               .BeEquivalentTo(string.Format(@"<Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" />
-", name, type, list, showFileld));
+               .BeEquivalentTo(string.Format(@"<Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" />", name, type, list, showFileld));
         }
     }
 }
