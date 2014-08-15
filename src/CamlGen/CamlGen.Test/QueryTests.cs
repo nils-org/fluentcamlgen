@@ -11,14 +11,14 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test
 {
-    [TestClass]
+    [TestFixture]
     public class QueryTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void BareCgQueryReturnsAQueryTagWithNoAttributes()
         {
             var sut = CG.Query();

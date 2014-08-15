@@ -10,7 +10,7 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test
@@ -19,7 +19,7 @@ namespace FluentCamlGen.CamlGen.Test
     {
         protected Fixture Fixture;
 
-        [TestInitialize]
+        [SetUp]
         public void SetUp()
         {
             Fixture = new Fixture();

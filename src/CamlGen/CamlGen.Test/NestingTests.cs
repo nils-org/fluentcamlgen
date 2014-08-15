@@ -11,16 +11,16 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test
 {
     // ReSharper disable InconsistentNaming
-    [TestClass]
+    [TestFixture]
     public class NestingTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void BareCgReturnsExactlyTheTag()
         {
             var tag = Fixture.Create<string>();
@@ -28,7 +28,7 @@ namespace FluentCamlGen.CamlGen.Test
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
         }
 
-        [TestMethod]
+        [Test]
         public void NestedCgReturnsTheNestedTags()
         {
             var outerTag = Fixture.Create<string>();
@@ -40,7 +40,7 @@ namespace FluentCamlGen.CamlGen.Test
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1} /></{0}>", outerTag, innerTag));
         }
 
-        [TestMethod]
+        [Test]
         public void DeepNestedCgReturnsTheDeepNestedTags()
         {
             var outerTag = Fixture.Create<string>();

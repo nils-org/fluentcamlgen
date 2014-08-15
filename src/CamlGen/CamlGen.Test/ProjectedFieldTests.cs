@@ -11,15 +11,15 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test
 {
-    [TestClass]
+    [TestFixture]
     public class ProjectedFieldTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void BareCgProjectedFieldReturnsAProjectedFieldTagWithAttributes()
         {
             var name = Fixture.Create<string>();

@@ -12,17 +12,17 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using System.Text.RegularExpressions;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Features
 {
     /// <summary>
     /// 1. Ensure that a join to the "User Information List" is possible, see http://social.msdn.microsoft.com/Forums/de-DE/e5d607fe-b437-4a67-ad9c-5cc5a8284a66/csom-javascript-inner-join-caml-query-on-user-information-list?forum=sharepointdevelopment
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class Feature1
     {
-        [TestMethod]
+        [Test]
         public void Feature1Passes()
         {
             const string expectedXml = @"<View>
@@ -70,7 +70,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
             sut.ToString().Should().BeEquivalentTo(expected);
         }
 
-        [TestMethod]
+        [Test]
         public void Feature1InFluentPasses()
         {
             const string expectedXml = @"<View>

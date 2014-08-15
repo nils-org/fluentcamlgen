@@ -12,15 +12,15 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using System;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test
 {
-    [TestClass]
+    [TestFixture]
     public class CtorTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void CgWithoutAdditionalParamsReturnsTheBareTag()
         {
             var tag = Fixture.Create<string>();
@@ -28,7 +28,7 @@ namespace FluentCamlGen.CamlGen.Test
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
         }
 
-        [TestMethod]
+        [Test]
         public void CgWithAttributeReturnsTheTagAndTheAttribute()
         {
             var tag = Fixture.Create<string>();
@@ -39,7 +39,7 @@ namespace FluentCamlGen.CamlGen.Test
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"" />", tag, attrName, attrVal));
         }
 
-        [TestMethod]
+        [Test]
         public void CgWithInnerCgReturnsTheTagAndTheNestedCg()
         {
             var tag = Fixture.Create<string>();
@@ -49,7 +49,7 @@ namespace FluentCamlGen.CamlGen.Test
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>{1}</{0}>", tag, inner));
         }
 
-        [TestMethod]
+        [Test]
         public void CgWithAttributeAndInnerCgReturnsTheTagWithAttributeAndTheNestedCg()
         {
             var tag = Fixture.Create<string>();

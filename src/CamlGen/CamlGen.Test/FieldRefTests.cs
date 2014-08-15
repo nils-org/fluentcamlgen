@@ -12,15 +12,15 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using System;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test
 {
-    [TestClass]
+    [TestFixture]
     public class FieldRefTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public void BareCgFieldRefReturnsAFieldRefTagWithANameAttributes()
         {
             var name = Fixture.Create<string>();
@@ -28,7 +28,7 @@ namespace FluentCamlGen.CamlGen.Test
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" />", name));
         }
 
-        [TestMethod]
+        [Test]
         public void BareCgFieldRefWithAdditionalAttributesReturnsAFieldRefTagWithANameAndAdditionalAttributes()
         {
             var name = Fixture.Create<string>();
