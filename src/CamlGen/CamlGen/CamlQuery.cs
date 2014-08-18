@@ -17,14 +17,14 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;Query> ... &lt;/Query>
     /// </summary>
-    public class CamlQuery : CG
+    public class CamlQuery : BaseCamlTag
     {
         internal CamlQuery()
             : this(null)
         {
         }
 
-        internal CamlQuery(IEnumerable<CG> inner)
+        internal CamlQuery(IEnumerable<ITag> inner)
             : base("Query", null, inner)
         {
         }

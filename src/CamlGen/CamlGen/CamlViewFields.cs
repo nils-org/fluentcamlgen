@@ -18,14 +18,14 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;ViewFields> ... &lt;/ViewFields>
     /// </summary>
-    public class CamlViewFields : CG
+    public class CamlViewFields : BaseCamlTag
     {
         internal CamlViewFields()
             : this(null)
         {
         }
 
-        internal CamlViewFields(IEnumerable<CG> inner)
+        internal CamlViewFields(IEnumerable<ITag> inner)
             : base("ViewFields", null, inner)
         {
         }

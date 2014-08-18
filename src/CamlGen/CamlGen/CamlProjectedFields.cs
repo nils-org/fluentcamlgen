@@ -17,14 +17,14 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;ProjectedFields> ... &lt;/ProjectedFields>
     /// </summary>
-    public class CamlProjectedFields : CG
+    public class CamlProjectedFields : BaseCamlTag
     {
         internal CamlProjectedFields()
             : this(null)
         {
         }
 
-        internal CamlProjectedFields(IEnumerable<CG> inner)
+        internal CamlProjectedFields(IEnumerable<ITag> inner)
             : base("ProjectedFields", null, inner)
         {
         }

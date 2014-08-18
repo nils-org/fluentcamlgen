@@ -101,6 +101,7 @@
     <Compile Include="ProjectedFieldsFieldsTests.cs" />
     <Compile Include="ProjectedFieldTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryOptionsTest.cs" />
     <Compile Include="QueryTests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="TestCgCustomization.cs" />

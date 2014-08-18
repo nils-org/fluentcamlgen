@@ -18,9 +18,9 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;View> ... &lt;/View> for ViewXml
     /// </summary>
-    public class CamlView : CG
+    public class CamlView : BaseCamlTag
     {
-        internal CamlView(IEnumerable<CG> inner)
+        internal CamlView(IEnumerable<ITag> inner)
             : base("View", null, inner)
         {
         }
@@ -77,6 +77,18 @@ namespace FluentCamlGen.CamlGen
         public CamlView Joins(Action<CamlJoins> action)
         {
             var joins = new CamlJoins();
+            action(joins);
+            Childs.Add(joins);
+            return this;
+        }
+
+        /// <summary>
+        /// Add QueryOptions
+        /// </summary>
+        /// <returns>Fluent <see cref="CamlView"/></returns>
+        public CamlView QueryOptions(Action<CamlQueryOptions> action)
+        {
+            var joins = new CamlQueryOptions();
             action(joins);
             Childs.Add(joins);
             return this;

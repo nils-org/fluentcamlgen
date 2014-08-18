@@ -18,7 +18,7 @@ namespace FluentCamlGen.CamlGen
     /// Create &lt;Join Type="INNER" ListAlias="...">
     /// <seealso cref="http://msdn.microsoft.com/en-us/library/ee535061(v=office.15).aspx"/>
     /// </summary>
-    public class CamlJoin : CG
+    public class CamlJoin : BaseCamlTag
     {
         public class JoinType
         {
@@ -47,7 +47,7 @@ namespace FluentCamlGen.CamlGen
             _innerEq.Childs.Add(new CamlFieldRef("ID").AddAttribute("List", listName));
         }
 
-        internal CamlJoin(string listName, JoinType type, CG lhs, CG rhs)
+        internal CamlJoin(string listName, JoinType type, ITag lhs, ITag rhs)
             : this(listName, type)
         {
             _innerEq.Childs.Add(lhs);

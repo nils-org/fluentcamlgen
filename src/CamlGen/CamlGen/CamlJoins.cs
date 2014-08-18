@@ -18,14 +18,14 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;Joins> ... &lt;/Joins>
     /// </summary>
-    public class CamlJoins : CG
+    public class CamlJoins : BaseCamlTag
     {
         internal CamlJoins()
             : this(null)
         {
         }
 
-        internal CamlJoins(IEnumerable<CG> inner)
+        internal CamlJoins(IEnumerable<ITag> inner)
             : base("Joins", null, inner)
         {
         }

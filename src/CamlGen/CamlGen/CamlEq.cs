@@ -19,14 +19,14 @@ namespace FluentCamlGen.CamlGen
     /// &lt;Eq> ... &lt;/Eq>
     /// <seealso cref="http://msdn.microsoft.com/en-us/library/ms479601(v=office.15).aspx"/>
     /// </summary>
-    public class CamlEq : CG
+    public class CamlEq : BaseCamlTag
     {
         internal CamlEq()
-            : base("Eq", null, (IEnumerable<CG>) null)
+            : base("Eq", null, (IEnumerable<ITag>) null)
         {
         }
 
-        internal CamlEq(CG lhs, CG rhs)
+        internal CamlEq(ITag lhs, ITag rhs)
             : this()
         {
             Childs.Add(lhs);

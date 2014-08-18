@@ -23,8 +23,8 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgJoinReturnsAJoinTagWithNoAttributes()
         {
             var list = Fixture.Create<string>();
-            var lhs = Fixture.Create<CG>();
-            var rhs = Fixture.Create<CG>();
+            var lhs = Fixture.Create<BaseCamlTag>();
+            var rhs = Fixture.Create<BaseCamlTag>();
 
             var sut = CG.Join(list, CamlJoin.JoinType.Inner, lhs, rhs);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Join Type=""INNER"" ListAlias=""{0}""><Eq>{1}{2}</Eq></Join>", list, lhs, rhs));

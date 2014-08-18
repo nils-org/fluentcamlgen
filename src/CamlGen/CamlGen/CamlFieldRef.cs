@@ -19,7 +19,7 @@ namespace FluentCamlGen.CamlGen
     /// <summary>
     /// Create &lt;FieldRef Name="..." ... />
     /// </summary>
-    public class CamlFieldRef : CG
+    public class CamlFieldRef : BaseCamlTag
     {
         internal CamlFieldRef(string name)
             : this(name, Enumerable.Empty<Tuple<string, string>>())

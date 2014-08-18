@@ -17,7 +17,7 @@ namespace FluentCamlGen.CamlGen
     public static class CGFluentExtensions
     {
         public static T AddAttribute<T>(this T @this, string name, string value)
-            where T : CG
+            where T : BaseCamlTag
         {
             @this.Attributes.Add(new Tuple<string, string>(name, value));
             return @this;

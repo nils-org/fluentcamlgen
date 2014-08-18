@@ -10,15 +10,13 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using Ploeh.AutoFixture;
-
-namespace FluentCamlGen.CamlGen.Test
+namespace FluentCamlGen.CamlGen
 {
-    internal class TestCgCustomization : ICustomization
+    /// <summary>
+    /// Base-Interface for a Tag.
+    /// </summary>
+    public interface ITag
     {
-        public void Customize(IFixture fixture)
-        {
-            fixture.Register(() => new BaseCamlTag(fixture.Create<string>()));
-        }
+        string ToString(bool formatCaml, int indent);
     }
 }

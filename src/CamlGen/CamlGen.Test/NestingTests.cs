@@ -24,7 +24,7 @@ namespace FluentCamlGen.CamlGen.Test
         public void BareCgReturnsExactlyTheTag()
         {
             var tag = Fixture.Create<string>();
-            var sut = new CG(tag);
+            var sut = new BaseCamlTag(tag);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
         }
 
@@ -34,8 +34,8 @@ namespace FluentCamlGen.CamlGen.Test
             var outerTag = Fixture.Create<string>();
             var innerTag = Fixture.Create<string>();
 
-            var sut = new CG(outerTag);
-            sut.Childs.Add(new CG(innerTag));
+            var sut = new BaseCamlTag(outerTag);
+            sut.Childs.Add(new BaseCamlTag(innerTag));
 
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1} /></{0}>", outerTag, innerTag));
         }
@@ -47,9 +47,9 @@ namespace FluentCamlGen.CamlGen.Test
             var middleTag = Fixture.Create<string>();
             var innerTag = Fixture.Create<string>();
 
-            var outerSut = new CG(outerTag);
-            var middleSut = new CG(middleTag);
-            middleSut.Childs.Add(new CG(innerTag));
+            var outerSut = new BaseCamlTag(outerTag);
+            var middleSut = new BaseCamlTag(middleTag);
+            middleSut.Childs.Add(new BaseCamlTag(innerTag));
             outerSut.Childs.Add(middleSut);
 
             outerSut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1}><{2} /></{1}></{0}>", outerTag, middleTag, innerTag));

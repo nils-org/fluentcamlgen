@@ -20,12 +20,12 @@ namespace FluentCamlGen.CamlGen.Test
     [TestFixture]
     public class FormatTests : TestBase
     {
-        private CG _cgPartial;
+        private BaseCamlTag _cgPartial;
 
         [SetUp]
         public void Setup()
         {
-            _cgPartial = Substitute.ForPartsOf<CG>(string.Empty);
+            _cgPartial = Substitute.ForPartsOf<BaseCamlTag>(string.Empty);
         }
 
         [Test]

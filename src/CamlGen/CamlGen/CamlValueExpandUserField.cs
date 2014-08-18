@@ -10,15 +10,18 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using Ploeh.AutoFixture;
-
-namespace FluentCamlGen.CamlGen.Test
+namespace FluentCamlGen.CamlGen
 {
-    internal class TestCgCustomization : ICustomization
+    public class CamlValueExpandUserField : BaseValueTag
     {
-        public void Customize(IFixture fixture)
+        internal CamlValueExpandUserField(bool value)
+            : base("ExpandUserField", GetValue(value))
         {
-            fixture.Register(() => new BaseCamlTag(fixture.Create<string>()));
+        }
+
+        private static string GetValue(bool value)
+        {
+            return value ? "True" : "False";
         }
     }
 }

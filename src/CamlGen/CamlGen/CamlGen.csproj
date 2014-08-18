@@ -43,6 +43,8 @@
     <Compile Include="..\..\..\resources\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="BaseCamlTag.cs" />
+    <Compile Include="BaseValueTag.cs" />
     <Compile Include="CamlEq.cs" />
     <Compile Include="CamlFieldRef.cs" />
     <Compile Include="CamlJoin.cs" />
@@ -50,10 +52,14 @@
     <Compile Include="CamlProjectedField.cs" />
     <Compile Include="CamlProjectedFields.cs" />
     <Compile Include="CamlQuery.cs" />
+    <Compile Include="CamlQueryOptions.cs" />
+    <Compile Include="CamlValueDatesInUtc.cs" />
+    <Compile Include="CamlValueExpandUserField.cs" />
     <Compile Include="CamlView.cs" />
     <Compile Include="CamlViewFields.cs" />
     <Compile Include="CG.cs" />
     <Compile Include="CGFluentExtensions.cs" />
+    <Compile Include="ITag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

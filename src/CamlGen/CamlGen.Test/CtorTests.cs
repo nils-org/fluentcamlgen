@@ -21,45 +21,45 @@ namespace FluentCamlGen.CamlGen.Test
     public class CtorTests : TestBase
     {
         [Test]
-        public void CgWithoutAdditionalParamsReturnsTheBareTag()
+        public void CamlTagoutAdditionalParamsReturnsTheBareTag()
         {
             var tag = Fixture.Create<string>();
-            var sut = new CG(tag);
+            var sut = new BaseCamlTag(tag);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
         }
 
         [Test]
-        public void CgWithAttributeReturnsTheTagAndTheAttribute()
+        public void CamlTagAttributeReturnsTheTagAndTheAttribute()
         {
             var tag = Fixture.Create<string>();
             var attrName = Fixture.Create<string>();
             var attrVal = Fixture.Create<string>();
 
-            var sut = new CG(tag, new Tuple<string, string>(attrName, attrVal));
+            var sut = new BaseCamlTag(tag, new Tuple<string, string>(attrName, attrVal));
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"" />", tag, attrName, attrVal));
         }
 
         [Test]
-        public void CgWithInnerCgReturnsTheTagAndTheNestedCg()
+        public void CamlTagInnerCgReturnsTheTagAndTheNestedCg()
         {
             var tag = Fixture.Create<string>();
-            var inner = Fixture.Create<CG>();
+            var inner = Fixture.Create<BaseCamlTag>();
 
-            var sut = new CG(tag, inner);
+            var sut = new BaseCamlTag(tag, inner);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>{1}</{0}>", tag, inner));
         }
 
         [Test]
-        public void CgWithAttributeAndInnerCgReturnsTheTagWithAttributeAndTheNestedCg()
+        public void CamlTagAttributeAndInnerCgReturnsTheTagWithAttributeAndTheNestedCg()
         {
             var tag = Fixture.Create<string>();
             var attrName = Fixture.Create<string>();
             var attrVal = Fixture.Create<string>();
-            var inner = Fixture.Create<CG>();
+            var inner = Fixture.Create<BaseCamlTag>();
             var attrs = new[] {new Tuple<string, string>(attrName, attrVal)};
             var inners = new[] {inner};
 
-            var sut = new CG(tag, attrs, inners);
+            var sut = new BaseCamlTag(tag, attrs, inners);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"">{3}</{0}>", tag, attrName, attrVal, inner));
         }
     }

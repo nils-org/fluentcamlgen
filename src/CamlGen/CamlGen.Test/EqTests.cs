@@ -22,8 +22,8 @@ namespace FluentCamlGen.CamlGen.Test
         [Test]
         public void BareCgJoinReturnsAJoinTagWithNoAttributes()
         {
-            var lhs = Fixture.Create<CG>();
-            var rhs = Fixture.Create<CG>();
+            var lhs = Fixture.Create<BaseCamlTag>();
+            var rhs = Fixture.Create<BaseCamlTag>();
             var sut = CG.Eq(lhs, rhs);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq>{0}{1}</Eq>", lhs, rhs));
         }
