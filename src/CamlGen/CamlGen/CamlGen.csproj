@@ -18,9 +18,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\..\bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;/warnaserror</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>..\..\..\bin\FluentCamlGen.CamlGen.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -43,25 +45,26 @@
     <Compile Include="..\..\..\resources\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="BaseCamlTag.cs" />
-    <Compile Include="BaseValueTag.cs" />
-    <Compile Include="CamlEq.cs" />
-    <Compile Include="CamlFieldRef.cs" />
-    <Compile Include="CamlJoin.cs" />
-    <Compile Include="CamlJoins.cs" />
-    <Compile Include="CamlProjectedField.cs" />
-    <Compile Include="CamlProjectedFields.cs" />
-    <Compile Include="CamlQuery.cs" />
-    <Compile Include="CamlQueryOptions.cs" />
-    <Compile Include="CamlValueDatesInUtc.cs" />
-    <Compile Include="CamlValueExpandUserField.cs" />
-    <Compile Include="CamlView.cs" />
-    <Compile Include="CamlViewFields.cs" />
+    <Compile Include="Elements\Core\BaseCoreElement.cs" />
+    <Compile Include="Elements\Value\BaseValueElement.cs" />
+    <Compile Include="Elements\Core\Eq.cs" />
+    <Compile Include="Elements\Core\FieldRef.cs" />
+    <Compile Include="Elements\Core\Join.cs" />
+    <Compile Include="Elements\Core\Joins.cs" />
+    <Compile Include="Elements\Core\ProjectedField.cs" />
+    <Compile Include="Elements\Core\ProjectedFields.cs" />
+    <Compile Include="Elements\Core\Query.cs" />
+    <Compile Include="Elements\Core\QueryOptions.cs" />
+    <Compile Include="Elements\Value\DatesInUtc.cs" />
+    <Compile Include="Elements\Value\ExpandUserField.cs" />
+    <Compile Include="Elements\Core\View.cs" />
+    <Compile Include="Elements\Core\ViewFields.cs" />
     <Compile Include="CG.cs" />
     <Compile Include="CGFluentExtensions.cs" />
-    <Compile Include="ITag.cs" />
+    <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

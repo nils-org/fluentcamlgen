@@ -10,18 +10,23 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System;
-using FluentCamlGen.CamlGen.Elements.Core;
+using System.Collections.Generic;
 
-namespace FluentCamlGen.CamlGen
+namespace FluentCamlGen.CamlGen.Elements.Core
 {
-    public static class CGFluentExtensions
+    /// <summary>
+    /// Create &lt;Query> ... &lt;/Query>
+    /// </summary>
+    public class Query : BaseCoreElement
     {
-        public static T AddAttribute<T>(this T @this, string name, string value)
-            where T : BaseCoreElement
+        internal Query()
+            : this(null)
         {
-            @this.Attributes.Add(new Tuple<string, string>(name, value));
-            return @this;
+        }
+
+        internal Query(IEnumerable<BaseElement> inner)
+            : base("Query", null, inner)
+        {
         }
     }
 }

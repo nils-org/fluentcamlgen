@@ -10,18 +10,19 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System;
-using FluentCamlGen.CamlGen.Elements.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
-namespace FluentCamlGen.CamlGen
+namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    public static class CGFluentExtensions
+    [TestFixture]
+    public class JoinsTests : TestBase
     {
-        public static T AddAttribute<T>(this T @this, string name, string value)
-            where T : BaseCoreElement
+        [Test]
+        public void BareJoinsReturnsAJoinsTagWithNoAttributes()
         {
-            @this.Attributes.Add(new Tuple<string, string>(name, value));
-            return @this;
+            var sut = CG.Joins();
+            sut.ToString().Should().BeEquivalentTo(@"<Joins />");
         }
     }
 }

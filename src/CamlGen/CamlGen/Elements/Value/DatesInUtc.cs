@@ -10,18 +10,13 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System;
-using FluentCamlGen.CamlGen.Elements.Core;
-
-namespace FluentCamlGen.CamlGen
+namespace FluentCamlGen.CamlGen.Elements.Value
 {
-    public static class CGFluentExtensions
+    public class DatesInUtc : BaseValueElement
     {
-        public static T AddAttribute<T>(this T @this, string name, string value)
-            where T : BaseCoreElement
+        internal DatesInUtc(bool value)
+            : base("DatesInUtc", GetValue(value))
         {
-            @this.Attributes.Add(new Tuple<string, string>(name, value));
-            return @this;
         }
     }
 }
