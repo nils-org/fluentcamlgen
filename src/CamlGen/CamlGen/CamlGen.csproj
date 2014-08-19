@@ -60,7 +60,7 @@
     <Compile Include="Elements\Core\View.cs" />
     <Compile Include="Elements\Core\ViewFields.cs" />
     <Compile Include="CG.cs" />
-    <Compile Include="CGFluentExtensions.cs" />
+    <Compile Include="Elements\Core\BaseCoreElementExtensions.cs" />
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

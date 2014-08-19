@@ -28,5 +28,15 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = CG.Eq(lhs, rhs);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq>{0}{1}</Eq>", lhs, rhs));
         }
+
+        [Test]
+        public void AddFieldRefAddsAFieldRefToTheElement()
+        {
+            var field = Fixture.Create<string>();
+            var sut = new Eq();
+            sut.AddFieldRef(field, x => {});
+
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq><FieldRef Name=""{0}"" /></Eq>", field));
+        }
     }
 }

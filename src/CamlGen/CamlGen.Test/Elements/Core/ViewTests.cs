@@ -10,7 +10,9 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using System.Linq;
 using FluentAssertions;
+using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
@@ -23,6 +25,51 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var sut = CG.View();
             sut.ToString().Should().BeEquivalentTo(@"<View />");
+        }
+
+        [Test]
+        public void JoinsOnViewReturnsAViewTagWithJoins()
+        {
+            var sut = new View(Enumerable.Empty<BaseCoreElement>());
+            sut.Joins(x => { });
+
+            sut.ToString().Should().BeEquivalentTo(@"<View><Joins /></View>");
+        }
+
+        [Test]
+        public void ProjectedFieldsOnViewReturnsAViewTagWithProjectedFields()
+        {
+            var sut = new View(Enumerable.Empty<BaseCoreElement>());
+            sut.ProjectedFields(x => { });
+
+            sut.ToString().Should().BeEquivalentTo(@"<View><ProjectedFields /></View>");
+        }
+
+        [Test]
+        public void QueryOnViewReturnsAViewTagWithQuery()
+        {
+            var sut = new View(Enumerable.Empty<BaseCoreElement>());
+            sut.Query();
+
+            sut.ToString().Should().BeEquivalentTo(@"<View><Query /></View>");
+        }
+
+        [Test]
+        public void QueryOptionsOnViewReturnsAViewTagWithQueryOptions()
+        {
+            var sut = new View(Enumerable.Empty<BaseCoreElement>());
+            sut.QueryOptions(x => { });
+
+            sut.ToString().Should().BeEquivalentTo(@"<View><QueryOptions /></View>");
+        }
+
+        [Test]
+        public void ViewFieldsOnViewReturnsAViewTagWithViewFields()
+        {
+            var sut = new View(Enumerable.Empty<BaseCoreElement>());
+            sut.ViewFields(x => { });
+
+            sut.ToString().Should().BeEquivalentTo(@"<View><ViewFields /></View>");
         }
     }
 }

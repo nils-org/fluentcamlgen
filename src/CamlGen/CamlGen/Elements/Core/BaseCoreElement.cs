@@ -71,7 +71,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <returns></returns>
         public override string ToString(bool formatCaml, int indent)
         {
-            var newLine = formatCaml ? "\\n" : string.Empty;
+            var newLine = formatCaml ? Environment.NewLine : string.Empty;
             var spaces = formatCaml ? new string(' ', indent) : string.Empty;
             var nextIndent = formatCaml ? indent + 2 : 0;
 

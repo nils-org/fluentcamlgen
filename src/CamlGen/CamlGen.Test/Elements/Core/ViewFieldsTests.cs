@@ -11,7 +11,9 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using FluentAssertions;
+using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
+using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
@@ -23,6 +25,26 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var sut = CG.ViewFields();
             sut.ToString().Should().BeEquivalentTo(@"<ViewFields />");
+        }
+
+        [Test]
+        public void AddFieldRefReturnsAViewFieldsTagWithAFieldRef()
+        {
+            var name = Fixture.Create<string>();
+            var sut = new ViewFields();
+            sut.AddFieldRef(name);
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<ViewFields><FieldRef Name=""{0}"" /></ViewFields>", name));
+        }
+
+        [Test]
+        public void AddFieldRefWithALambdaReturnsAViewFieldsTagWithAFieldRefAndCallsTheLamda()
+        {
+            var name = Fixture.Create<string>();
+            var attrName = Fixture.Create<string>();
+            var attrVal = Fixture.Create<string>();
+            var sut = new ViewFields();
+            sut.AddFieldRef(name, r => r.AddAttribute(attrName, attrVal));
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<ViewFields><FieldRef Name=""{0}"" {1}=""{2}"" /></ViewFields>", name, attrName, attrVal));
         }
     }
 }

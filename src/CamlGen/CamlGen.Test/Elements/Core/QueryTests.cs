@@ -11,6 +11,7 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using FluentAssertions;
+using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
@@ -22,6 +23,13 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         public void BareCgQueryReturnsAQueryTagWithNoAttributes()
         {
             var sut = CG.Query();
+            sut.ToString().Should().BeEquivalentTo(@"<Query />");
+        }
+
+        [Test]
+        public void AnEmptyQueryReturnsAQueryTagWithNoAttributes()
+        {
+            var sut = new Query();
             sut.ToString().Should().BeEquivalentTo(@"<Query />");
         }
     }

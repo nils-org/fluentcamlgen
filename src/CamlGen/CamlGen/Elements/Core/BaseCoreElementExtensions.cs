@@ -11,12 +11,22 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using System;
-using FluentCamlGen.CamlGen.Elements.Core;
 
-namespace FluentCamlGen.CamlGen
+namespace FluentCamlGen.CamlGen.Elements.Core
 {
-    public static class CGFluentExtensions
+    /// <summary>
+    /// Extensions on all BaseCoreElements
+    /// </summary>
+    public static class BaseCoreElementExtensions
     {
+        /// <summary>
+        /// Add An Attribute
+        /// </summary>
+        /// <param name="this"></param>
+        /// <param name="name">Attribute Name</param>
+        /// <param name="value">Attribute Vlaue</param>
+        /// <typeparam name="T"><see cref="BaseCoreElement"/> or subclasses</typeparam>
+        /// <returns></returns>
         public static T AddAttribute<T>(this T @this, string name, string value)
             where T : BaseCoreElement
         {
