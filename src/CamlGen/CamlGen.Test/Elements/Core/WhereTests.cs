@@ -17,28 +17,22 @@ using NUnit.Framework;
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
     [TestFixture]
-    public class QueryTests : TestBase
+    public class WhereTests : TestBase
     {
         [Test]
-        public void BareCgQueryReturnsAQueryTagWithNoAttributes()
+        public void CgWhereReturnsAnEmptyWhereTag()
         {
-            var sut = CG.Query();
-            sut.ToString().Should().BeEquivalentTo(@"<Query />");
+            var sut = CG.Where();
+            sut.ToString().Should().BeEquivalentTo(@"<Where />");
         }
 
         [Test]
-        public void AnEmptyQueryReturnsAQueryTagWithNoAttributes()
+        public void AndOnAWhereTagReturnsTheNestedTags()
         {
-            var sut = new Query();
-            sut.ToString().Should().BeEquivalentTo(@"<Query />");
-        }
+            var sut = new Where();
+            sut.And();
 
-        [Test]
-        public void WhereOnAnQueryReturnsAQueryTagWithANestedWhereTag()
-        {
-            var sut = new Query();
-            sut.Where();
-            sut.ToString().Should().BeEquivalentTo(@"<Query><Where /></Query>");
+            sut.ToString().Should().BeEquivalentTo(@"<Where><And /></Where>");
         }
     }
 }

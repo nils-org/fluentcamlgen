@@ -16,38 +16,38 @@ using System.Collections.Generic;
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// Create &lt;Query> ... &lt;/Query>
+    /// &lt;And> ... &lt;/And>
     /// </summary>
-    public class Query : BaseCoreElement
+    public class And : BaseCoreElement
     {
-        internal Query()
+        internal And()
             : this(null)
         {
         }
 
-        internal Query(IEnumerable<BaseElement> inner)
-            : base("Query", null, inner)
+        internal And(IEnumerable<BaseElement> inner)
+            : base("And", null, inner)
         {
         }
 
         /// <summary>
-        /// Add a &lt;Where>-Tag
+        /// Add an &lt;Eq>-Tag
         /// </summary>
-        /// <returns><see cref="Query"/></returns>
-        public Query Where()
+        /// <returns><see cref="And"/></returns>
+        public And Eq()
         {
-            return Where(x => { });
+            return Eq(x => { });
         }
 
         /// <summary>
-        /// Add a &lt;Where>-Tag
+        /// Add an &lt;Eq>-Tag
         /// </summary>
-        /// <returns><see cref="Query"/></returns>
-        public Query Where(Action<Where> action)
+        /// <returns><see cref="And"/></returns>
+        public And Eq(Action<Eq> action)
         {
-            var where = new Where();
-            action(where);
-            Childs.Add(where);
+            var eq = new Eq();
+            action(eq);
+            Childs.Add(eq);
             return this;
         }
     }

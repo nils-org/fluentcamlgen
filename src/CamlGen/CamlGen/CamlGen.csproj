@@ -46,6 +46,8 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Elements\Core\BaseCoreElement.cs" />
+    <Compile Include="Elements\Core\And.cs" />
+    <Compile Include="Elements\Core\Where.cs" />
     <Compile Include="Elements\Value\BaseValueElement.cs" />
     <Compile Include="Elements\Core\Eq.cs" />
     <Compile Include="Elements\Core\FieldRef.cs" />
@@ -55,6 +57,8 @@
     <Compile Include="Elements\Core\ProjectedFields.cs" />
     <Compile Include="Elements\Core\Query.cs" />
     <Compile Include="Elements\Core\QueryOptions.cs" />
+    <Compile Include="Elements\Value\NumberValue.cs" />
+    <Compile Include="Elements\Value\Value.cs" />
     <Compile Include="Elements\Value\DatesInUtc.cs" />
     <Compile Include="Elements\Value\ExpandUserField.cs" />
     <Compile Include="Elements\Core\View.cs" />

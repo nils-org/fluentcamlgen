@@ -93,11 +93,15 @@
     <Compile Include="Elements\Core\BaseCoreElementExtensionsTests.cs" />
     <Compile Include="Elements\Core\BaseCoreElementCtorTests.cs" />
     <Compile Include="Elements\Core\BaseCoreElementFormatTests.cs" />
+    <Compile Include="Elements\Core\AndTests.cs" />
+    <Compile Include="Elements\Core\WhereTests.cs" />
     <Compile Include="Elements\Value\BaseValueElementCtorTests.cs" />
     <Compile Include="Elements\Value\BaseValueElementStaticsTests.cs" />
     <Compile Include="Elements\Core\EqTests.cs" />
+    <Compile Include="Elements\Value\ValueTests.cs" />
     <Compile Include="Elements\Value\DatesInUtcTests.cs" />
     <Compile Include="Elements\Value\ExpandUserFieldTests.cs" />
+    <Compile Include="Features\Feature2.cs" />
     <Compile Include="Features\Feature1.cs" />
     <Compile Include="Elements\Core\FieldRefTests.cs" />
     <Compile Include="Elements\BaseElementFormatTests.cs" />

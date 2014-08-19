@@ -22,10 +22,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
     [TestFixture]
     public class Feature1
     {
-        [Test]
-        public void Feature1Passes()
-        {
-            const string expectedXml = @"<View>
+        private const string ExpectedXml = @"<View>
   <Query />
   <ViewFields>
     <FieldRef Name=""Title"" />
@@ -48,7 +45,11 @@ namespace FluentCamlGen.CamlGen.Test.Features
     </Join>
   </Joins>
 </View>";
-            var expected = (new Regex(">\\s+<")).Replace(expectedXml, "><");
+
+        [Test]
+        public void Feature1Passes()
+        {
+            var expected = (new Regex(">\\s+<")).Replace(ExpectedXml, "><");
 
             var sut = CG.View(
                 CG.Query(),
@@ -71,32 +72,9 @@ namespace FluentCamlGen.CamlGen.Test.Features
         }
 
         [Test]
-        public void Feature1InFluentPasses()
+        public void Feature1PassesFluently()
         {
-            const string expectedXml = @"<View>
-  <Query />
-  <ViewFields>
-    <FieldRef Name=""Title"" />
-    <FieldRef Name=""Contact"" />
-    <FieldRef Name=""UserName"" />
-    <FieldRef Name=""UserEMail"" />
-    <FieldRef Name=""UserMobilePhone"" />
-  </ViewFields>
-  <ProjectedFields>
-    <Field Name=""UserName"" Type=""Lookup"" List=""User Information List"" ShowField=""Name"" />
-    <Field Name=""UserEMail"" Type=""Lookup"" List=""User Information List"" ShowField=""EMail"" />
-    <Field Name=""UserMobilePhone"" Type=""Lookup"" List=""User Information List"" ShowField=""MobilePhone"" />
-  </ProjectedFields>
-  <Joins>
-    <Join Type=""INNER"" ListAlias=""User Information List"">
-      <Eq>
-        <FieldRef Name=""Contact"" RefType=""Id"" />
-        <FieldRef Name=""ID"" List=""User Information List"" />
-      </Eq>
-    </Join>
-  </Joins>
-</View>";
-            var expected = (new Regex(">\\s+<")).Replace(expectedXml, "><");
+            var expected = (new Regex(">\\s+<")).Replace(ExpectedXml, "><");
 
             var sut = CG.View()
                         .Query()

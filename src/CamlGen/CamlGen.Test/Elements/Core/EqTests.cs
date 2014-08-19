@@ -14,6 +14,7 @@ using FluentAssertions;
 using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
+using Val = FluentCamlGen.CamlGen.Elements.Value;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
@@ -34,9 +35,29 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var field = Fixture.Create<string>();
             var sut = new Eq();
-            sut.AddFieldRef(field, x => {});
+            sut.AddFieldRef(field);
 
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq><FieldRef Name=""{0}"" /></Eq>", field));
+        }
+
+        [Test]
+        public void AddValueAddsAValueToTheElement()
+        {
+            var val = Fixture.Create<string>();
+            var sut = new Eq();
+            sut.AddValue(Val.Value.ValueType.Number, val);
+
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq><Value Type=""Number"">{0}</Value></Eq>", val));
+        }
+
+        [Test]
+        public void AddNumberValueAddsANumerValueToTheElement()
+        {
+            var val = Fixture.Create<double>();
+            var sut = new Eq();
+            sut.AddNumberValue(val);
+
+            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq><Value Type=""Number"">{0}</Value></Eq>", val));
         }
     }
 }

@@ -20,6 +20,9 @@ namespace FluentCamlGen.CamlGen.Elements.Core
     /// </summary>
     public class Join : BaseCoreElement
     {
+        /// <summary>
+        /// possible JoinTypes to add on a Join 
+        /// </summary>
         public class JoinType
         {
             private readonly string _type;
@@ -29,7 +32,14 @@ namespace FluentCamlGen.CamlGen.Elements.Core
                 _type = type;
             }
 
+            /// <summary>
+            /// LEFT
+            /// </summary>
             public static readonly JoinType Inner = new JoinType("INNER");
+
+            /// <summary>
+            /// INNER
+            /// </summary>
             public static readonly JoinType Left = new JoinType("LEFT");
 
             public override string ToString()

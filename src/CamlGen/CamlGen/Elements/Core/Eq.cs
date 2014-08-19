@@ -33,6 +33,22 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             Childs.Add(rhs);
         }
 
+        /// <summary>
+        /// Add a &lt;FieldRef>-Attribute
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Eq AddFieldRef(string name)
+        {
+            return AddFieldRef(name, x => { });
+        }
+
+        /// <summary>
+        /// Add a &lt;FieldRef>-Attribute
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         public Eq AddFieldRef(string name, Action<FieldRef> action)
         {
             var fieldRef = new FieldRef(name);
@@ -41,6 +57,55 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             return this;
         }
 
-        //TODO: AddValue Fehlt !!!
+        /// <summary>
+        /// Add a &lt;Value>-Attribute
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Eq AddValue(Value.Value.ValueType type, string value)
+        {
+            return AddValue(type, value, x => { });
+        }
+
+        /// <summary>
+        /// Add a &lt;Value>-Attribute
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Eq AddValue(Value.Value.ValueType type, string value, Action<Value.Value> action)
+        {
+            var val = new Value.Value(type, value);
+            action(val);
+            Childs.Add(val);
+            return this;
+        }
+
+        /// <summary>
+        /// Add a &lt;Value Type="Number">-Attribute
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public Eq AddNumberValue(double value)
+        {
+            return AddNumberValue(value, x => { });
+        }
+
+        /// <summary>
+        /// Add a &lt;Value Type="Number">-Attribute
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Eq AddNumberValue(double value, Action<Value.Value> action)
+        {
+            var val = new Value.NumberValue(value);
+            action(val);
+            Childs.Add(val);
+            return this;
+        }
+
     }
 }

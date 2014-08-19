@@ -153,5 +153,46 @@ namespace FluentCamlGen.CamlGen
         {
             return new DatesInUtc(value);
         }
+
+        /// <summary>
+        /// &lt;Where> ... &lt;/Where>
+        /// </summary>
+        /// <param name="inner"></param>
+        /// <returns><see cref="BaseElement"/></returns>
+        public static Where Where(params BaseElement[] inner)
+        {
+            return new Where(inner);
+        }
+
+        /// <summary>
+        /// &lt;And> ... &lt;/And>
+        /// </summary>
+        /// <param name="inner"></param>
+        /// <returns><see cref="BaseElement"/></returns>
+        public static And And(params BaseElement[] inner)
+        {
+            return new And(inner);
+        }
+
+        /// <summary>
+        /// &lt;And> ... &lt;/And>
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
+        /// <returns><see cref="BaseElement"/></returns>
+        public static Value Value(Value.ValueType type, string value)
+        {
+            return new Value(type, value);
+        }
+
+        /// <summary>
+        /// &lt;And> ... &lt;/And>
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns><see cref="BaseElement"/></returns>
+        public static Value NumberValue(double number)
+        {
+            return new NumberValue(number);
+        }
     }
 }
