@@ -24,7 +24,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void SimpleValueReturnsTag()
         {
             var val = Fixture.Create<string>();
-            var sut = new Val.Value(Val.Value.ValueType.Number, val);
+            var sut = new Val.Value(CG.ValueType.Number, val);
 
             sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
         }
@@ -33,6 +33,15 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void NumberValueReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<double>();
+            var sut = new Val.NumberValue(val);
+
+            sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
+        }
+
+        [Test]
+        public void NumberValueUsingTheStringCtorReturnsAValueTagWithTypeNumber()
+        {
+            var val = Fixture.Create<string>();
             var sut = new Val.NumberValue(val);
 
             sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
@@ -51,7 +60,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void ValueOnCgReturnsAValueTag()
         {
             var val = Fixture.Create<string>();
-            var sut = CG.Value(Val.Value.ValueType.Number, val);
+            var sut = CG.Value(CG.ValueType.Number, val);
 
             sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
         }

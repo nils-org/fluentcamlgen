@@ -23,6 +23,64 @@ namespace FluentCamlGen.CamlGen
     /// </summary>
     public class CG
     {
+        #region Types
+
+        /// <summary>
+        /// Basclass fro all Types
+        /// </summary>
+        public abstract class AbstractType
+        {
+            private readonly string _type;
+
+            protected AbstractType(string type)
+            {
+                _type = type;
+            }
+
+            public override string ToString()
+            {
+                return _type;
+            }
+        }
+
+        /// <summary>
+        /// possible JoinTypes to add on a Join 
+        /// </summary>
+        public class JoinType : AbstractType
+        {
+            private JoinType(string type)
+                :base(type)
+            {
+            }
+
+            /// <summary>
+            /// LEFT
+            /// </summary>
+            public static readonly JoinType Inner = new JoinType("INNER");
+
+            /// <summary>
+            /// INNER
+            /// </summary>
+            public static readonly JoinType Left = new JoinType("LEFT");
+        }
+
+        /// <summary>
+        /// possible ValueTypes to add on a &lt;Value>-Element 
+        /// </summary>
+        public class ValueType : AbstractType
+        {
+            private ValueType(string type)
+                :base(type)
+            {
+            }
+
+            /// <summary>
+            /// Number
+            /// </summary>
+            public static readonly ValueType Number = new ValueType("Number");
+        }
+
+        #endregion
 
         /// <summary>
         /// Create &lt;View> ... &lt;/View> for ViewXml
@@ -92,7 +150,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;Join Type="..." ListAlias="...">
         /// </summary>
         /// <returns><see cref="BaseElement"/></returns>
-        public static Join Join(string listName, Join.JoinType type, BaseElement lhs, BaseElement rhs)
+        public static Join Join(string listName, JoinType type, BaseElement lhs, BaseElement rhs)
         {
             return new Join(listName, type, lhs, rhs);
         }
@@ -101,7 +159,7 @@ namespace FluentCamlGen.CamlGen
         /// Create &lt;Join Type="..." ListAlias="...">
         /// </summary>
         /// <returns><see cref="BaseElement"/></returns>
-        public static Join Join(string listName, Join.JoinType type, string joinField)
+        public static Join Join(string listName, JoinType type, string joinField)
         {
             return new Join(listName, type, joinField);
         }
@@ -112,7 +170,7 @@ namespace FluentCamlGen.CamlGen
         /// <returns><see cref="BaseElement"/></returns>
         public static Join InnerJoin(string listName, string joinField)
         {
-            return Join(listName, Elements.Core.Join.JoinType.Inner, joinField);
+            return Join(listName, JoinType.Inner, joinField);
         }
 
         /// <summary>
@@ -180,7 +238,7 @@ namespace FluentCamlGen.CamlGen
         /// <param name="type"></param>
         /// <param name="value"></param>
         /// <returns><see cref="BaseElement"/></returns>
-        public static Value Value(Value.ValueType type, string value)
+        public static Value Value(ValueType type, string value)
         {
             return new Value(type, value);
         }

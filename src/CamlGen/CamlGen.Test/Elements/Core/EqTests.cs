@@ -45,7 +45,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var val = Fixture.Create<string>();
             var sut = new Eq();
-            sut.AddValue(Val.Value.ValueType.Number, val);
+            sut.AddValue(CG.ValueType.Number, val);
 
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Eq><Value Type=""Number"">{0}</Value></Eq>", val));
         }

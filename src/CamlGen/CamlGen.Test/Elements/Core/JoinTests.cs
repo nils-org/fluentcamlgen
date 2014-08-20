@@ -27,7 +27,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var lhs = Fixture.Create<BaseCoreElement>();
             var rhs = Fixture.Create<BaseCoreElement>();
 
-            var sut = CG.Join(list, Join.JoinType.Inner, lhs, rhs);
+            var sut = CG.Join(list, CG.JoinType.Inner, lhs, rhs);
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Join Type=""INNER"" ListAlias=""{0}""><Eq>{1}{2}</Eq></Join>", list, lhs, rhs));
         }
 
@@ -47,7 +47,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var list = Fixture.Create<string>();
             var field = Fixture.Create<string>();
 
-            var sut = CG.Join(list, Join.JoinType.Left, field);
+            var sut = CG.Join(list, CG.JoinType.Left, field);
             sut.ToString(false).Should().BeEquivalentTo(string.Format(@"<Join Type=""LEFT"" ListAlias=""{0}""><Eq><FieldRef Name=""{1}"" RefType=""Id"" /><FieldRef Name=""ID"" List=""{0}"" /></Eq></Join>", list, field));
         }
 
@@ -56,7 +56,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var field = Fixture.Create<string>();
             var list = Fixture.Create<string>();
-            var sut = new Join(list, Join.JoinType.Left);
+            var sut = new Join(list, CG.JoinType.Left);
             sut.AddFieldRef(field, x => { });
 
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Join Type=""LEFT"" ListAlias=""{0}""><Eq><FieldRef Name=""{1}"" /></Eq></Join>", list, field));

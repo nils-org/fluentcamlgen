@@ -63,7 +63,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <param name="type"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public Eq AddValue(Value.Value.ValueType type, string value)
+        public Eq AddValue(CG.ValueType type, string value)
         {
             return AddValue(type, value, x => { });
         }
@@ -75,7 +75,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <param name="value"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public Eq AddValue(Value.Value.ValueType type, string value, Action<Value.Value> action)
+        public Eq AddValue(CG.ValueType type, string value, Action<Value.Value> action)
         {
             var val = new Value.Value(type, value);
             action(val);

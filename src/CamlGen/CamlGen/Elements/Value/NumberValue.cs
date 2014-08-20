@@ -18,7 +18,12 @@ namespace FluentCamlGen.CamlGen.Elements.Value
     public class NumberValue : Value
     {
         internal NumberValue(double value)
-            : base(ValueType.Number, GetValue(value))
+            : base(CG.ValueType.Number, GetValue(value))
+        {
+        }
+
+        internal NumberValue(string value)
+            : base(CG.ValueType.Number, value)
         {
         }
     }

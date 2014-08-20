@@ -34,7 +34,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// Add Join
         /// </summary>
         /// <returns>Fluent <see cref="Joins"/></returns>
-        public Joins AddJoin(string listName, Join.JoinType type, Action<Join> action)
+        public Joins AddJoin(string listName, CG.JoinType type, Action<Join> action)
         {
             var join = new Join(listName, type);
             action(join);
@@ -57,7 +57,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <returns>Fluent <see cref="Joins"/></returns>
         public Joins AddInnerJoin(string listName, string fieldname, Action<Join> action)
         {
-            var join = new Join(listName, Join.JoinType.Inner, fieldname);
+            var join = new Join(listName, CG.JoinType.Inner, fieldname);
             action(join);
             Childs.Add(join);
             return this;

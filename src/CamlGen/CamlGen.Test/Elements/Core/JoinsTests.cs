@@ -39,7 +39,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var list = Fixture.Create<string>();
             var sut = new Joins();
-            sut.AddJoin(list, Join.JoinType.Left, x => { });
+            sut.AddJoin(list, CG.JoinType.Left, x => { });
             sut.ToString().Should().BeEquivalentTo(string.Format(@"<Joins><Join Type=""LEFT"" ListAlias=""{0}""><Eq /></Join></Joins>", list));
         }
 

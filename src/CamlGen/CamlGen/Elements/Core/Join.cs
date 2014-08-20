@@ -20,51 +20,23 @@ namespace FluentCamlGen.CamlGen.Elements.Core
     /// </summary>
     public class Join : BaseCoreElement
     {
-        /// <summary>
-        /// possible JoinTypes to add on a Join 
-        /// </summary>
-        public class JoinType
-        {
-            private readonly string _type;
-
-            private JoinType(string type)
-            {
-                _type = type;
-            }
-
-            /// <summary>
-            /// LEFT
-            /// </summary>
-            public static readonly JoinType Inner = new JoinType("INNER");
-
-            /// <summary>
-            /// INNER
-            /// </summary>
-            public static readonly JoinType Left = new JoinType("LEFT");
-
-            public override string ToString()
-            {
-                return _type;
-            }
-        }
-
         private readonly Eq _innerEq;
 
-        internal Join(string listName, JoinType type, string joinField)
+        internal Join(string listName, CG.JoinType type, string joinField)
             : this(listName, type)
         {
             _innerEq.Childs.Add(new FieldRef(joinField).AddAttribute("RefType", "Id"));
             _innerEq.Childs.Add(new FieldRef("ID").AddAttribute("List", listName));
         }
 
-        internal Join(string listName, JoinType type, BaseElement lhs, BaseElement rhs)
+        internal Join(string listName, CG.JoinType type, BaseElement lhs, BaseElement rhs)
             : this(listName, type)
         {
             _innerEq.Childs.Add(lhs);
             _innerEq.Childs.Add(rhs);
         }
 
-        internal Join(string listName, JoinType type)
+        internal Join(string listName, CG.JoinType type)
             : base("Join", new[]
                 {
                     new Tuple<string, string>("Type", type.ToString()),
