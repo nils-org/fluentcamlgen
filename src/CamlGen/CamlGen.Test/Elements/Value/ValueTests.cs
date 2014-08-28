@@ -24,45 +24,50 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void SimpleValueReturnsTag()
         {
             var val = Fixture.Create<string>();
+            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = new Val.Value(CG.ValueType.Number, val);
 
-            sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
 
         [Test]
         public void NumberValueReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<double>();
+            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = new Val.NumberValue(val);
 
-            sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
 
         [Test]
         public void NumberValueUsingTheStringCtorReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<string>();
+            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = new Val.NumberValue(val);
 
-            sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
 
         [Test]
         public void NumberValueOnCgReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<double>();
+            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = CG.NumberValue(val);
 
-            sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
 
         [Test]
         public void ValueOnCgReturnsAValueTag()
         {
             var val = Fixture.Create<string>();
+            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = CG.Value(CG.ValueType.Number, val);
 
-            sut.ToString().Should().Be(string.Format(@"<Value Type=""Number"">{0}</Value>", val));
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
     }
 }

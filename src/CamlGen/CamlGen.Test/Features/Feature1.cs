@@ -10,8 +10,6 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System.Text.RegularExpressions;
-using FluentAssertions;
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Features
@@ -32,14 +30,14 @@ namespace FluentCamlGen.CamlGen.Test.Features
     <FieldRef Name=""UserMobilePhone"" />
   </ViewFields>
   <ProjectedFields>
-    <Field Name=""UserName"" Type=""Lookup"" List=""User Information List"" ShowField=""Name"" />
+    <Field Type=""Lookup"" Name=""UserName""  List=""User Information List"" ShowField=""Name"" />
     <Field Name=""UserEMail"" Type=""Lookup"" List=""User Information List"" ShowField=""EMail"" />
     <Field Name=""UserMobilePhone"" Type=""Lookup"" List=""User Information List"" ShowField=""MobilePhone"" />
   </ProjectedFields>
   <Joins>
     <Join Type=""INNER"" ListAlias=""User Information List"">
       <Eq>
-        <FieldRef Name=""Contact"" RefType=""Id"" />
+        <FieldRef RefType=""Id"" Name=""Contact""/>
         <FieldRef Name=""ID"" List=""User Information List"" />
       </Eq>
     </Join>
@@ -49,7 +47,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
         [Test]
         public void Feature1Passes()
         {
-            var expected = (new Regex(">\\s+<")).Replace(ExpectedXml, "><");
+            var expected = ExpectedXml.AsXml();
 
             var sut = CG.View(
                 CG.Query(),
@@ -68,13 +66,13 @@ namespace FluentCamlGen.CamlGen.Test.Features
                     )
                 );
 
-            sut.ToString().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
 
         [Test]
         public void Feature1PassesFluently()
         {
-            var expected = (new Regex(">\\s+<")).Replace(ExpectedXml, "><");
+            var expected = ExpectedXml.AsXml();
 
             var sut = CG.View()
                         .Query()
@@ -90,7 +88,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                                            .AddField("UserMobilePhone", "Lookup", "User Information List", "MobilePhone"))
                         .Joins(js => js.AddInnerJoin("User Information List", "Contact"));
 
-            sut.ToString().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
     }
 }

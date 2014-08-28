@@ -47,7 +47,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
         [Test]
         public void Feature2Passes()
         {
-            var expected = (new Regex(">\\s+<")).Replace(ExpectedXml, "><");
+            var expected = ExpectedXml.AsXml();
 
             var sut = CG.View(
                         CG.Query(
@@ -66,13 +66,13 @@ namespace FluentCamlGen.CamlGen.Test.Features
                         CG.QueryOptions(
                             CG.ExpandUserField(false)));
 
-            sut.ToString().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
 
         [Test]
         public void Feature2PassesFluently()
         {
-            var expected = (new Regex(">\\s+<")).Replace(ExpectedXml, "><");
+            var expected = ExpectedXml.AsXml();
 
             var sut = CG.View()
                         .Query(q => q
@@ -91,7 +91,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                         .QueryOptions(qo => qo
                             .ExpandUserField(false));
 
-            sut.ToString().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
     }
 }
