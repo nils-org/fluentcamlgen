@@ -105,6 +105,7 @@
     <Compile Include="Elements\Value\BaseValueElementCtorTests.cs" />
     <Compile Include="Elements\Value\BaseValueElementStaticsTests.cs" />
     <Compile Include="Elements\Core\EqTests.cs" />
+    <Compile Include="Elements\Value\RowLimitTests.cs" />
     <Compile Include="Elements\Value\ValueTests.cs" />
     <Compile Include="Elements\Value\DatesInUtcTests.cs" />
     <Compile Include="Elements\Value\ExpandUserFieldTests.cs" />

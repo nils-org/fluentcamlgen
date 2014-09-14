@@ -78,6 +78,10 @@ namespace FluentCamlGen.CamlGen
             /// Number
             /// </summary>
             public static readonly ValueType Number = new ValueType("Number");
+            /// <summary>
+            /// Text
+            /// </summary>
+            public static readonly ValueType Text = new ValueType("Text");
         }
 
         #endregion

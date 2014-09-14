@@ -12,6 +12,7 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using System;
 using System.Collections.Generic;
+using FluentCamlGen.CamlGen.Elements.Value;
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
@@ -91,6 +92,18 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             var joins = new QueryOptions();
             action(joins);
             Childs.Add(joins);
+            return this;
+        }
+
+        /// <summary>
+        /// Add a RowLimit to this View
+        /// </summary>
+        /// <param name="rowLimit"></param>
+        /// <returns></returns>
+        public View RowLimit(int rowLimit)
+        {
+            var child = new RowLimit(rowLimit);
+            Childs.Add(child);
             return this;
         }
     }

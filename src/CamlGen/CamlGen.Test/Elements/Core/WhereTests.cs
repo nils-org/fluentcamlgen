@@ -13,6 +13,7 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 using FluentAssertions;
 using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
+using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
@@ -33,6 +34,13 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             sut.And();
 
             sut.ToString().Should().BeEquivalentTo(@"<Where><And /></Where>");
+        }
+
+        [Test]
+        public void WhereCanAddEq()
+        {
+            var sut = new Where().Eq(x => {});
+            sut.ToString().Should().BeEquivalentTo(@"<Where><Eq /></Where>");
         }
     }
 }

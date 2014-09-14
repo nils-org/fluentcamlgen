@@ -50,5 +50,18 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             Childs.Add(and);
             return this;
         }
+
+        /// <summary>
+        /// Add an Eq-Element
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Where Eq(Action<Eq> action)
+        {
+            var eq = new Eq();
+            action(eq);
+            Childs.Add(eq);
+            return this;
+        }
     }
 }
