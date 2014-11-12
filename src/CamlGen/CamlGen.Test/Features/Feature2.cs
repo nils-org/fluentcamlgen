@@ -10,8 +10,6 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System.Text.RegularExpressions;
-using FluentAssertions;
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Features
@@ -19,7 +17,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
     [TestFixture]
     public class Feature2
     {
-        private const string ExpectedXml = @"<view>
+        private const string ExpectedXml = @"<View>
 <Query>
     <Where>
     <And>
@@ -42,7 +40,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
 <QueryOptions>
     <ExpandUserField>False</ExpandUserField>
 </QueryOptions>
-</view>";
+</View>";
 
         [Test]
         public void Feature2Passes()

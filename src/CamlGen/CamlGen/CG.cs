@@ -19,7 +19,7 @@ namespace FluentCamlGen.CamlGen
 {
     /// <summary>
     /// CamlGenerator
-    /// See <seealso cref="http://msdn.microsoft.com/en-us/library/ms462365(v=office.15).aspx"/> for a caml reference
+    /// See <seealso cref="http://msdn.microsoft.com/en-us/library/ms462365.aspx"/> for a caml reference
     /// </summary>
     public class CG
     {
@@ -255,6 +255,16 @@ namespace FluentCamlGen.CamlGen
         public static Value NumberValue(double number)
         {
             return new NumberValue(number);
+        }
+
+        /// <summary>
+        /// &lt;OrderBy> ... &lt;/OrderBy>
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <returns><see cref="BaseElement"/></returns>
+        public static OrderBy OrderBy(params BaseElement[] fields)
+        {
+            return new OrderBy(fields);
         }
     }
 }

@@ -101,6 +101,7 @@
     <Compile Include="Elements\Core\BaseCoreElementCtorTests.cs" />
     <Compile Include="Elements\Core\BaseCoreElementFormatTests.cs" />
     <Compile Include="Elements\Core\AndTests.cs" />
+    <Compile Include="Elements\Core\OrderByTests.cs" />
     <Compile Include="Elements\Core\WhereTests.cs" />
     <Compile Include="Elements\Value\BaseValueElementCtorTests.cs" />
     <Compile Include="Elements\Value\BaseValueElementStaticsTests.cs" />

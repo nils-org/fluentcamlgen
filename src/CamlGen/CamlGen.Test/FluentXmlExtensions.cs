@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -107,15 +106,25 @@ namespace FluentCamlGen.CamlGen.Test
                 var diffGram = LooseDiff(Subject, expected);
 
                 Execute.Assertion
-                    .ForCondition(String.IsNullOrEmpty(diffGram))
+                    .ForCondition(HasNoDiff(diffGram))
                     .BecauseOf(because, reasonArgs)
                     .FailWith("Expected XML document to be loosely equivalent to {0}{reason}, but the first difference was {1}", GetXmlOf(expected), GetFirstDiffOf(diffGram));
 
                 return new AndConstraint<XmlDocumentAssertions>(this);
             }
 
+            private static bool HasNoDiff(string diffGram)
+            {
+                return string.IsNullOrEmpty(diffGram);
+            }
+
             private static string GetFirstDiffOf(string diffGram)
             {
+                if (HasNoDiff(diffGram))
+                {
+                    return "No Difference!";
+                }
+
                 const string ns = "{http://schemas.microsoft.com/xmltools/2002/xmldiff}";
                 const string changeName = ns + "change";
                 const string removeName = ns + "remove";

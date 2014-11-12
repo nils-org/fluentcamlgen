@@ -49,6 +49,7 @@
     </Compile>
     <Compile Include="Elements\Core\BaseCoreElement.cs" />
     <Compile Include="Elements\Core\And.cs" />
+    <Compile Include="Elements\Core\OrderBy.cs" />
     <Compile Include="Elements\Core\Where.cs" />
     <Compile Include="Elements\Value\BaseValueElement.cs" />
     <Compile Include="Elements\Core\Eq.cs" />

@@ -50,5 +50,17 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             Childs.Add(where);
             return this;
         }
+
+        /// <summary>
+        /// Add a &lt;OrderBy>-Tag
+        /// </summary>
+        /// <returns><see cref="Query"/></returns>
+        public Query OrderBy(Action<OrderBy> action)
+        {
+            var order = new OrderBy();
+            action(order);
+            Childs.Add(order);
+            return this;
+        }
     }
 }
