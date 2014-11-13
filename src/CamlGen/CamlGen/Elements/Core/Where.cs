@@ -34,15 +34,6 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// Add an &lt;And>-Tag
         /// </summary>
         /// <returns><see cref="Where"/></returns>
-        public Where And()
-        {
-            return And(x => { });
-        }
-
-        /// <summary>
-        /// Add an &lt;And>-Tag
-        /// </summary>
-        /// <returns><see cref="Where"/></returns>
         public Where And(Action<And> action)
         {
             var and = new And();
@@ -52,7 +43,19 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add an Eq-Element
+        /// Add an &lt;Or>-Tag
+        /// </summary>
+        /// <returns><see cref="Where"/></returns>
+        public Where Or(Action<Or> action)
+        {
+            var or = new Or();
+            action(or);
+            Childs.Add(or);
+            return this;
+        }
+
+        /// <summary>
+        /// Add an &lt;Eq>-Tag
         /// </summary>
         /// <param name="action"></param>
         /// <returns></returns>
@@ -61,6 +64,71 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             var eq = new Eq();
             action(eq);
             Childs.Add(eq);
+            return this;
+        }
+
+        /// <summary>
+        /// Add an &lt;Neq>-Tag
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Where Neq(Action<Neq> action)
+        {
+            var neq = new Neq();
+            action(neq);
+            Childs.Add(neq);
+            return this;
+        }
+
+        /// <summary>
+        /// Add an &lt;Gt>-Tag
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Where Gt(Action<Gt> action)
+        {
+            var gt = new Gt();
+            action(gt);
+            Childs.Add(gt);
+            return this;
+        }
+
+        /// <summary>
+        /// Add an &lt;Geq>-Tag
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Where Geq(Action<Geq> action)
+        {
+            var geq = new Geq();
+            action(geq);
+            Childs.Add(geq);
+            return this;
+        }
+
+        /// <summary>
+        /// Add an &lt;Lt>-Tag
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Where Lt(Action<Lt> action)
+        {
+            var lt = new Lt();
+            action(lt);
+            Childs.Add(lt);
+            return this;
+        }
+
+        /// <summary>
+        /// Add an &lt;Leq>-Tag
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public Where Leq(Action<Leq> action)
+        {
+            var leq = new Leq();
+            action(leq);
+            Childs.Add(leq);
             return this;
         }
     }
