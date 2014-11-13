@@ -10,6 +10,7 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Features

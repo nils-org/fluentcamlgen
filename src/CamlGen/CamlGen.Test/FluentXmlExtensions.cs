@@ -1,6 +1,19 @@
-﻿using System;
+﻿/***
+This File is part of FluentCamlGen
+
+This source is subject to the Microsoft Public License.
+See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+All other rights reserved.
+
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
+***/
+
+using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using FluentAssertions;
@@ -71,17 +84,17 @@ namespace FluentCamlGen.CamlGen.Test
                         IgnoreWhitespace = true,
                         IgnoreXmlDecl = true
                     };
-                using (var mem = new StringWriter())
-                {
-                    using (var xmlWriter = new XmlTextWriter(mem))
-                    {
-                        var isSame = differ.Compare(left, right, xmlWriter);
-                        if (isSame)
-                            return String.Empty;
 
+                var sb = new StringBuilder();
+                using (var xmlWriter = new XmlTextWriter(new StringWriter(sb)))
+                {
+                    var isSame = differ.Compare(left, right, xmlWriter);
+                    if (isSame)
+                    {
+                        return String.Empty;
                     }
-                    return mem.GetStringBuilder().ToString();
                 }
+                return sb.ToString();
             }
 
             /// <summary>
@@ -156,14 +169,12 @@ namespace FluentCamlGen.CamlGen.Test
 
             private static string GetXmlOf(XmlNode xmlDocument)
             {
-                using (var mem = new StringWriter())
+                var sb = new StringBuilder();
+                using (var xmlWriter = XmlWriter.Create(sb))
                 {
-                    using (var xmlWriter = XmlWriter.Create(mem))
-                    {
-                        xmlDocument.WriteTo(xmlWriter);
-                    }
-                    return mem.GetStringBuilder().ToString();
+                    xmlDocument.WriteTo(xmlWriter);
                 }
+                return sb.ToString();
             }
         }
     }

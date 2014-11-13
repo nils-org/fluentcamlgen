@@ -11,8 +11,9 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using System;
+using FluentCamlGen.CamlGen.Elements.Core;
 
-namespace FluentCamlGen.CamlGen.Elements.Core
+namespace FluentCamlGen.CamlGen
 {
     /// <summary>
     /// Extensions on all BaseCoreElements

@@ -47,8 +47,16 @@
     <Compile Include="..\..\..\resources\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Elements\Core\BaseCoreCompareElement.cs" />
+    <Compile Include="BaseCoreCompareElementExtensions.cs" />
     <Compile Include="Elements\Core\BaseCoreElement.cs" />
     <Compile Include="Elements\Core\And.cs" />
+    <Compile Include="Elements\Core\Geq.cs" />
+    <Compile Include="Elements\Core\Gt.cs" />
+    <Compile Include="Elements\Core\Leq.cs" />
+    <Compile Include="Elements\Core\Lt.cs" />
+    <Compile Include="Elements\Core\Neq.cs" />
+    <Compile Include="Elements\Core\Or.cs" />
     <Compile Include="Elements\Core\OrderBy.cs" />
     <Compile Include="Elements\Core\Where.cs" />
     <Compile Include="Elements\Value\BaseValueElement.cs" />
@@ -68,7 +76,7 @@
     <Compile Include="Elements\Core\View.cs" />
     <Compile Include="Elements\Core\ViewFields.cs" />
     <Compile Include="CG.cs" />
-    <Compile Include="Elements\Core\BaseCoreElementExtensions.cs" />
+    <Compile Include="BaseCoreElementExtensions.cs" />
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

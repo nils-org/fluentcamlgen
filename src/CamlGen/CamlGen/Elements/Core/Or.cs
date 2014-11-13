@@ -17,25 +17,25 @@ namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
     /// &lt;And> ... &lt;/And>
-    /// <see cref="http://msdn.microsoft.com/en-us/library/ms196939.aspx"/>
+    /// <see cref="http://msdn.microsoft.com/en-us/library/ms472196.aspx"/>
     /// </summary>
-    public class And : BaseCoreElement
+    public class Or : BaseCoreElement
     {
-        internal And()
+        internal Or()
             : this(null)
         {
         }
 
-        internal And(IEnumerable<BaseElement> inner)
-            : base("And", null, inner)
+        internal Or(IEnumerable<BaseElement> inner)
+            : base("Or", null, inner)
         {
         }
 
         /// <summary>
         /// Add an &lt;Eq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Eq()
+        /// <returns><see cref="Or"/></returns>
+        public Or Eq()
         {
             return Eq(x => { });
         }
@@ -43,8 +43,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add an &lt;Eq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Eq(Action<Eq> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or Eq(Action<Eq> action)
         {
             var eq = new Eq();
             action(eq);
@@ -55,8 +55,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Neq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Neq()
+        /// <returns><see cref="Or"/></returns>
+        public Or Neq()
         {
             return Neq(x => { });
         }
@@ -64,8 +64,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Neq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Neq(Action<Neq> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or Neq(Action<Neq> action)
         {
             var neq = new Neq();
             action(neq);
@@ -76,8 +76,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Gt>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Gt()
+        /// <returns><see cref="Or"/></returns>
+        public Or Gt()
         {
             return Gt(x => { });
         }
@@ -85,8 +85,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Gt>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Gt(Action<Gt> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or Gt(Action<Gt> action)
         {
             var gt = new Gt();
             action(gt);
@@ -97,8 +97,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Geq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Geq()
+        /// <returns><see cref="Or"/></returns>
+        public Or Geq()
         {
             return Geq(x => { });
         }
@@ -106,8 +106,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Geq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Geq(Action<Geq> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or Geq(Action<Geq> action)
         {
             var geq = new Geq();
             action(geq);
@@ -118,8 +118,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Lt>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Lt()
+        /// <returns><see cref="Or"/></returns>
+        public Or Lt()
         {
             return Lt(x => { });
         }
@@ -127,8 +127,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Lt>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Lt(Action<Lt> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or Lt(Action<Lt> action)
         {
             var lt = new Lt();
             action(lt);
@@ -139,8 +139,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Leq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Leq()
+        /// <returns><see cref="Or"/></returns>
+        public Or Leq()
         {
             return Leq(x => { });
         }
@@ -148,8 +148,8 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;Leq>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Leq(Action<Leq> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or Leq(Action<Leq> action)
         {
             var leq = new Leq();
             action(leq);
@@ -158,10 +158,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add a nested &lt;And>-Tag
+        /// Add an &lt;And>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And NestedAnd(Action<And> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or And(Action<And> action)
         {
             var and = new And();
             action(and);
@@ -170,10 +170,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add an &lt;Or>-Tag
+        /// Add a nested &lt;Or>-Tag
         /// </summary>
-        /// <returns><see cref="And"/></returns>
-        public And Or(Action<Or> action)
+        /// <returns><see cref="Or"/></returns>
+        public Or NestedOr(Action<Or> action)
         {
             var or = new Or();
             action(or);

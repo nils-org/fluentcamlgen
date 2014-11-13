@@ -34,6 +34,68 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
 
             sut.ToString().Should().BeEquivalentTo(@"<And><Eq /></And>");
         }
-        
+
+        [Test]
+        public void NeqOnAndReturnsAnNeqTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.Neq();
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><Neq /></And>");
+        }
+
+        [Test]
+        public void GeqOnAndReturnsAnGeqTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.Geq();
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><Geq /></And>");
+        }
+
+        [Test]
+        public void GtOnAndReturnsAnGtTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.Gt();
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><Gt /></And>");
+        }
+
+        [Test]
+        public void LeqOnAndReturnsAnLeqTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.Leq();
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><Leq /></And>");
+        }
+
+        [Test]
+        public void LtOnAndReturnsAnLtTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.Lt();
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><Lt /></And>");
+        }
+
+        [Test]
+        public void OrOnAndReturnsAnOrTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.Or(x => { });
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><Or /></And>");
+        }
+
+        [Test]
+        public void NestedAndOnAndReturnsAnAndTagInAnAndTag()
+        {
+            var sut = new And();
+            sut.NestedAnd(x => { });
+
+            sut.ToString().Should().BeEquivalentTo(@"<And><And /></And>");
+        }
     }
 }

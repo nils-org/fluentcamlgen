@@ -13,13 +13,13 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// &lt;Eq> ... &lt;/Eq>
-    /// <seealso cref="http://msdn.microsoft.com/en-us/library/ms479601.aspx"/>
+    /// &lt;Neq> ... &lt;/Neq>
+    /// <seealso cref="http://msdn.microsoft.com/en-us/library/ms452901.aspx"/>
     /// </summary>
-    public class Eq : BaseCoreCompareElement<Eq>
+    public class Neq : BaseCoreCompareElement<Neq>
     {
-        internal Eq(params BaseElement[] operands)
-            : base("Eq", operands)
+        internal Neq(params BaseElement[] operands)
+            : base("Neq", operands)
         {
         }
     }
