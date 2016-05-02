@@ -69,5 +69,23 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
 
             sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
         }
+
+        [Test]
+        public void BoolValueTrueReturnsAValueOfOne()
+        {
+            var expected = @"<Value Type=""Boolean"">1</Value>".AsXml();
+            var sut = CG.BooleanValue(true);
+
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+        }
+
+        [Test]
+        public void BoolValueFalseReturnsAValueOfZero()
+        {
+            var expected = @"<Value Type=""Boolean"">0</Value>".AsXml();
+            var sut = CG.BooleanValue(false);
+
+            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+        }
     }
 }

@@ -82,6 +82,10 @@ namespace FluentCamlGen.CamlGen
             /// Text
             /// </summary>
             public static readonly ValueType Text = new ValueType("Text");
+            /// <summary>
+            /// Boolean
+            /// </summary>
+            public static readonly ValueType Boolean = new ValueType("Boolean");
         }
 
         #endregion
@@ -237,7 +241,7 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// &lt;And> ... &lt;/And>
+        /// &lt;Value Type="..."> ... &lt;/Value>
         /// </summary>
         /// <param name="type"></param>
         /// <param name="value"></param>
@@ -248,13 +252,22 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// &lt;And> ... &lt;/And>
+        /// &lt;Value Type="Number"> ... &lt;/Value>
         /// </summary>
         /// <param name="number"></param>
         /// <returns><see cref="Elements.Value.Value"/></returns>
         public static Value NumberValue(double number)
         {
             return new NumberValue(number);
+        }
+        /// <summary>
+        /// &lt;Value Type="Boolean">0|1&lt;/Value>
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns><see cref="Elements.Value.Value"/></returns>
+        public static Value BooleanValue(bool val)
+        {
+            return new BooleanValue(val);
         }
 
         /// <summary>

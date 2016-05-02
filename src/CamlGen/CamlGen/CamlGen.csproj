@@ -68,6 +68,7 @@
     <Compile Include="Elements\Core\ProjectedFields.cs" />
     <Compile Include="Elements\Core\Query.cs" />
     <Compile Include="Elements\Core\QueryOptions.cs" />
+    <Compile Include="Elements\Value\BooleanValue.cs" />
     <Compile Include="Elements\Value\NumberValue.cs" />
     <Compile Include="Elements\Value\RowLimit.cs" />
     <Compile Include="Elements\Value\Value.cs" />
