@@ -67,7 +67,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
             var sut =
                 CG.And()
                   .Eq(eq => eq.AddFieldRef("Year").AddNumberValue(year))
-                  .NestedAnd(and => and
+                  .And(and => and
                     .Geq(geq => geq.AddFieldRef("CalendarWeek").AddNumberValue(start))
                     .Lt(lt => lt.AddFieldRef("CalendarWeek").AddNumberValue(end)));
 

@@ -17,7 +17,7 @@ using System.Text;
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// This is base Tag, that supports nesting & attributes
+    /// This is base Tag, that supports nesting &amp; attributes
     /// </summary>
     public abstract class BaseCoreElement : BaseElement
     {

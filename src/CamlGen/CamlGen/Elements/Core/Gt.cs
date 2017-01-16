@@ -14,7 +14,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
     /// &lt;Gt> ... &lt;/Gt>
-    /// <seealso cref="http://msdn.microsoft.com/en-us/library/ms458990.aspx"/>
+    /// <seealso href="http://msdn.microsoft.com/en-us/library/ms458990.aspx"/>
     /// </summary>
     public class Gt : BaseCoreCompareElement<Gt>
     {

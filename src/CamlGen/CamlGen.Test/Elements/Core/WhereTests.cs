@@ -30,7 +30,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         public void WhereCanAddAnd()
         {
             var sut = new Where();
-            sut.And(x => { });
+            sut.And();
 
             sut.ToString().Should().BeEquivalentTo(@"<Where><And /></Where>");
         }

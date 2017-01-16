@@ -14,7 +14,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
     /// &lt;Neq> ... &lt;/Neq>
-    /// <seealso cref="http://msdn.microsoft.com/en-us/library/ms452901.aspx"/>
+    /// <seealso href="http://msdn.microsoft.com/en-us/library/ms452901.aspx"/>
     /// </summary>
     public class Neq : BaseCoreCompareElement<Neq>
     {

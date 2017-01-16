@@ -16,7 +16,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
     /// Create &lt;Join Type="INNER" ListAlias="...">
-    /// <seealso cref="http://msdn.microsoft.com/en-us/library/ee535061(v=office.15).aspx"/>
+    /// <seealso href="http://msdn.microsoft.com/en-us/library/ee535061(v=office.15).aspx"/>
     /// </summary>
     public class Join : BaseCoreElement
     {
@@ -47,6 +47,9 @@ namespace FluentCamlGen.CamlGen.Elements.Core
             Childs.Add(_innerEq);
         }
 
+        /// <summary>
+        /// Add a &lt;FieldRef>-Attribute
+        /// </summary>
         public Join AddFieldRef(string name, Action<FieldRef> action)
         {
             _innerEq.AddFieldRef(name, action);

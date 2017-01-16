@@ -10,17 +10,18 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using System;
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// &lt;And> ... &lt;/And>
-    /// <see href="http://msdn.microsoft.com/en-us/library/ms472196.aspx"/>
+    /// &lt;Contains> ... &lt;/Contains>
+    /// <seealso href="http://msdn.microsoft.com/en-us/library/ms196501.aspx"/>
     /// </summary>
-    public class Or : BaseCoreComparingGroupElement<Or>
+    public class Contains : BaseCoreCompareElement<Contains> 
     {
-        internal Or(params BaseElement[] inner)
-            : base("Or", inner)
+        internal Contains(params BaseElement[] operands)
+            : base("Contains", operands)
         {
         }
     }

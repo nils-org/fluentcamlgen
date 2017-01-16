@@ -47,10 +47,13 @@
     <Compile Include="..\..\..\resources\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="BaseCoreComparingGroupElementExtensions.cs" />
     <Compile Include="Elements\Core\BaseCoreCompareElement.cs" />
     <Compile Include="BaseCoreCompareElementExtensions.cs" />
+    <Compile Include="Elements\Core\BaseCoreComparingGroupElement.cs" />
     <Compile Include="Elements\Core\BaseCoreElement.cs" />
     <Compile Include="Elements\Core\And.cs" />
+    <Compile Include="Elements\Core\Contains.cs" />
     <Compile Include="Elements\Core\Geq.cs" />
     <Compile Include="Elements\Core\Gt.cs" />
     <Compile Include="Elements\Core\Leq.cs" />

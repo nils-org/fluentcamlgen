@@ -21,6 +21,9 @@ namespace FluentCamlGen.CamlGen.Elements.Core
     /// </summary>
     public class QueryOptions : BaseCoreElement
     {
+        /// <summary>
+        /// Create &lt;QueryOptions> ... &lt;/QueryOptions>
+        /// </summary>
         public QueryOptions(params BaseValueElement[] inner) :
             base("QueryOptions", null, inner)
         {

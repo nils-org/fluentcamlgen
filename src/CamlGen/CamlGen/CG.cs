@@ -19,7 +19,7 @@ namespace FluentCamlGen.CamlGen
 {
     /// <summary>
     /// CamlGenerator
-    /// See <seealso cref="http://msdn.microsoft.com/en-us/library/ms462365.aspx"/> for a caml reference
+    /// See <seealso href="http://msdn.microsoft.com/en-us/library/ms462365.aspx"/> for a caml reference
     /// </summary>
     public class CG
     {
@@ -328,6 +328,14 @@ namespace FluentCamlGen.CamlGen
         public static Geq Geq(params BaseElement[] inner)
         {
             return new Geq(inner);
+        }
+        /// <summary>
+        /// &lt;Contains> ... &lt;/Contains>
+        /// </summary>
+        /// <returns><see cref="Elements.Core.Contains"/></returns>
+        public static Contains Contains(params BaseElement[] inner)
+        {
+            return new Contains(inner);
         }
 
     }

@@ -14,7 +14,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
     /// Create &lt;OrderBy>... &lt;/OrderBy>
-    /// <see cref="http://msdn.microsoft.com/en-us/library/office/ms467378.aspx"/>
+    /// <see href="http://msdn.microsoft.com/en-us/library/office/ms467378.aspx"/>
     /// </summary>
     public class OrderBy : BaseCoreElement
     {

@@ -84,7 +84,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         public void NestedOrOnOrReturnsAnOrTagInAnOrTag()
         {
             var sut = new Or();
-            sut.NestedOr(x => { });
+            sut.Or(x => { });
 
             sut.ToString().Should().BeEquivalentTo(@"<Or><Or /></Or>");
         }

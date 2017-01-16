@@ -93,7 +93,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         public void NestedAndOnAndReturnsAnAndTagInAnAndTag()
         {
             var sut = new And();
-            sut.NestedAnd(x => { });
+            sut.And(x => { });
 
             sut.ToString().Should().BeEquivalentTo(@"<And><And /></And>");
         }
