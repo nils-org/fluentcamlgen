@@ -5,14 +5,15 @@ This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 All other rights reserved.
 
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System;
 using FluentCamlGen.CamlGen.Elements.Core;
 using FluentCamlGen.CamlGen.Elements.Value;
+
+using System;
 
 namespace FluentCamlGen.CamlGen
 {
@@ -106,6 +107,5 @@ namespace FluentCamlGen.CamlGen
             @this.Childs.Add(val);
             return @this;
         }
-
     }
 }

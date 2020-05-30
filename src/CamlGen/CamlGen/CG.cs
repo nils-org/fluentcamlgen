@@ -5,15 +5,16 @@ This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 All other rights reserved.
 
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System;
 using FluentCamlGen.CamlGen.Elements;
 using FluentCamlGen.CamlGen.Elements.Core;
 using FluentCamlGen.CamlGen.Elements.Value;
+
+using System;
 
 namespace FluentCamlGen.CamlGen
 {
@@ -32,11 +33,21 @@ namespace FluentCamlGen.CamlGen
         {
             private readonly string _type;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="AbstractType"/> class.
+            /// </summary>
+            /// <param name="type">The type.</param>
             protected AbstractType(string type)
             {
                 _type = type;
             }
 
+            /// <summary>
+            /// Converts to string.
+            /// </summary>
+            /// <returns>
+            /// A <see cref="System.String" /> that represents this instance.
+            /// </returns>
             public override string ToString()
             {
                 return _type;
@@ -44,12 +55,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// possible JoinTypes to add on a Join 
+        /// possible JoinTypes to add on a Join
         /// </summary>
         public class JoinType : AbstractType
         {
             private JoinType(string type)
-                :base(type)
+                : base(type)
             {
             }
 
@@ -65,12 +76,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// possible ValueTypes to add on a &lt;Value>-Element 
+        /// possible ValueTypes to add on a &lt;Value>-Element
         /// </summary>
         public class ValueType : AbstractType
         {
             private ValueType(string type)
-                :base(type)
+                : base(type)
             {
             }
 
@@ -78,17 +89,19 @@ namespace FluentCamlGen.CamlGen
             /// Number
             /// </summary>
             public static readonly ValueType Number = new ValueType("Number");
+
             /// <summary>
             /// Text
             /// </summary>
             public static readonly ValueType Text = new ValueType("Text");
+
             /// <summary>
             /// Boolean
             /// </summary>
             public static readonly ValueType Boolean = new ValueType("Boolean");
         }
 
-        #endregion
+        #endregion Types
 
         /// <summary>
         /// Create &lt;View> ... &lt;/View> for ViewXml
@@ -152,7 +165,6 @@ namespace FluentCamlGen.CamlGen
         {
             return new ProjectedField(name, type, list, showFileld);
         }
-
 
         /// <summary>
         /// Create &lt;Join Type="..." ListAlias="...">
@@ -260,6 +272,7 @@ namespace FluentCamlGen.CamlGen
         {
             return new NumberValue(number);
         }
+
         /// <summary>
         /// &lt;Value Type="Boolean">0|1&lt;/Value>
         /// </summary>
@@ -297,6 +310,7 @@ namespace FluentCamlGen.CamlGen
         {
             return new Neq(inner);
         }
+
         /// <summary>
         /// &lt;Lt> ... &lt;/Lt>
         /// </summary>
@@ -305,6 +319,7 @@ namespace FluentCamlGen.CamlGen
         {
             return new Lt(inner);
         }
+
         /// <summary>
         /// &lt;Leq> ... &lt;/Leq>
         /// </summary>
@@ -313,6 +328,7 @@ namespace FluentCamlGen.CamlGen
         {
             return new Leq(inner);
         }
+
         /// <summary>
         /// &lt;Gt> ... &lt;/Gt>
         /// </summary>
@@ -321,6 +337,7 @@ namespace FluentCamlGen.CamlGen
         {
             return new Gt(inner);
         }
+
         /// <summary>
         /// &lt;Geq> ... &lt;/Geq>
         /// </summary>
@@ -329,6 +346,7 @@ namespace FluentCamlGen.CamlGen
         {
             return new Geq(inner);
         }
+
         /// <summary>
         /// &lt;Contains> ... &lt;/Contains>
         /// </summary>
@@ -337,6 +355,5 @@ namespace FluentCamlGen.CamlGen
         {
             return new Contains(inner);
         }
-
     }
 }

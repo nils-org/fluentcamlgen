@@ -5,13 +5,13 @@ This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 All other rights reserved.
 
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentCamlGen.CamlGen.Elements.Core;
 using NUnit.Framework;
+
 using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test.Features
@@ -19,7 +19,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
     [TestFixture]
     public class Feature3 : TestBase
     {
-        const string Snippet = @"
+        private const string Snippet = @"
 <And>
     <Eq>
         <FieldRef Name='Year' />
@@ -36,7 +36,8 @@ namespace FluentCamlGen.CamlGen.Test.Features
         </Lt>
     </And>
 </And>
-"; 
+";
+
         [Test]
         public void GenerateASnippetTheOldWay()
         {

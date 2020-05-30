@@ -5,8 +5,8 @@ This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 All other rights reserved.
 
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
@@ -30,7 +30,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add an &lt;ExpandUserFields>-Tag 
+        /// Add an &lt;ExpandUserFields>-Tag
         /// </summary>
         /// <param name="value"></param>
         /// <returns><seealso cref="QueryOptions"/></returns>
@@ -41,7 +41,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add an &lt;DatesInUtc>-Tag 
+        /// Add an &lt;DatesInUtc>-Tag
         /// </summary>
         /// <param name="value"></param>
         /// <returns><seealso cref="QueryOptions"/></returns>

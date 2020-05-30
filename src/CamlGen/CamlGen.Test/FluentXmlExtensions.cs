@@ -5,10 +5,16 @@ This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 All other rights reserved.
 
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
+
+using FluentAssertions;
+using FluentAssertions.Execution;
+using FluentAssertions.Primitives;
+
+using Microsoft.XmlDiffPatch;
 
 using System;
 using System.IO;
@@ -16,10 +22,6 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using FluentAssertions;
-using FluentAssertions.Execution;
-using FluentAssertions.Primitives;
-using Microsoft.XmlDiffPatch;
 
 namespace FluentCamlGen.CamlGen.Test
 {
@@ -74,16 +76,16 @@ namespace FluentCamlGen.CamlGen.Test
             {
                 if (right == null) throw new ArgumentNullException("right");
                 var differ = new XmlDiff
-                    {
-                        IgnoreChildOrder = true,
-                        IgnoreComments = true,
-                        IgnoreDtd = true,
-                        IgnoreNamespaces = false,
-                        IgnorePI = false,
-                        IgnorePrefixes = true,
-                        IgnoreWhitespace = true,
-                        IgnoreXmlDecl = true
-                    };
+                {
+                    IgnoreChildOrder = true,
+                    IgnoreComments = true,
+                    IgnoreDtd = true,
+                    IgnoreNamespaces = false,
+                    IgnorePI = false,
+                    IgnorePrefixes = true,
+                    IgnoreWhitespace = true,
+                    IgnoreXmlDecl = true
+                };
 
                 var sb = new StringBuilder();
                 using (var xmlWriter = new XmlTextWriter(new StringWriter(sb)))
@@ -142,7 +144,7 @@ namespace FluentCamlGen.CamlGen.Test
                 const string changeName = ns + "change";
                 const string removeName = ns + "remove";
                 const string addName = ns + "add";
-                const SaveOptions saveOptions = SaveOptions.OmitDuplicateNamespaces|SaveOptions.DisableFormatting;
+                const SaveOptions saveOptions = SaveOptions.OmitDuplicateNamespaces | SaveOptions.DisableFormatting;
 
                 var xmlDiffGram = XDocument.Parse(diffGram);
                 var changes = xmlDiffGram.Descendants(XName.Get(changeName));

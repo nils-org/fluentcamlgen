@@ -3,3 +3,5 @@ bin
 obj
 *.suo
 TestResults
+.vs
+lib/packages

@@ -5,12 +5,10 @@ This source is subject to the Microsoft Public License.
 See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 All other rights reserved.
 
-THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, 
-EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED 
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
-
-using System;
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
@@ -18,7 +16,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
     /// &lt;Contains> ... &lt;/Contains>
     /// <seealso href="http://msdn.microsoft.com/en-us/library/ms196501.aspx"/>
     /// </summary>
-    public class Contains : BaseCoreCompareElement<Contains> 
+    public class Contains : BaseCoreCompareElement<Contains>
     {
         internal Contains(params BaseElement[] operands)
             : base("Contains", operands)
