@@ -116,6 +116,11 @@
     <Error Condition="!Exists('..\..\..\lib\packages\Microsoft.NetFramework.Analyzers.2.9.6\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\lib\packages\Microsoft.NetFramework.Analyzers.2.9.6\build\Microsoft.NetFramework.Analyzers.props'))" />
     <Error Condition="!Exists('..\..\..\lib\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.6\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\lib\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.6\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
   </Target>
+  <PropertyGroup>
+  <!-- https://stackoverflow.com/questions/24472559/suppress-codeanalysislog-xml-and-lastcodeanalysisuccceeded-files-from-getting -->
+    <CodeAnalysisLogFile>$(IntermediateOutputPath)$(TargetFileName).CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisSucceededFile>$(IntermediateOutputPath)$(TargetFileName).lastcodeanalysissucceeded</CodeAnalysisSucceededFile>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
