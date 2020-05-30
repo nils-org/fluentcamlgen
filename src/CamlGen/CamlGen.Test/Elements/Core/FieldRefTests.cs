@@ -10,11 +10,11 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using AutoFixture;
+
 using FluentAssertions;
 
 using NUnit.Framework;
-
-using Ploeh.AutoFixture;
 
 using System;
 

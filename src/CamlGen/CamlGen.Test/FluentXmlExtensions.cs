@@ -61,10 +61,7 @@ namespace FluentCamlGen.CamlGen.Test
             /// <summary>
             /// Returns the type of the subject the assertion applies on.
             /// </summary>
-            protected override string Context
-            {
-                get { return "XmlDocument"; }
-            }
+            protected override string Identifier => "XmlDocument";
 
             /// <summary>
             /// Diffs two XmlDoxuments.

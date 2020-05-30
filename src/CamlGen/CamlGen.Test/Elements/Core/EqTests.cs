@@ -10,13 +10,13 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using AutoFixture;
+
 using FluentAssertions;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
 using NUnit.Framework;
-
-using Ploeh.AutoFixture;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
