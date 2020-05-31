@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("The FluentCamlGen-Team")]
 [assembly: AssemblyProduct("FluentCamlGen")]
-[assembly: AssemblyCopyright("Copyright © FluentCamlGen-Team 2014")]
+[assembly: AssemblyCopyright("Copyright © FluentCamlGen-Team 2014-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -40,9 +40,9 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("0.1.0.1")]
-[assembly: AssemblyFileVersion("0.1.0.1")]
-[assembly: AssemblyInformationalVersion("0.1.0.1")]
+[assembly: AssemblyVersion("0.2.0")]
+[assembly: AssemblyFileVersion("0.2.0")]
+[assembly: AssemblyInformationalVersion("0.2.0")]
 
 // Local assembly-info simply contains:
 //[assembly: AssemblyTitle("FluentCamlGen.ThisAssembly")]
