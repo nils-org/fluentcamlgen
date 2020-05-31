@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamlGen", "CamlGen\CamlGen.csproj", "{48632AB0-D026-426D-AF9E-B47CF96D69E4}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CamlGen", "CamlGen\CamlGen.csproj", "{48632AB0-D026-426D-AF9E-B47CF96D69E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamlGen.Test", "CamlGen.Test\CamlGen.Test.csproj", "{B2E9C5CE-0514-4339-84D8-652369C5843E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09AE4EAE-0D7E-4ED7-A3BB-92FA40A314F2}"
+	ProjectSection(SolutionItems) = preProject
+		CamlGen.nuspec = CamlGen.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E86A5BD-F337-426C-91F8-4E0FFE0BAB7A}
 	EndGlobalSection
 EndGlobal

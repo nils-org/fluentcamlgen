@@ -5,3 +5,4 @@ obj
 TestResults
 .vs
 lib/packages
+/dist
