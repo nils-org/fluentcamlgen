@@ -2,6 +2,7 @@
 #tool nuget:?package=coveralls.io&version=1.4.2
 #tool nuget:?package=OpenCover&version=4.7.922
 #addin nuget:?package=Cake.Coveralls&version=0.10.1
+#addin nuget:?package=Cake.FileHelpers&version=3.2.1
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -51,15 +52,28 @@ Task("Test")
     var coverFile = binDir + File("Coverage.xml");
 
     OpenCover(cc => {
-        cc.NUnit3(tests);
+        cc.NUnit3(tests, new NUnit3Settings {
+            WorkingDirectory = binDir
+        });
     },
         coverFile,
-        new OpenCoverSettings()
+        new OpenCoverSettings{
+            WorkingDirectory = binDir,
+            LogLevel = OpenCoverLogLevel.All,             
+            Register = "user",
+            TargetDirectory = binDir
+        }
         .WithFilter("+[FluentCamlGen.CamlGen]*")
         .WithFilter("-[FluentCamlGen.CamlGen.Tests]*")
     );
 
-    var coverallsRepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN");
+    string sequencePoints = XmlPeek(coverFile, "/CoverageSession/Summary/@numSequencePoints");
+    if(sequencePoints == "0"){
+        Warning("Something is probably wrong with coverage. Check output!");
+        Warning(FileReadText(coverFile));
+    }
+
+    var coverallsRepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN")    ;
     if(coverallsRepoToken == null) {
         Warning("no coveralls repo-token. NOT pushing coverage!");
         DeleteFile(coverFile);
