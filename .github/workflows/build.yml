@@ -32,6 +32,8 @@ jobs:
       uses: cake-build/cake-action@v1.1.1
       with:
         script-path: build/build.cake
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.coverallsRepoToken }}
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0

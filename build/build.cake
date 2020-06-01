@@ -1,3 +1,7 @@
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.11.1
+#tool nuget:?package=coveralls.io&version=1.4.2
+#tool nuget:?package=OpenCover&version=4.7.922
+#addin nuget:?package=Cake.Coveralls&version=0.10.1
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -33,10 +37,40 @@ Task("Build")
     var file = srcDir + File("CamlGen/CamlGen.sln");
     NuGetRestore(file);
     MSBuild(file, settings => settings
-        .SetVerbosity(Verbosity.Normal)
+        .SetVerbosity(Verbosity.Minimal)
         .SetConfiguration(configuration)
         .WithTarget("Build")
     );
+});
+
+Task("Test")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+    var tests = GetFiles(srcDir + File($"**/bin/{configuration}/*.Test.dll"));
+    var coverFile = binDir + File("Coverage.xml");
+
+    OpenCover(cc => {
+        cc.NUnit3(tests);
+    },
+        coverFile,
+        new OpenCoverSettings()
+        .WithFilter("+[FluentCamlGen.CamlGen]*")
+        .WithFilter("-[FluentCamlGen.CamlGen.Tests]*")
+    );
+
+    var coverallsRepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN");
+    if(coverallsRepoToken == null) {
+        Warning("no coveralls repo-token. NOT pushing coverage!");
+        DeleteFile(coverFile);
+        return;
+    }
+
+    Information("sending coverage to coveralls.io");
+    CoverallsIo(coverFile.Path, new CoverallsIoSettings{
+        RepoToken = coverallsRepoToken
+    });
+    DeleteFile(coverFile);
 });
 
 Task("Dist")
@@ -102,6 +136,7 @@ Task("Dist")
 });
 
 Task("Default")
+    .IsDependentOn("Test")
     .IsDependentOn("Dist");
 
 RunTarget(target);
