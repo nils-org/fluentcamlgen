@@ -51,6 +51,16 @@ Task("Test")
     var tests = GetFiles(srcDir + File($"**/bin/{configuration}/*.Test.dll"));
     var coverFile = binDir + File("Coverage.xml");
 
+    var registration = "user"; // -registration:user in opencover -- works locally
+    if(!string.IsNullOrEmpty(EnvironmentVariable("OPENCOVER_REGISTER_FILE"))) {
+        // seems we're not local.. register using the dll-path
+        var oc = Context.Tools.Resolve("OpenCover.Console.exe");
+        var subdir = Context.Environment.Platform.Is64Bit ? "x64" : "x32";
+        registration = oc.GetDirectory().CombineWithFilePath(File($"{subdir}/OpenCover.Profiler.dll")).FullPath;
+    }
+
+    Information("using -register:" + registration);
+
     OpenCover(cc => {
         cc.NUnit3(tests, new NUnit3Settings {
             WorkingDirectory = binDir
@@ -60,7 +70,7 @@ Task("Test")
         new OpenCoverSettings{
             WorkingDirectory = binDir,
             LogLevel = OpenCoverLogLevel.All,             
-            Register = "user",
+            Register = registration,
             TargetDirectory = binDir
         }
         .WithFilter("+[FluentCamlGen.CamlGen]*")
