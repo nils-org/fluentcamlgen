@@ -15,10 +15,13 @@ using AutoFixture;
 using FluentAssertions;
 
 using FluentCamlGen.CamlGen.Elements.Core;
+using FluentCamlGen.CamlGen.Elements.Value;
 
 using NSubstitute;
 
 using NUnit.Framework;
+
+using System.Globalization;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
@@ -39,6 +42,21 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var actual = sut.Attributes[0];
             actual.Item1.Should().Be(name);
             actual.Item2.Should().Be(value);
+        }
+
+        [Test]
+        public void BooleanValueAddAttributeExtensionAddsTheAttribute()
+        {
+            var value = Fixture.Create<bool>();
+            var sut = Substitute.ForPartsOf<Eq>();
+            sut.Childs.Should().BeEmpty("Simply asserting the test setup");
+
+            sut.AddBooleanValue(value);
+
+            sut.Childs.Count.Should().Be(1);
+            var actual = sut.Childs[0];
+            var expected = string.Format(CultureInfo.InvariantCulture, "<Value Type=\"Boolean\">{0}</Value>", (value ? "1" : "0"));
+            actual.ToString().Should().BeEquivalentTo(expected);
         }
     }
 }
