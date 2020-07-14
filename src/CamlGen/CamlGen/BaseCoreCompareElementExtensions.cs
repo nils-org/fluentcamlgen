@@ -107,5 +107,33 @@ namespace FluentCamlGen.CamlGen
             @this.Childs.Add(val);
             return @this;
         }
+
+        /// <summary>
+        /// Add a &lt;Value Type="Boolean">-Attribute
+        /// </summary>
+        /// <param name="this"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static T AddBooleanValue<T>(this T @this, bool value)
+            where T : BaseCoreCompareElement<T>
+        {
+            return AddBooleanValue(@this, value, x => { });
+        }
+
+        /// <summary>
+        /// Add a &lt;Value Type="Boolean">-Attribute
+        /// </summary>
+        /// <param name="this"></param>
+        /// <param name="value"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static T AddBooleanValue<T>(this T @this, bool value, Action<Value> action)
+            where T : BaseCoreCompareElement<T>
+        {
+            var val = new BooleanValue(value);
+            action(val);
+            @this.Childs.Add(val);
+            return @this;
+        }
     }
 }
