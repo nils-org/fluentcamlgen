@@ -1,7 +1,7 @@
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.11.1
-#tool nuget:?package=coveralls.io&version=1.4.2
+#tool nuget:?package=coveralls.net&version=1.0.0
 #tool nuget:?package=OpenCover&version=4.7.922
-#addin nuget:?package=Cake.Coveralls&version=0.10.1
+#addin nuget:?package=Cake.Coveralls&version=0.10.2
 #addin nuget:?package=Cake.FileHelpers&version=3.2.1
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -91,7 +91,7 @@ Task("Test")
     }
 
     Information("sending coverage to coveralls.io");
-    CoverallsIo(coverFile.Path, new CoverallsIoSettings{
+    CoverallsIo(coverFile.Path, CoverallsNetReportType.OpenCover, new CoverallsNetSettings {
         RepoToken = coverallsRepoToken
     });
     DeleteFile(coverFile);
