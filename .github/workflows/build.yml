@@ -21,6 +21,9 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        # default is 1 - but that breaks coveralls.io (rather libgit2sharp)
+        fetch-depth: 3
 
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.0.2
