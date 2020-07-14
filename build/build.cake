@@ -91,7 +91,7 @@ Task("Test")
     }
 
     Information("sending coverage to coveralls.io");
-    CoverallsIo(coverFile.Path, CoverallsNetReportType.OpenCover, new CoverallsNetSettings {
+    CoverallsNet(coverFile.Path, CoverallsNetReportType.OpenCover, new CoverallsNetSettings {
         RepoToken = coverallsRepoToken
     });
     DeleteFile(coverFile);
