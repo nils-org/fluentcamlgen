@@ -1,5 +1,0 @@
-GlobalAssemblyInfo.cs
-  Link this file in each c#-Project so that the Assembly-Information is always the same.
-  
-nuget.config
-  copy this file to every solution-folder (next to *.sln) so that all nuget-config is the same.

@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyCompany("The FluentCamlGen-Team")]
+[assembly: AssemblyCompany("Nils Andresen")]
 [assembly: AssemblyProduct("FluentCamlGen")]
 [assembly: AssemblyCopyright("Copyright © FluentCamlGen-Team 2014-2020")]
 [assembly: AssemblyTrademark("")]
@@ -42,7 +42,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("0.2.0")]
 [assembly: AssemblyFileVersion("0.2.0")]
-[assembly: AssemblyInformationalVersion("0.2.0")]
+[assembly: AssemblyInformationalVersion("0.0.1")]
 
 // Local assembly-info simply contains:
 //[assembly: AssemblyTitle("FluentCamlGen.ThisAssembly")]

@@ -5,4 +5,6 @@ obj
 TestResults
 .vs
 lib/packages
-/dist
+tools/*
+!tools/packages.config
+BuildArtifacts

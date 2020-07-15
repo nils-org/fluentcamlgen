@@ -10,8 +10,21 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using AutoFixture;
 
-[assembly: AssemblyTitle("FluentCamlGen.CamlGen.Test")]
-[assembly: Guid("10fbd7dd-8402-4de4-a0ae-ec68d85e1fc9")]
+using NUnit.Framework;
+
+namespace FluentCamlGen.CamlGen.Test
+{
+    public class TestBase
+    {
+        protected Fixture Fixture { get; private set; }
+
+        [SetUp]
+        public void SetUp()
+        {
+            Fixture = new Fixture();
+            Fixture.Customize(new TestCgCustomization());
+        }
+    }
+}
