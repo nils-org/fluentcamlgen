@@ -16,5 +16,5 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("FluentCamlGen.CamlGen")]
 [assembly: Guid("6224dcad-d3bb-4693-8732-88549b4da5d5")]
-[assembly: InternalsVisibleTo("FluentCamlGen.CamlGen.Test")]
+[assembly: InternalsVisibleTo("FluentCamlGen.CamlGen.Tests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

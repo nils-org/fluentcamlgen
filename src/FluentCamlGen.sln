@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CamlGen", "CamlGen\CamlGen.csproj", "{48632AB0-D026-426D-AF9E-B47CF96D69E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CamlGen.Test", "CamlGen.Test\CamlGen.Test.csproj", "{243017D4-3E24-47E8-B453-06E09BB160FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CamlGen.Tests", "CamlGen.Tests\CamlGen.Tests.csproj", "{900D0B2B-5257-4130-8CF5-2E1CDDF7457E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{48632AB0-D026-426D-AF9E-B47CF96D69E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48632AB0-D026-426D-AF9E-B47CF96D69E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48632AB0-D026-426D-AF9E-B47CF96D69E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{243017D4-3E24-47E8-B453-06E09BB160FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{243017D4-3E24-47E8-B453-06E09BB160FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{243017D4-3E24-47E8-B453-06E09BB160FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{243017D4-3E24-47E8-B453-06E09BB160FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900D0B2B-5257-4130-8CF5-2E1CDDF7457E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900D0B2B-5257-4130-8CF5-2E1CDDF7457E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900D0B2B-5257-4130-8CF5-2E1CDDF7457E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900D0B2B-5257-4130-8CF5-2E1CDDF7457E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

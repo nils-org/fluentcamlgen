@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>FluentCamlGen.CamlGen.Test</AssemblyName>
-    <RootNamespace>FluentCamlGen.CamlGen.Test</RootNamespace>
+    <AssemblyName>FluentCamlGen.CamlGen.Tests</AssemblyName>
+    <RootNamespace>FluentCamlGen.CamlGen.Tests</RootNamespace>
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
 
