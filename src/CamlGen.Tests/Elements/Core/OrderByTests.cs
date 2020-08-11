@@ -34,7 +34,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var name = Fixture.Create<string>();
             var sut = CG.OrderBy().AddFieldRefDescending(name);
             var expected = string.Format(@"<OrderBy><FieldRef Name=""{0}"" Ascending=""FALSE"" /></OrderBy>", name).AsXml();
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var name = Fixture.Create<string>();
             var sut = CG.OrderBy().AddFieldRefAscending(name);
             var expected = string.Format(@"<OrderBy><FieldRef Name=""{0}"" Ascending=""TRUE"" /></OrderBy>", name).AsXml();
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var name = Fixture.Create<string>();
             var sut = CG.Query().OrderBy(o => o.AddFieldRef(name, false));
             var expected = string.Format(@"<Query><OrderBy><FieldRef Name=""{0}"" Ascending=""FALSE"" /></OrderBy></Query>", name).AsXml();
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
     }
 }

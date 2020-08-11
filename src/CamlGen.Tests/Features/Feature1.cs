@@ -10,6 +10,8 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
+using FluentAssertions;
+
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Features
@@ -66,7 +68,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                     )
                 );
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -88,7 +90,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                                            .AddField("UserMobilePhone", "Lookup", "User Information List", "MobilePhone"))
                         .Joins(js => js.AddInnerJoin("User Information List", "Contact"));
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
     }
 }

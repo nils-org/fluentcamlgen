@@ -12,6 +12,8 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
+using FluentAssertions;
+
 using NUnit.Framework;
 
 using Val = FluentCamlGen.CamlGen.Elements.Value;
@@ -28,7 +30,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = new Val.Value(CG.ValueType.Number, val);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -38,7 +40,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = new Val.NumberValue(val);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -48,7 +50,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = new Val.NumberValue(val);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -58,7 +60,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = CG.NumberValue(val);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -68,7 +70,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
             var sut = CG.Value(CG.ValueType.Number, val);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -77,7 +79,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = @"<Value Type=""Boolean"">1</Value>".AsXml();
             var sut = CG.BooleanValue(true);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
 
         [Test]
@@ -86,7 +88,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var expected = @"<Value Type=""Boolean"">0</Value>".AsXml();
             var sut = CG.BooleanValue(false);
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected);
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
         }
     }
 }

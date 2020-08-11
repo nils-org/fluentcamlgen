@@ -12,6 +12,8 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
+using FluentAssertions;
+
 using NUnit.Framework;
 
 namespace FluentCamlGen.CamlGen.Test.Features
@@ -54,7 +56,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                         CG.Lt(CG.FieldRef("CalendarWeek"), CG.NumberValue(end))
                         )
                     );
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected.AsXml());
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected.AsXml());
         }
 
         [Test]
@@ -72,7 +74,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                     .Geq(geq => geq.AddFieldRef("CalendarWeek").AddNumberValue(start))
                     .Lt(lt => lt.AddFieldRef("CalendarWeek").AddNumberValue(end)));
 
-            sut.ToString().AsXml().Should().BeLooselyEquivalentTo(expected.AsXml());
+            sut.ToString().AsXml().Should().BeEquivalentTo(expected.AsXml());
         }
     }
 }
