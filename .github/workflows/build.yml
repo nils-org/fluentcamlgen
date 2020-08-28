@@ -5,14 +5,14 @@ name: CI
 on:
   push:
     branches:
-    - master
+    - main
     - develop
     - 'release/**'
     - 'hotfix/**'
     #tags: 
     #- '**'
   #pull_request:
-  #  branches: [ master ]
+  #  branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
