@@ -1,14 +1,18 @@
-# This is a basic workflow to help you get started with Actions
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Controls when the action will run.
 on:
   push:
-    branches: [ master, develop ]
-  pull_request:
-    branches: [ master ]
+    branches:
+    - main
+    - develop
+    - 'release/**'
+    - 'hotfix/**'
+    #tags: 
+    #- '**'
+  #pull_request:
+  #  branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,6 +25,9 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        # default is 1 - but that breaks coveralls-tool and GitVersion.exe
+        fetch-depth: 0
 
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.0.2
@@ -29,12 +36,21 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Cake Action
-      uses: cake-build/cake-action@v1.1.1
-      with:
-        script-path: build/build.cake
+      #uses: cake-build/cake-action@v1.1.1
+      #with:
+      #  script-path: recipe.cake
+      # cake.recipe does not run on core tool version of cake.
+      run: .\build.ps1 -Verbosity Diagnostic
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
+        #GITHUB_USERNAME: token
+        #GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        #MYGET_API_KEY: ${{ secrets.MYGET_API_KEY }}
+        #MYGET_SOURCE: ${{ secrets.MYGET_SOURCE }}
+        #COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: FluentCamlGen-CI
-        path: bin
+        path: BuildArtifacts\Packages\NuGet

@@ -1,14 +1,22 @@
 # FluentCamlGen 
 
 ![CI](https://github.com/nils-org/fluentcamlgen/workflows/CI/badge.svg)
+[![Nuget](https://img.shields.io/nuget/v/FluentCamlGen)](https://www.nuget.org/packages/FluentCamlGen/)
+[![Coverage Status](https://coveralls.io/repos/github/nils-org/fluentcamlgen/badge.svg?branch=develop)](https://coveralls.io/github/nils-org/fluentcamlgen?branch=develop)
 
-The fluent CAML Generator
-
-This is a Generator for CAML, as used in SharePoint environments.
+> The fluent CAML Generator
+>
+> This is a Generator for CAML, as used in SharePoint environments.
 
 ## Installation
 
-using npm?
+Using [nuget](https://www.nuget.org/packages/FluentCamlGen/) use one of:
+
+```
+Install-Package FluentCamlGen
+dotnet add package FluentCamlGen 
+paket add FluentCamlGen
+```
 
 ## Status
 

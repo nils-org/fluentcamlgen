@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- standard 1.1 to be compatible with framework 4.5 -->
+    <TargetFrameworks>netstandard1.1</TargetFrameworks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageProjectUrl>https://github.com/nils-org/fluentcamlgen/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nils-org/fluentcamlgen.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <DebugType>pdbonly</DebugType>
+    <AssemblyName>FluentCamlGen.CamlGen</AssemblyName>
+    <RootNamespace>FluentCamlGen.CamlGen</RootNamespace>
+    <PackageId>FluentCamlGen</PackageId>
+    <Authors>Nils Andresen</Authors>
+    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
+    <PackageTags>CAML SharePoint generator fluent</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.1|AnyCPU'">
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>bin\Release\FluentCamlGen.CamlGen.xml</DocumentationFile>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.1|AnyCPU'">
+    <OutputPath>bin\Debug</OutputPath>
+    <DocumentationFile>bin\Debug\FluentCamlGen.CamlGen.xml</DocumentationFile>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\resources\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
