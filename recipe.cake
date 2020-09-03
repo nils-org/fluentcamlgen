@@ -8,7 +8,7 @@ BuildParameters.SetParameters(
   buildSystem: BuildSystem,
   sourceDirectoryPath: "./src",
   title: "FluentCamlGen",
-  masterBranchName: "master",
+  masterBranchName: "main",
   repositoryOwner: "nils-org",
   repositoryName: "fluentcamlgen",
   shouldRunDupFinder: false, // for now...
