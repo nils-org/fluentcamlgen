@@ -1,56 +1,51 @@
+name: Build
 
-name: CI
-
-# Controls when the action will run.
 on:
   push:
-    branches:
-    - main
-    - develop
-    - 'release/**'
-    - 'hotfix/**'
-    #tags: 
-    #- '**'
-  #pull_request:
-  #  branches: [ main ]
+    paths-ignore:
+      - "README.md"
+  pull_request:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    #mimic "skip_branch_with_pr: true", see https://github.community/t/duplicate-checks-on-push-and-pull-request-simultaneous-event/18012/4
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-      with:
-        # default is 1 - but that breaks coveralls-tool and GitVersion.exe
-        fetch-depth: 0
-
-    - name: Setup NuGet.exe for use with actions
-      uses: NuGet/setup-nuget@v1.0.2
-      
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Cake Action
-      #uses: cake-build/cake-action@v1.1.1
-      #with:
-      #  script-path: recipe.cake
-      # cake.recipe does not run on core tool version of cake.
-      run: .\build.ps1 -Verbosity Diagnostic
-      env:
-        DOTNET_CLI_TELEMETRY_OPTOUT: 1
-        #GITHUB_USERNAME: token
-        #GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-        #MYGET_API_KEY: ${{ secrets.MYGET_API_KEY }}
-        #MYGET_SOURCE: ${{ secrets.MYGET_SOURCE }}
-        #COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: FluentCamlGen-CI
-        path: BuildArtifacts\Packages\NuGet
+      - uses: actions/checkout@v2.3.3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.ref }}
+      - name: Cache Tools
+        uses: actions/cache@v2
+        with:
+          path: tools
+          key: ${{ runner.os }}-tools-${{ hashFiles('recipe.cake') }}
+      - name: Build project
+        uses: cake-build/cake-action@v1
+        with:
+          script-path: recipe.cake
+          target: CI
+          verbosity: Diagnostic
+          cake-version: 0.38.5
+          cake-bootstrap: true
+      # currently, Cake.Recipe does not upload artifacts when run on gh-actions
+      - name: Upload Issues
+        uses: actions/upload-artifact@v2
+        with:
+          if-no-files-found: warn
+          name: ${{ matrix.os }} Issues
+          path: |
+            BuildArtifacts/report.html
+            BuildArtifacts/**/coverlet/*.xml
+      - name: Upload Packages
+        uses: actions/upload-artifact@v2
+        if: matrix.os == 'windows-latest'
+        with:
+          if-no-files-found: warn
+          name: package
+          path: BuildArtifacts/Packages/**/*
