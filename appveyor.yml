@@ -1,5 +1,5 @@
 image:
-  - Visual Studio 2017
+  - Visual Studio 2019
 
 pull_requests:
   do_not_increment_build_number: true
@@ -35,7 +35,7 @@ environment:
   # Wyam ??
 
 build_script:
-  - ps: .\build.ps1 -Target AppVeyor
+  - ps: .\build.ps1 --target=CI --verbosity=Diagnostic
 
 cache:
-  - "tools -> recipe.cake,tools/packages.config"
+  - "tools -> recipe.cake"

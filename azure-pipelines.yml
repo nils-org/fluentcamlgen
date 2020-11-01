@@ -17,12 +17,20 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '2.2.x'
+    version: '3.1.x'
 
-- task: PowerShell@2
+- task: Cache@2
   inputs:
-    filePath: 'build.ps1'
-    arguments: '-Verbosity Diagnostic'
+    key: '"$(Agent.OS)" | recipe.cake'
+    path: 'tools'
+
+- task: Cake@2
+  inputs:
+    script: 'recipe.cake'
+    target: 'CI'
+    verbosity: 'Diagnostic'
+    Bootstrap: true
+    Version: '0.38.4'
 
 - task: PublishBuildArtifacts@1
   inputs:

@@ -1,5 +1,4 @@
-//#load nuget:https://www.myget.org/F/cake-contrib/api/v3/index.json?package=Cake.Recipe&prerelease
-#load nuget:?package=Cake.Recipe&version=1.1.2
+#load nuget:?package=Cake.Recipe&version=2.0.1
 
 Environment.SetVariableNames();
 
@@ -12,7 +11,6 @@ BuildParameters.SetParameters(
   repositoryOwner: "nils-org",
   repositoryName: "fluentcamlgen",
   shouldRunDupFinder: false, // for now...
-  shouldRunGitVersion: true,
   shouldRunCodecov: true,
   shouldRunDotNetCorePack: true);
 
