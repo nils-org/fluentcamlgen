@@ -12,34 +12,34 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class ViewFieldsTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareCgViewFieldsReturnsAViewFieldsTagWithNoAttributes()
         {
             var sut = CG.ViewFields();
-            sut.ToString().Should().BeEquivalentTo(@"<ViewFields />");
+            sut.ToString().ShouldBe(@"<ViewFields />");
         }
 
-        [Test]
+        [Fact]
         public void AddFieldRefReturnsAViewFieldsTagWithAFieldRef()
         {
             var name = Fixture.Create<string>();
             var sut = new ViewFields();
             sut.AddFieldRef(name);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<ViewFields><FieldRef Name=""{0}"" /></ViewFields>", name));
+            sut.ToString().ShouldBe(string.Format(@"<ViewFields><FieldRef Name=""{0}"" /></ViewFields>", name));
         }
 
-        [Test]
+        [Fact]
         public void AddFieldRefWithALambdaReturnsAViewFieldsTagWithAFieldRefAndCallsTheLamda()
         {
             var name = Fixture.Create<string>();
@@ -47,7 +47,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var attrVal = Fixture.Create<string>();
             var sut = new ViewFields();
             sut.AddFieldRef(name, r => r.AddAttribute(attrName, attrVal));
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<ViewFields><FieldRef Name=""{0}"" {1}=""{2}"" /></ViewFields>", name, attrName, attrVal));
+            sut.ToString().ShouldBe(string.Format(@"<ViewFields><FieldRef Name=""{0}"" {1}=""{2}"" /></ViewFields>", name, attrName, attrVal));
         }
     }
 }

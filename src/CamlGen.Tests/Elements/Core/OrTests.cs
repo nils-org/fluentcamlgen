@@ -10,94 +10,94 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class OrTests : TestBase
     {
-        [Test]
+        [Fact]
         public void SimpleOrReturnsEmptyOrTag()
         {
             var sut = CG.Or();
-            sut.ToString().Should().BeEquivalentTo(@"<Or />");
+            sut.ToString().ShouldBe(@"<Or />");
         }
 
-        [Test]
+        [Fact]
         public void EqOnOrReturnsAnEqTagInAnOrTag()
         {
             var sut = new Or();
             sut.Eq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Eq /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Eq /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void NeqOnOrReturnsAnNeqTagInAnOrTag()
         {
             var sut = new Or();
             sut.Neq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Neq /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Neq /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void GeqOnOrReturnsAnGeqTagInAnOrTag()
         {
             var sut = new Or();
             sut.Geq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Geq /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Geq /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void GtOnOrReturnsAnGtTagInAnOrTag()
         {
             var sut = new Or();
             sut.Gt();
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Gt /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Gt /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void LeqOnOrReturnsAnLeqTagInAnOrTag()
         {
             var sut = new Or();
             sut.Leq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Leq /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Leq /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void LtOnOrReturnsAnLtTagInAnOrTag()
         {
             var sut = new Or();
             sut.Lt();
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Lt /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Lt /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void NestedOrOnOrReturnsAnOrTagInAnOrTag()
         {
             var sut = new Or();
             sut.Or(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><Or /></Or>");
+            sut.ToString().ShouldBe(@"<Or><Or /></Or>");
         }
 
-        [Test]
+        [Fact]
         public void AndOnOrReturnsAnAndTagInAnOrTag()
         {
             var sut = new Or();
             sut.And(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<Or><And /></Or>");
+            sut.ToString().ShouldBe(@"<Or><And /></Or>");
         }
     }
 }

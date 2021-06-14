@@ -12,47 +12,46 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using FluentAssertions;
-
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class OrderByTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareOrderByJoinReturnsAJoinTagWithNoAttributes()
         {
             var sut = CG.OrderBy();
-            sut.ToString().Should().BeEquivalentTo(@"<OrderBy />");
+            sut.ToString().ShouldBe(@"<OrderBy />");
         }
 
-        [Test]
-        public void OrderByWithFieldRefRetunsAnOrderByAndAFieldRef()
+        [Fact]
+        public void OrderByWithFieldRefReturnsAnOrderByAndAFieldRef()
         {
             var name = Fixture.Create<string>();
             var sut = CG.OrderBy().AddFieldRefDescending(name);
             var expected = string.Format(@"<OrderBy><FieldRef Name=""{0}"" Ascending=""FALSE"" /></OrderBy>", name).AsXml();
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
 
-        [Test]
-        public void OrderByWithFieldRefAscendingRetunsAnOrderByAndAnAscendingFieldRef()
+        [Fact]
+        public void OrderByWithFieldRefAscendingReturnsAnOrderByAndAnAscendingFieldRef()
         {
             var name = Fixture.Create<string>();
             var sut = CG.OrderBy().AddFieldRefAscending(name);
             var expected = string.Format(@"<OrderBy><FieldRef Name=""{0}"" Ascending=""TRUE"" /></OrderBy>", name).AsXml();
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
 
-        [Test]
-        public void FluentOrderByWithFieldRefRetunsAnOrderByAndAFieldRef()
+        [Fact]
+        public void FluentOrderByWithFieldRefReturnsAnOrderByAndAFieldRef()
         {
             var name = Fixture.Create<string>();
             var sut = CG.Query().OrderBy(o => o.AddFieldRef(name, false));
             var expected = string.Format(@"<Query><OrderBy><FieldRef Name=""{0}"" Ascending=""FALSE"" /></OrderBy></Query>", name).AsXml();
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
     }
 }

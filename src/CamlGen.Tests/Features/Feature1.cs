@@ -10,16 +10,14 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
-
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Features
 {
     /// <summary>
     /// 1. Ensure that a join to the "User Information List" is possible, see http://social.msdn.microsoft.com/Forums/de-DE/e5d607fe-b437-4a67-ad9c-5cc5a8284a66/csom-javascript-inner-join-caml-query-on-user-information-list?forum=sharepointdevelopment
     /// </summary>
-    [TestFixture]
     public class Feature1
     {
         private const string ExpectedXml = @"<View>
@@ -39,14 +37,14 @@ namespace FluentCamlGen.CamlGen.Test.Features
   <Joins>
     <Join Type=""INNER"" ListAlias=""User Information List"">
       <Eq>
-        <FieldRef RefType=""Id"" Name=""Contact""/>
         <FieldRef Name=""ID"" List=""User Information List"" />
+        <FieldRef RefType=""Id"" Name=""Contact""/>
       </Eq>
     </Join>
   </Joins>
 </View>";
 
-        [Test]
+        [Fact]
         public void Feature1Passes()
         {
             var expected = ExpectedXml.AsXml();
@@ -68,10 +66,10 @@ namespace FluentCamlGen.CamlGen.Test.Features
                     )
                 );
 
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
 
-        [Test]
+        [Fact]
         public void Feature1PassesFluently()
         {
             var expected = ExpectedXml.AsXml();
@@ -90,7 +88,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                                            .AddField("UserMobilePhone", "Lookup", "User Information List", "MobilePhone"))
                         .Joins(js => js.AddInnerJoin("User Information List", "Contact"));
 
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
     }
 }

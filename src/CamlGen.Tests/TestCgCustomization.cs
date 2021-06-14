@@ -15,8 +15,7 @@ using AutoFixture.Kernel;
 
 using FluentCamlGen.CamlGen.Elements;
 using FluentCamlGen.CamlGen.Elements.Core;
-
-using NSubstitute;
+using Moq;
 
 namespace FluentCamlGen.CamlGen.Test
 {
@@ -30,15 +29,17 @@ namespace FluentCamlGen.CamlGen.Test
 
         private static BaseElement GetBaseElement(ISpecimenBuilder fixture)
         {
-            var fake = Substitute.For<BaseElement>();
-            fake.ToString(Arg.Any<bool>(), Arg.Any<int>()).Returns(fixture.Create<string>());
-            return fake;
+            var fake = new Mock<BaseElement>();
+            fake.Setup(f => 
+                f.ToString(It.IsAny<bool>(), It.IsAny<int>()))
+                .Returns(fixture.Create<string>());
+            return fake.Object;
         }
 
         private static BaseCoreElement GetCoreElement(ISpecimenBuilder fixture)
         {
-            var fake = Substitute.For<BaseCoreElement>(fixture.Create<string>());
-            return fake;
+            var fake = new Mock<BaseCoreElement>(fixture.Create<string>());
+            return fake.Object;
         }
     }
 }

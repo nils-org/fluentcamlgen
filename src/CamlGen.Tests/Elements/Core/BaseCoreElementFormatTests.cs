@@ -10,41 +10,40 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NSubstitute;
-
-using NUnit.Framework;
+using Xunit;
 
 using System;
+using Moq;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class BaseCoreElementFormatTests : TestBase
     {
-        [Test]
+        [Fact]
         public void TwoNestedTagWithoutFormattingReturnAStringWithoutFormatting()
         {
-            var one = Substitute.ForPartsOf<BaseCoreElement>("One");
-            var two = Substitute.ForPartsOf<BaseCoreElement>("Two");
+            var one = new Mock<BaseCoreElement>("One"){CallBase = true}.Object;
+            var two = new Mock<BaseCoreElement>("Two"){CallBase = true}.Object;
             one.Childs.Add(two);
 
             var actual = one.ToString(false);
-            actual.Should().BeEquivalentTo("<One><Two /></One>");
+            actual.ShouldBe("<One><Two /></One>");
         }
 
-        [Test]
+        [Fact]
         public void TwoNestedTagWithFormattingReturnAStringWithFormatting()
         {
-            var one = Substitute.ForPartsOf<BaseCoreElement>("One");
-            var two = Substitute.ForPartsOf<BaseCoreElement>("Two");
+            var one = new Mock<BaseCoreElement>("One"){CallBase = true}.Object;
+            var two = new Mock<BaseCoreElement>("Two"){CallBase = true}.Object;
             one.Childs.Add(two);
 
             var actual = one.ToString(true);
-            actual.Should().BeEquivalentTo(string.Format("<One>{0}  <Two />{0}</One>{0}", Environment.NewLine));
+            actual.ShouldBe(string.Format("<One>{0}  <Two />{0}</One>{0}", Environment.NewLine));
         }
     }
 }

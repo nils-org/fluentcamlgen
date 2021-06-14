@@ -12,44 +12,43 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
+using Moq;
 
-using NSubstitute;
-
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class BaseCoreElementNestingTests : TestBase
     {
-        [Test]
+        [Fact]
         public void NestedElementsReturnsTheNestedTags()
         {
             var outerTag = Fixture.Create<string>();
             var innerTag = Fixture.Create<string>();
 
-            var sut = Substitute.ForPartsOf<BaseCoreElement>(outerTag);
-            sut.Childs.Add(Substitute.ForPartsOf<BaseCoreElement>(innerTag));
+            var sut = new Mock<BaseCoreElement>(outerTag) {CallBase = true}.Object;
+            sut.Childs.Add(new Mock<BaseCoreElement>(innerTag) {CallBase = true}.Object);
 
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1} /></{0}>", outerTag, innerTag));
+            sut.ToString().ShouldBe(string.Format(@"<{0}><{1} /></{0}>", outerTag, innerTag));
         }
 
-        [Test]
+        [Fact]
         public void DeepNestedElementsReturnsTheDeepNestedTags()
         {
             var outerTag = Fixture.Create<string>();
             var middleTag = Fixture.Create<string>();
             var innerTag = Fixture.Create<string>();
 
-            var outerSut = Substitute.ForPartsOf<BaseCoreElement>(outerTag);
-            var middleSut = Substitute.ForPartsOf<BaseCoreElement>(middleTag);
-            middleSut.Childs.Add(Substitute.ForPartsOf<BaseCoreElement>(innerTag));
+            var outerSut = new Mock<BaseCoreElement>(outerTag){CallBase = true}.Object;
+            var middleSut = new Mock<BaseCoreElement>(middleTag){CallBase = true}.Object;
+            middleSut.Childs.Add(new Mock<BaseCoreElement>(innerTag){CallBase = true}.Object);
             outerSut.Childs.Add(middleSut);
 
-            outerSut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}><{1}><{2} /></{1}></{0}>", outerTag, middleTag, innerTag));
+            outerSut.ToString().ShouldBe(string.Format(@"<{0}><{1}><{2} /></{1}></{0}>", outerTag, middleTag, innerTag));
         }
     }
 }

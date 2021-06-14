@@ -12,25 +12,25 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class ProjectedFieldsTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareCgProjectedFieldsReturnsAProjectedFieldsTagWithNoAttributes()
         {
             var sut = CG.ProjectedFields();
-            sut.ToString().Should().BeEquivalentTo(@"<ProjectedFields />");
+            sut.ToString().ShouldBe(@"<ProjectedFields />");
         }
 
-        [Test]
+        [Fact]
         public void AddFieldReturnsAProjectedFieldsTagWithAField()
         {
             var name = Fixture.Create<string>();
@@ -41,7 +41,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new ProjectedFields();
             sut.AddField(name, type, list, showField);
 
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<ProjectedFields><Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" /></ProjectedFields>", name, type, list, showField));
+            sut.ToString().ShouldBe(string.Format(@"<ProjectedFields><Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" /></ProjectedFields>", name, type, list, showField));
         }
     }
 }
