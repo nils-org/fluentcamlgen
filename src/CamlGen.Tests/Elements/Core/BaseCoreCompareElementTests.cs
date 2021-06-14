@@ -10,55 +10,55 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class BaseCoreCompareElementTests : TestBase
     {
-        [Test]
+        [Fact]
         public void EmptyEq()
         {
             var sut = CG.Eq();
-            sut.ToString().Should().Be(@"<Eq />");
+            sut.ToString().ShouldBe(@"<Eq />");
         }
 
-        [Test]
+        [Fact]
         public void EmptyNeq()
         {
             var sut = CG.Neq();
-            sut.ToString().Should().Be(@"<Neq />");
+            sut.ToString().ShouldBe(@"<Neq />");
         }
 
-        [Test]
+        [Fact]
         public void EmptyGt()
         {
             var sut = CG.Gt();
-            sut.ToString().Should().Be(@"<Gt />");
+            sut.ToString().ShouldBe(@"<Gt />");
         }
 
-        [Test]
+        [Fact]
         public void EmptyGeq()
         {
             var sut = CG.Geq();
-            sut.ToString().Should().Be(@"<Geq />");
+            sut.ToString().ShouldBe(@"<Geq />");
         }
 
-        [Test]
+        [Fact]
         public void EmptyLt()
         {
             var sut = CG.Lt();
-            sut.ToString().Should().Be(@"<Lt />");
+            sut.ToString().ShouldBe(@"<Lt />");
         }
 
-        [Test]
+        [Fact]
         public void EmptyLeq()
         {
             var sut = CG.Leq();
-            sut.ToString().Should().Be(@"<Leq />");
+            sut.ToString().ShouldBe(@"<Leq />");
         }
     }
 }

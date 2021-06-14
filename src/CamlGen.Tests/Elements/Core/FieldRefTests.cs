@@ -12,33 +12,33 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
-using NUnit.Framework;
+using Xunit;
 
 using System;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class FieldRefTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareFieldRefReturnsAFieldRefTagWithANameAttributes()
         {
             var name = Fixture.Create<string>();
             var sut = CG.FieldRef(name);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" />", name));
+            sut.ToString().ShouldBe(string.Format(@"<FieldRef Name=""{0}"" />", name));
         }
 
-        [Test]
+        [Fact]
         public void BareFieldRefWithAdditionalAttributesReturnsAFieldRefTagWithANameAndAdditionalAttributes()
         {
             var name = Fixture.Create<string>();
             var additionalName = Fixture.Create<string>();
             var additionalValue = Fixture.Create<string>();
             var sut = CG.FieldRef(name, new Tuple<string, string>(additionalName, additionalValue));
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<FieldRef Name=""{0}"" {1}=""{2}"" />", name, additionalName, additionalValue));
+            sut.ToString().ShouldBe(string.Format(@"<FieldRef Name=""{0}"" {1}=""{2}"" />", name, additionalName, additionalValue));
         }
     }
 }

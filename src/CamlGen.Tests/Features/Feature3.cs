@@ -11,14 +11,11 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
 using AutoFixture;
-
-using FluentAssertions;
-
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Features
 {
-    [TestFixture]
     public class Feature3 : TestBase
     {
         private const string Snippet = @"
@@ -39,8 +36,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
     </And>
 </And>
 ";
-
-        [Test]
+        [Fact]
         public void GenerateASnippetTheOldWay()
         {
             var year = Fixture.Create<int>();
@@ -56,10 +52,10 @@ namespace FluentCamlGen.CamlGen.Test.Features
                         CG.Lt(CG.FieldRef("CalendarWeek"), CG.NumberValue(end))
                         )
                     );
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected.AsXml());
+            sut.ToString().AsXml().ShouldBe(expected.AsXml());
         }
 
-        [Test]
+        [Fact]
         public void GenerateASnippetNewFluentWay()
         {
             var year = Fixture.Create<int>();
@@ -74,7 +70,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                     .Geq(geq => geq.AddFieldRef("CalendarWeek").AddNumberValue(start))
                     .Lt(lt => lt.AddFieldRef("CalendarWeek").AddNumberValue(end)));
 
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected.AsXml());
+            sut.ToString().AsXml().ShouldBe(expected.AsXml());
         }
     }
 }

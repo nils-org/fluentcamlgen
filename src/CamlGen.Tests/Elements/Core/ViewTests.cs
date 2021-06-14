@@ -10,69 +10,69 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NUnit.Framework;
+using Xunit;
 
 using System.Linq;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class ViewTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareCgViewReturnsAViewTagWithNoAttributes()
         {
             var sut = CG.View();
-            sut.ToString().Should().BeEquivalentTo(@"<View />");
+            sut.ToString().ShouldBe(@"<View />");
         }
 
-        [Test]
+        [Fact]
         public void JoinsOnViewReturnsAViewTagWithJoins()
         {
             var sut = new View(Enumerable.Empty<BaseCoreElement>());
             sut.Joins(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<View><Joins /></View>");
+            sut.ToString().ShouldBe(@"<View><Joins /></View>");
         }
 
-        [Test]
+        [Fact]
         public void ProjectedFieldsOnViewReturnsAViewTagWithProjectedFields()
         {
             var sut = new View(Enumerable.Empty<BaseCoreElement>());
             sut.ProjectedFields(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<View><ProjectedFields /></View>");
+            sut.ToString().ShouldBe(@"<View><ProjectedFields /></View>");
         }
 
-        [Test]
+        [Fact]
         public void QueryOnViewReturnsAViewTagWithQuery()
         {
             var sut = new View(Enumerable.Empty<BaseCoreElement>());
             sut.Query();
 
-            sut.ToString().Should().BeEquivalentTo(@"<View><Query /></View>");
+            sut.ToString().ShouldBe(@"<View><Query /></View>");
         }
 
-        [Test]
+        [Fact]
         public void QueryOptionsOnViewReturnsAViewTagWithQueryOptions()
         {
             var sut = new View(Enumerable.Empty<BaseCoreElement>());
             sut.QueryOptions(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<View><QueryOptions /></View>");
+            sut.ToString().ShouldBe(@"<View><QueryOptions /></View>");
         }
 
-        [Test]
+        [Fact]
         public void ViewFieldsOnViewReturnsAViewTagWithViewFields()
         {
             var sut = new View(Enumerable.Empty<BaseCoreElement>());
             sut.ViewFields(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<View><ViewFields /></View>");
+            sut.ToString().ShouldBe(@"<View><ViewFields /></View>");
         }
     }
 }

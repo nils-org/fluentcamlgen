@@ -10,25 +10,25 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Value
 {
-    [TestFixture]
+    
     public class ExpandUserFieldTests : TestBase
     {
-        [Test]
+        [Fact]
         public void ExpandUserFieldsWithATrueValueReturnsTrue()
         {
-            CG.ExpandUserField(true).ToString().Should().Be("<ExpandUserField>True</ExpandUserField>");
+            CG.ExpandUserField(true).ToString().ShouldBe("<ExpandUserField>True</ExpandUserField>");
         }
 
-        [Test]
+        [Fact]
         public void ExpandUserFieldsWithAFalseValueReturnsFalse()
         {
-            CG.ExpandUserField(false).ToString().Should().Be("<ExpandUserField>False</ExpandUserField>");
+            CG.ExpandUserField(false).ToString().ShouldBe("<ExpandUserField>False</ExpandUserField>");
         }
     }
 }

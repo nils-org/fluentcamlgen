@@ -12,16 +12,15 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test
 {
     public class TestBase
     {
-        protected Fixture Fixture { get; private set; }
+        protected Fixture Fixture { get; }
 
-        [SetUp]
-        public void SetUp()
+        protected TestBase()
         {
             Fixture = new Fixture();
             Fixture.Customize(new TestCgCustomization());

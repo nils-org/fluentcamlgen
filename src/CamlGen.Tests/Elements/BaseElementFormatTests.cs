@@ -12,60 +12,67 @@ WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements;
+using Moq;
 
-using NSubstitute;
-
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements
 {
-    [TestFixture]
+    
     public class BaseElementFormatTests : TestBase
     {
         private BaseElement _cgPartial;
+        private Mock<BaseElement> _cgPartialMock;
 
-        [SetUp]
-        public void Setup()
+        public BaseElementFormatTests()
         {
-            _cgPartial = Substitute.ForPartsOf<BaseElement>();
+            _cgPartialMock = new Mock<BaseElement>
+            {
+                CallBase = true
+            };
+            _cgPartial = _cgPartialMock.Object;
         }
 
-        [Test]
+        [Fact]
         public void ToStringWithoutParamsCallsTheRealToStringWithTwoParams()
         {
             var expected = Fixture.Create<string>();
-            _cgPartial.ToString(Arg.Any<bool>(), Arg.Any<int>()).Returns(expected);
+            _cgPartialMock.Setup(x => 
+                x.ToString(It.IsAny<bool>(), It.IsAny<int>()))
+                .Returns(expected);
 
             var actual = _cgPartial.ToString();
 
-            actual.Should().BeEquivalentTo(expected);
+            actual.ShouldBe(expected);
         }
 
-        [Test]
+        [Fact]
         public void ToStringWithOneParamCallsTheRealToStringWithTwoParams()
         {
             var someBool = Fixture.Create<bool>();
             var expected = Fixture.Create<string>();
-            _cgPartial.ToString(Arg.Any<bool>(), Arg.Any<int>()).Returns(expected);
+            _cgPartialMock.Setup(x => 
+                x.ToString(It.IsAny<bool>(), It.IsAny<int>()))
+                .Returns(expected);
 
             var actual = _cgPartial.ToString(someBool);
 
-            actual.Should().BeEquivalentTo(expected);
+            actual.ShouldBe(expected);
         }
 
-        [Test]
+        [Fact]
         public void ToStringWithoutParamsCallsToStringWithoutFormattingAndNoIndent()
         {
             // ReSharper disable ReturnValueOfPureMethodIsNotUsed
             _cgPartial.ToString();
             // ReSharper restore ReturnValueOfPureMethodIsNotUsed
-            _cgPartial.Received(1).ToString(false, 0);
+            _cgPartialMock.Verify(x => x.ToString(false, 0), Times.Once);
         }
 
-        [Test]
+        [Fact]
         public void ToStringWithOneParamsCallsToStringWithThatParamAndNoIndent()
         {
             var someBool = Fixture.Create<bool>();
@@ -74,7 +81,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements
             _cgPartial.ToString(someBool);
             // ReSharper restore ReturnValueOfPureMethodIsNotUsed
 
-            _cgPartial.Received(1).ToString(someBool, 0);
+            _cgPartialMock.Verify(x => x.ToString(someBool, 0), Times.Once);
         }
     }
 }

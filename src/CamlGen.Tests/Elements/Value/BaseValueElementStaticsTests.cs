@@ -10,22 +10,22 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Value;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Value
 {
-    [TestFixture]
+    
     public class BaseValueElementStaticsTests : TestBase
     {
-        [Test]
+        [Fact]
         public void GetValueForBoolReturnsTheCorrectWords()
         {
-            BaseValueElement.GetValue(true).Should().Be("True");
-            BaseValueElement.GetValue(false).Should().Be("False");
+            BaseValueElement.GetValue(true).ShouldBe("True");
+            BaseValueElement.GetValue(false).ShouldBe("False");
         }
     }
 }

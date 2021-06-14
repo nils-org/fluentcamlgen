@@ -10,94 +10,92 @@ EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 ***/
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
-
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
     public class AndTests : TestBase
     {
-        [Test]
+        [Fact]
         public void SimpleAndReturnsEmptyAndTag()
         {
             var sut = CG.And();
-            sut.ToString().Should().BeEquivalentTo(@"<And />");
+            sut.ToString().ShouldBe(@"<And />");
         }
 
-        [Test]
+        [Fact]
         public void EqOnAndReturnsAnEqTagInAnAndTag()
         {
             var sut = new And();
             sut.Eq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Eq /></And>");
+            sut.ToString().ShouldBe(@"<And><Eq /></And>");
         }
 
-        [Test]
+        [Fact]
         public void NeqOnAndReturnsAnNeqTagInAnAndTag()
         {
             var sut = new And();
             sut.Neq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Neq /></And>");
+            sut.ToString().ShouldBe(@"<And><Neq /></And>");
         }
 
-        [Test]
+        [Fact]
         public void GeqOnAndReturnsAnGeqTagInAnAndTag()
         {
             var sut = new And();
             sut.Geq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Geq /></And>");
+            sut.ToString().ShouldBe(@"<And><Geq /></And>");
         }
 
-        [Test]
+        [Fact]
         public void GtOnAndReturnsAnGtTagInAnAndTag()
         {
             var sut = new And();
             sut.Gt();
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Gt /></And>");
+            sut.ToString().ShouldBe(@"<And><Gt /></And>");
         }
 
-        [Test]
+        [Fact]
         public void LeqOnAndReturnsAnLeqTagInAnAndTag()
         {
             var sut = new And();
             sut.Leq();
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Leq /></And>");
+            sut.ToString().ShouldBe(@"<And><Leq /></And>");
         }
 
-        [Test]
+        [Fact]
         public void LtOnAndReturnsAnLtTagInAnAndTag()
         {
             var sut = new And();
             sut.Lt();
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Lt /></And>");
+            sut.ToString().ShouldBe(@"<And><Lt /></And>");
         }
 
-        [Test]
+        [Fact]
         public void OrOnAndReturnsAnOrTagInAnAndTag()
         {
             var sut = new And();
             sut.Or(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><Or /></And>");
+            sut.ToString().ShouldBe(@"<And><Or /></And>");
         }
 
-        [Test]
+        [Fact]
         public void NestedAndOnAndReturnsAnAndTagInAnAndTag()
         {
             var sut = new And();
             sut.And(x => { });
 
-            sut.ToString().Should().BeEquivalentTo(@"<And><And /></And>");
+            sut.ToString().ShouldBe(@"<And><And /></And>");
         }
     }
 }
