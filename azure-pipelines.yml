@@ -19,7 +19,7 @@ steps:
     packageType: 'sdk'
     version: '3.1.x'
 
-- task: Cache@2
+- task: Cache@2.198.0
   inputs:
     key: '"$(Agent.OS)" | recipe.cake'
     path: 'tools'
