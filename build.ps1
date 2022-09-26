@@ -1,5 +1,3 @@
-$ErrorActionPreference = 'Stop'
-
 function Run([string[]]$arguments) {
 	$cmd = @("& dotnet")
 	$cmd += $arguments
