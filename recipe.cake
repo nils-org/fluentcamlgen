@@ -10,7 +10,6 @@ BuildParameters.SetParameters(
   masterBranchName: "main",
   repositoryOwner: "nils-org",
   repositoryName: "fluentcamlgen",
-  shouldRunDupFinder: false, // for now...
   shouldRunCodecov: true,
   shouldRunDotNetCorePack: true);
 
