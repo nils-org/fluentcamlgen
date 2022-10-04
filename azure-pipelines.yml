@@ -12,7 +12,7 @@ pool:
 #- group: nils-org-main
 
 steps:
-- task: NuGetToolInstaller@1
+- task: NuGetToolInstaller@1.208.1
 
 - task: UseDotNet@2.207.2
   inputs:
