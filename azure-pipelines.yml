@@ -32,7 +32,7 @@ steps:
     Bootstrap: true
     Version: '0.38.4'
 
-- task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1.211.0
   inputs:
     PathtoPublish: 'BuildArtifacts\Packages\NuGet'
     ArtifactName: 'drop'
