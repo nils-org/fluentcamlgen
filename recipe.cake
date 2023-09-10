@@ -11,7 +11,9 @@ BuildParameters.SetParameters(
   repositoryOwner: "nils-org",
   repositoryName: "fluentcamlgen",
   shouldRunCodecov: true,
-  shouldRunDotNetCorePack: true);
+  shouldRunDotNetCorePack: true,
+  preferredBuildProviderType: BuildProviderType.GitHubActions,
+  preferredBuildAgentOperatingSystem: PlatformFamily.Linux);
 
 BuildParameters.PrintParameters(Context);
 
