@@ -11,6 +11,9 @@ jobs:
   analyze:
     name: Analyze
     runs-on: windows-latest
+    # currently SonarCloud does not support running PR analysis on external PRs.
+    # vote for it here: https://portal.productboard.com/sonarsource/1-sonarcloud/c/50-sonarcloud-analyzes-external-pull-request?utm_medium=social&utm_source=portal_share
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
 
     steps:
     - name: Checkout repository
