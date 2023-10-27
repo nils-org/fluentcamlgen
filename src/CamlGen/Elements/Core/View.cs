@@ -100,10 +100,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// Add a RowLimit to this View
         /// </summary>
         /// <param name="rowLimit"></param>
-        /// <returns></returns>
-        public View RowLimit(int rowLimit)
+        /// <returns>Fluent <see cref="View"/></returns>
+        public View RowLimit(int rowLimit, bool? paged = null)
         {
-            var child = new RowLimit(rowLimit);
+            var child = new RowLimit(rowLimit, paged);
             Childs.Add(child);
             return this;
         }
