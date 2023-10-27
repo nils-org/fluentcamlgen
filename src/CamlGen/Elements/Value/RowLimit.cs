@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using System;
 using System.Globalization;
@@ -22,8 +22,8 @@ namespace FluentCamlGen.CamlGen.Elements.Value
         {
             if (paged.HasValue)
             {
-                var val = paged.Value ? "TRUE" : "FALSE";
-                Attributes.Add(new Tuple<string, string>("Paged", val)); 
+                var val = GetValue(paged.Value);
+                Attributes.Add(new Tuple<string, string>("Paged", val));
             }
         }
     }

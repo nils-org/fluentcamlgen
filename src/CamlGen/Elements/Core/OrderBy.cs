@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,13 +8,13 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// Create &lt;OrderBy>... &lt;/OrderBy>
-    /// <see href="http://msdn.microsoft.com/en-us/library/office/ms467378.aspx"/>
+    /// Create &lt;OrderBy>... &lt;/OrderBy>.
+    /// <seealso href="https://learn.microsoft.com/en-us/sharepoint/dev/schema/orderby-element-query"/>
     /// </summary>
     public class OrderBy : BaseCoreElement
     {
@@ -24,11 +24,11 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add a FieldRef
+        /// Add a FieldRef.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="ascending">true, for ascending</param>
-        /// <returns>Fluent <see cref="OrderBy"/></returns>
+        /// <param name="name">Name of the field.</param>
+        /// <param name="ascending">true, for ascending.</param>
+        /// <returns>Fluent <see cref="OrderBy"/>.</returns>
         public OrderBy AddFieldRef(string name, bool ascending)
         {
             var field = new FieldRef(name);
@@ -38,20 +38,20 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add a FieldRef
+        /// Add a FieldRef.
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns>Fluent <see cref="OrderBy"/></returns>
+        /// <param name="name">Name of the field.</param>
+        /// <returns>Fluent <see cref="OrderBy"/>.</returns>
         public OrderBy AddFieldRefDescending(string name)
         {
             return AddFieldRef(name, false);
         }
 
         /// <summary>
-        /// Add a FieldRef
+        /// Add a FieldRef.
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns>Fluent <see cref="OrderBy"/></returns>
+        /// <param name="name">Name of the field.</param>
+        /// <returns>Fluent <see cref="OrderBy"/>.</returns>
         public OrderBy AddFieldRefAscending(string name)
         {
             return AddFieldRef(name, true);

@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// Create &lt;ViewFields> ... &lt;/ViewFields>
+    /// Create &lt;ViewFields> ... &lt;/ViewFields>.
     /// </summary>
     public class ViewFields : BaseCoreElement
     {
@@ -31,18 +31,21 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add a FieldRef
+        /// Add a FieldRef.
         /// </summary>
-        /// <returns>Fluent <see cref="ViewFields"/></returns>
+        /// <param name="name">The name of the field.</param>
+        /// <returns>Fluent <see cref="ViewFields"/>.</returns>
         public ViewFields AddFieldRef(string name)
         {
             return AddFieldRef(name, x => { });
         }
 
         /// <summary>
-        /// Add a FieldRef
+        /// Add a FieldRef.
         /// </summary>
-        /// <returns>Fluent <see cref="ViewFields"/></returns>
+        /// <param name="name">The name of the field.</param>
+        /// <param name="fieldRefAction">Fluent configuration of the <see cref="FieldRef"/>.</param>
+        /// <returns>Fluent <see cref="ViewFields"/>.</returns>
         public ViewFields AddFieldRef(string name, Action<FieldRef> fieldRefAction)
         {
             var fieldRef = new FieldRef(name);

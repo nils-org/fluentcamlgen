@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -31,7 +31,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var rhs = Fixture.Create<BaseCoreElement>();
 
             var sut = CG.Join(list, CG.JoinType.Inner, lhs, rhs);
-            sut.ToString().ShouldBe(string.Format(@"<Join Type=""INNER"" ListAlias=""{0}""><Eq>{1}{2}</Eq></Join>", list, lhs, rhs));
+            sut.ToString().ShouldBe($@"<Join Type=""INNER"" ListAlias=""{list}""><Eq>{lhs}{rhs}</Eq></Join>");
         }
 
         [Fact]
@@ -62,7 +62,8 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new Join(list, CG.JoinType.Left);
             sut.AddFieldRef(field, x => { });
 
-            sut.ToString().ShouldBe(string.Format(@"<Join Type=""LEFT"" ListAlias=""{0}""><Eq><FieldRef Name=""{1}"" /></Eq></Join>", list, field));
+            sut.ToString().ShouldBe(
+                $@"<Join Type=""LEFT"" ListAlias=""{list}""><Eq><FieldRef Name=""{field}"" /></Eq></Join>");
         }
     }
 }

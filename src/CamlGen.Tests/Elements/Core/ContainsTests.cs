@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -29,7 +29,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var lhs = Fixture.Create<BaseCoreElement>();
             var rhs = Fixture.Create<BaseCoreElement>();
             var sut = CG.Contains(lhs, rhs);
-            sut.ToString().ShouldBe(string.Format(@"<Contains>{0}{1}</Contains>", lhs, rhs));
+            sut.ToString().ShouldBe($@"<Contains>{lhs}{rhs}</Contains>");
         }
 
         [Fact]
@@ -41,7 +41,8 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             sut.AddFieldRef(field);
             sut.AddValue(CG.ValueType.Text, value);
 
-            sut.ToString().ShouldBe(string.Format(@"<Contains><FieldRef Name=""{0}"" /><Value Type=""Text"">{1}</Value></Contains>", field, value));
+            sut.ToString().ShouldBe(
+                $@"<Contains><FieldRef Name=""{field}"" /><Value Type=""Text"">{value}</Value></Contains>");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -28,7 +28,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var name = Fixture.Create<string>();
             var sut = CG.FieldRef(name);
-            sut.ToString().ShouldBe(string.Format(@"<FieldRef Name=""{0}"" />", name));
+            sut.ToString().ShouldBe($@"<FieldRef Name=""{name}"" />");
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var additionalName = Fixture.Create<string>();
             var additionalValue = Fixture.Create<string>();
             var sut = CG.FieldRef(name, new Tuple<string, string>(additionalName, additionalValue));
-            sut.ToString().ShouldBe(string.Format(@"<FieldRef Name=""{0}"" {1}=""{2}"" />", name, additionalName, additionalValue));
+            sut.ToString().ShouldBe($@"<FieldRef Name=""{name}"" {additionalName}=""{additionalValue}"" />");
         }
     }
 }

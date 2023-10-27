@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using Shouldly;
 using Xunit;
@@ -16,7 +16,8 @@ using Xunit;
 namespace FluentCamlGen.CamlGen.Test.Features
 {
     /// <summary>
-    /// 1. Ensure that a join to the "User Information List" is possible, see http://social.msdn.microsoft.com/Forums/de-DE/e5d607fe-b437-4a67-ad9c-5cc5a8284a66/csom-javascript-inner-join-caml-query-on-user-information-list?forum=sharepointdevelopment
+    /// 1. Ensure that a join to the "User Information List" is possible,
+    /// see http://social.msdn.microsoft.com/Forums/de-DE/e5d607fe-b437-4a67-ad9c-5cc5a8284a66/csom-javascript-inner-join-caml-query-on-user-information-list?forum=sharepointdevelopment
     /// </summary>
     public class Feature1
     {

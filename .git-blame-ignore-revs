@@ -1,0 +1,5 @@
+# switch from string.format to string expansion
+4d2bbd41b883aa1e2628b5bd49ffd07029406773
+
+# Reformatted and loads of "add period (.) at the end of documentation"
+2dede87f3492fed0374f89da7302d1349ca3e680

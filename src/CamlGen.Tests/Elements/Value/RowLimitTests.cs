@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -29,7 +29,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var limit = Fixture.Create<int>();
             var sut = new RowLimit(limit, null);
 
-            sut.ToString().ShouldBe(string.Format("<RowLimit>{0}</RowLimit>", limit));
+            sut.ToString().ShouldBe($"<RowLimit>{limit}</RowLimit>");
         }
         
         [Fact]
@@ -38,7 +38,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var limit = Fixture.Create<int>();
             var sut = new RowLimit(limit, true);
 
-            sut.ToString().ShouldBe(string.Format("<RowLimit Paged=\"TRUE\">{0}</RowLimit>", limit));
+            sut.ToString().ShouldBe($"<RowLimit Paged=\"True\">{limit}</RowLimit>");
         }
         
         [Fact]
@@ -47,7 +47,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var limit = Fixture.Create<int>();
             var sut = new RowLimit(limit, false);
 
-            sut.ToString().ShouldBe(string.Format("<RowLimit Paged=\"FALSE\">{0}</RowLimit>", limit));
+            sut.ToString().ShouldBe($"<RowLimit Paged=\"False\">{limit}</RowLimit>");
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
             var limit = Fixture.Create<int>();
             var sut = CG.View().RowLimit(limit);
 
-            sut.ToString().ShouldBe(string.Format("<View><RowLimit>{0}</RowLimit></View>", limit));
+            sut.ToString().ShouldBe($"<View><RowLimit>{limit}</RowLimit></View>");
         }
     }
 }

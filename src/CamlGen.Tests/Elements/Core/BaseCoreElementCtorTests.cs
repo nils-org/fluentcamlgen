@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -32,7 +32,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var tag = Fixture.Create<string>();
             var sut = new Mock<BaseCoreElement>(tag){CallBase = true}.Object;
             var actual = sut.ToString(false, 0);
-            actual.ShouldBe(string.Format(@"<{0} />", tag));
+            actual.ShouldBe($@"<{tag} />");
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var attrVal = Fixture.Create<string>();
 
             var sut = new Mock<BaseCoreElement>(tag, new Tuple<string, string>(attrName, attrVal)){CallBase = true}.Object;
-            sut.ToString().ShouldBe(string.Format(@"<{0} {1}=""{2}"" />", tag, attrName, attrVal));
+            sut.ToString().ShouldBe($@"<{tag} {attrName}=""{attrVal}"" />");
         }
 
         [Fact]

@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,23 +8,24 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
-
-using FluentCamlGen.CamlGen.Elements.Core;
+*/
 
 using System;
+using FluentCamlGen.CamlGen.Elements.Core;
 
 namespace FluentCamlGen.CamlGen
 {
     /// <summary>
-    ///
+    /// Nice Extensions to work on ComparingGroup-Elements.
     /// </summary>
     public static class BaseCoreComparingGroupElementExtensions
     {
         /// <summary>
-        /// Add an &lt;Eq>-Tag
+        /// Add an &lt;Eq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Eq<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -32,9 +33,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add an &lt;Eq>-Tag
+        /// Add an &lt;Eq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Eq"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Eq<T>(this T parent, Action<Eq> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -45,9 +49,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Neq>-Tag
+        /// Add a &lt;Neq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Neq<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -55,9 +61,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Neq>-Tag
+        /// Add a &lt;Neq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Neq"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Neq<T>(this T parent, Action<Neq> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -68,9 +77,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Gt>-Tag
+        /// Add a &lt;Gt>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Gt<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -78,9 +89,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Gt>-Tag
+        /// Add a &lt;Gt>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Gt"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Gt<T>(this T parent, Action<Gt> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -91,9 +105,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Geq>-Tag
+        /// Add a &lt;Geq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Geq<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -101,9 +117,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Geq>-Tag
+        /// Add a &lt;Geq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Geq"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Geq<T>(this T parent, Action<Geq> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -114,9 +133,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Lt>-Tag
+        /// Add a &lt;Lt>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Lt<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -124,9 +145,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Lt>-Tag
+        /// Add a &lt;Lt>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Lt"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Lt<T>(this T parent, Action<Lt> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -137,9 +161,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Leq>-Tag
+        /// Add a &lt;Leq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Leq<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -147,9 +173,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Leq>-Tag
+        /// Add a &lt;Leq>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Leq"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Leq<T>(this T parent, Action<Leq> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -160,9 +189,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add an &lt;And>-Tag
+        /// Add an &lt;And>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T And<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -170,9 +201,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add an &lt;And>-Tag
+        /// Add an &lt;And>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="And"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T And<T>(this T parent, Action<And> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -183,9 +217,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a nested &lt;Or>-Tag
+        /// Add a nested &lt;Or>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Or<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -193,9 +229,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a nested &lt;Or>-Tag
+        /// Add a nested &lt;Or>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Or"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Or<T>(this T parent, Action<Or> action)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -206,9 +245,11 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add an &lt;Contains>-Tag
+        /// Add an &lt;Contains>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Contains<T>(this T parent)
             where T : BaseCoreComparingGroupElement<T>
         {
@@ -216,9 +257,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add an &lt;Contains>-Tag
+        /// Add an &lt;Contains>-Tag.
         /// </summary>
-        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/></returns>
+        /// <param name="parent">The extended <see cref="BaseCoreComparingGroupElement"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Contains"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns><see cref="BaseCoreComparingGroupElement{T}"/>.</returns>
         public static T Contains<T>(this T parent, Action<Contains> action)
             where T : BaseCoreComparingGroupElement<T>
         {

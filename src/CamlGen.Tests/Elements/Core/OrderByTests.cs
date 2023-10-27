@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -32,7 +32,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var name = Fixture.Create<string>();
             var sut = CG.OrderBy().AddFieldRefDescending(name);
-            var expected = string.Format(@"<OrderBy><FieldRef Name=""{0}"" Ascending=""FALSE"" /></OrderBy>", name).AsXml();
+            var expected = $@"<OrderBy><FieldRef Name=""{name}"" Ascending=""FALSE"" /></OrderBy>".AsXml();
             sut.ToString().AsXml().ShouldBe(expected);
         }
 
@@ -41,7 +41,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var name = Fixture.Create<string>();
             var sut = CG.OrderBy().AddFieldRefAscending(name);
-            var expected = string.Format(@"<OrderBy><FieldRef Name=""{0}"" Ascending=""TRUE"" /></OrderBy>", name).AsXml();
+            var expected = $@"<OrderBy><FieldRef Name=""{name}"" Ascending=""TRUE"" /></OrderBy>".AsXml();
             sut.ToString().AsXml().ShouldBe(expected);
         }
 
@@ -50,7 +50,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
         {
             var name = Fixture.Create<string>();
             var sut = CG.Query().OrderBy(o => o.AddFieldRef(name, false));
-            var expected = string.Format(@"<Query><OrderBy><FieldRef Name=""{0}"" Ascending=""FALSE"" /></OrderBy></Query>", name).AsXml();
+            var expected = $@"<Query><OrderBy><FieldRef Name=""{name}"" Ascending=""FALSE"" /></OrderBy></Query>".AsXml();
             sut.ToString().AsXml().ShouldBe(expected);
         }
     }

@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -41,7 +41,8 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new ProjectedFields();
             sut.AddField(name, type, list, showField);
 
-            sut.ToString().ShouldBe(string.Format(@"<ProjectedFields><Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" /></ProjectedFields>", name, type, list, showField));
+            sut.ToString().ShouldBe(
+                $@"<ProjectedFields><Field Name=""{name}"" Type=""{type}"" List=""{list}"" ShowField=""{showField}"" /></ProjectedFields>");
         }
     }
 }

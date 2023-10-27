@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
@@ -43,7 +43,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var list = Fixture.Create<string>();
             var sut = new Joins();
             sut.AddJoin(list, CG.JoinType.Left, x => { });
-            sut.ToString().ShouldBe(string.Format(@"<Joins><Join Type=""LEFT"" ListAlias=""{0}""><Eq /></Join></Joins>", list));
+            sut.ToString().ShouldBe($@"<Joins><Join Type=""LEFT"" ListAlias=""{list}""><Eq /></Join></Joins>");
         }
 
         [Fact]
