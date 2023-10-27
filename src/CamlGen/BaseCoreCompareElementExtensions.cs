@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,26 +8,26 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
-
-using FluentCamlGen.CamlGen.Elements.Core;
-using FluentCamlGen.CamlGen.Elements.Value;
+*/
 
 using System;
+using FluentCamlGen.CamlGen.Elements.Core;
+using FluentCamlGen.CamlGen.Elements.Value;
 
 namespace FluentCamlGen.CamlGen
 {
     /// <summary>
-    /// Nice Extensions to work on Compare-Elements
+    /// Nice Extensions to work on Compare-Elements.
     /// </summary>
     public static class BaseCoreCompareElementExtensions
     {
         /// <summary>
-        /// Add a &lt;FieldRef>-Attribute
+        /// Add a &lt;FieldRef>-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="name">The name of the field.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddFieldRef<T>(this T @this, string name)
             where T : BaseCoreCompareElement<T>
         {
@@ -35,12 +35,13 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;FieldRef>-Attribute
+        /// Add a &lt;FieldRef>-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="name"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="name">The name of the field.</param>
+        /// <param name="action">Fluent configuration of the <see cref="FieldRef"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddFieldRef<T>(this T @this, string name, Action<FieldRef> action)
             where T : BaseCoreCompareElement<T>
         {
@@ -51,12 +52,13 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Value>-Attribute
+        /// Add a &lt;Value>-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="type"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="type">A <see cref="CG.ValueType"/>.</param>
+        /// <param name="value">The value.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddValue<T>(this T @this, CG.ValueType type, string value)
             where T : BaseCoreCompareElement<T>
         {
@@ -64,13 +66,14 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Value>-Attribute
+        /// Add a &lt;Value>-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="type"></param>
-        /// <param name="value"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="type">A <see cref="CG.ValueType"/>.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Value"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddValue<T>(this T @this, CG.ValueType type, string value, Action<Value> action)
             where T : BaseCoreCompareElement<T>
         {
@@ -81,11 +84,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Value Type="Number">-Attribute
+        /// Add a &lt;Value Type="Number">-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="value">The value.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddNumberValue<T>(this T @this, double value)
             where T : BaseCoreCompareElement<T>
         {
@@ -93,12 +97,13 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Value Type="Number">-Attribute
+        /// Add a &lt;Value Type="Number">-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="value"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Value"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddNumberValue<T>(this T @this, double value, Action<Value> action)
             where T : BaseCoreCompareElement<T>
         {
@@ -109,11 +114,12 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Value Type="Boolean">-Attribute
+        /// Add a &lt;Value Type="Boolean">-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="value">The value.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddBooleanValue<T>(this T @this, bool value)
             where T : BaseCoreCompareElement<T>
         {
@@ -121,12 +127,13 @@ namespace FluentCamlGen.CamlGen
         }
 
         /// <summary>
-        /// Add a &lt;Value Type="Boolean">-Attribute
+        /// Add a &lt;Value Type="Boolean">-Attribute.
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="value"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
+        /// <param name="this">the extended <see cref="BaseCoreCompareElement"/>.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Value"/>.</param>
+        /// <typeparam name="T">The concrete type that is extended.</typeparam>
+        /// <returns>the extended <see cref="BaseCoreCompareElement"/>, for fluent re-use.</returns>
         public static T AddBooleanValue<T>(this T @this, bool value, Action<Value> action)
             where T : BaseCoreCompareElement<T>
         {

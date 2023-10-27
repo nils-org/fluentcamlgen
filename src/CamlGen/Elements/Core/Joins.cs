@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,8 @@ using System.Collections.Generic;
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// Create &lt;Joins> ... &lt;/Joins>
+    /// Create &lt;Joins> ... &lt;/Joins>.
+    /// <seealso href="https://learn.microsoft.com/en-us/sharepoint/dev/schema/joins-element-view"/>
     /// </summary>
     public class Joins : BaseCoreElement
     {
@@ -31,9 +32,12 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add Join
+        /// Add Join.
         /// </summary>
-        /// <returns>Fluent <see cref="Joins"/></returns>
+        /// <param name="listName">Name of the list to join.</param>
+        /// <param name="type">A <see cref="CG.JoinType"/>.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Join"/>.</param>
+        /// <returns>Fluent <see cref="Joins"/>.</returns>
         public Joins AddJoin(string listName, CG.JoinType type, Action<Join> action)
         {
             var join = new Join(listName, type);
@@ -43,21 +47,26 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add Inner-Join
+        /// Add Inner-Join.
         /// </summary>
-        /// <returns>Fluent <see cref="Joins"/></returns>
-        public Joins AddInnerJoin(string listName, string fieldname)
+        /// <param name="listName">Name of the list to join.</param>
+        /// <param name="fieldName">Name of the field to join on.</param>
+        /// <returns>Fluent <see cref="Joins"/>.</returns>
+        public Joins AddInnerJoin(string listName, string fieldName)
         {
-            return AddInnerJoin(listName, fieldname, x => { });
+            return AddInnerJoin(listName, fieldName, x => { });
         }
 
         /// <summary>
-        /// Add Inner-Join
+        /// Add Inner-Join.
         /// </summary>
-        /// <returns>Fluent <see cref="Joins"/></returns>
-        public Joins AddInnerJoin(string listName, string fieldname, Action<Join> action)
+        /// <param name="listName">Name of the list to join.</param>
+        /// <param name="fieldName">Name of the field to join on.</param>
+        /// <param name="action">Fluent configuration of the <see cref="Join"/>.</param>
+        /// <returns>Fluent <see cref="Joins"/>.</returns>
+        public Joins AddInnerJoin(string listName, string fieldName, Action<Join> action)
         {
-            var join = new Join(listName, CG.JoinType.Inner, fieldname);
+            var join = new Join(listName, CG.JoinType.Inner, fieldName);
             action(join);
             Childs.Add(join);
             return this;
