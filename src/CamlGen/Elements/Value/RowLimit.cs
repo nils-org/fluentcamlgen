@@ -22,8 +22,8 @@ namespace FluentCamlGen.CamlGen.Elements.Value
         {
             if (paged.HasValue)
             {
-                var val = paged.Value ? "TRUE" : "FALSE";
-                Attributes.Add(new Tuple<string, string>("Paged", val)); 
+                var val = GetValue(paged.Value);
+                Attributes.Add(new Tuple<string, string>("Paged", val));
             }
         }
     }
