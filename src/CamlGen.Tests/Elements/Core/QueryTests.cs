@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,39 +8,39 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class QueryTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareCgQueryReturnsAQueryTagWithNoAttributes()
         {
             var sut = CG.Query();
-            sut.ToString().Should().BeEquivalentTo(@"<Query />");
+            sut.ToString().ShouldBe(@"<Query />");
         }
 
-        [Test]
+        [Fact]
         public void AnEmptyQueryReturnsAQueryTagWithNoAttributes()
         {
             var sut = new Query();
-            sut.ToString().Should().BeEquivalentTo(@"<Query />");
+            sut.ToString().ShouldBe(@"<Query />");
         }
 
-        [Test]
+        [Fact]
         public void WhereOnAnQueryReturnsAQueryTagWithANestedWhereTag()
         {
             var sut = new Query();
             sut.Where();
-            sut.ToString().Should().BeEquivalentTo(@"<Query><Where /></Query>");
+            sut.ToString().ShouldBe(@"<Query><Where /></Query>");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,15 +8,13 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
-using FluentAssertions;
-
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Features
 {
-    [TestFixture]
     public class Feature2
     {
         private const string ExpectedXml = @"<View>
@@ -44,7 +42,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
 </QueryOptions>
 </View>";
 
-        [Test]
+        [Fact]
         public void Feature2Passes()
         {
             var expected = ExpectedXml.AsXml();
@@ -66,10 +64,10 @@ namespace FluentCamlGen.CamlGen.Test.Features
                         CG.QueryOptions(
                             CG.ExpandUserField(false)));
 
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
 
-        [Test]
+        [Fact]
         public void Feature2PassesFluently()
         {
             var expected = ExpectedXml.AsXml();
@@ -91,7 +89,7 @@ namespace FluentCamlGen.CamlGen.Test.Features
                         .QueryOptions(qo => qo
                             .ExpandUserField(false));
 
-            sut.ToString().AsXml().Should().BeEquivalentTo(expected);
+            sut.ToString().AsXml().ShouldBe(expected);
         }
     }
 }

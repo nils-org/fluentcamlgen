@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,52 +8,52 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class JoinsTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareJoinsReturnsAJoinsTagWithNoAttributes()
         {
             var sut = CG.Joins();
-            sut.ToString().Should().BeEquivalentTo(@"<Joins />");
+            sut.ToString().ShouldBe(@"<Joins />");
         }
 
-        [Test]
+        [Fact]
         public void EmptyJoinsReturnsAJoinsTagWithNoAttributes()
         {
             var sut = new Joins();
-            sut.ToString().Should().BeEquivalentTo(@"<Joins />");
+            sut.ToString().ShouldBe(@"<Joins />");
         }
 
-        [Test]
+        [Fact]
         public void AddJoinReturnsAJoinsTagWithAJoinAndAnEmptyEqTag()
         {
             var list = Fixture.Create<string>();
             var sut = new Joins();
             sut.AddJoin(list, CG.JoinType.Left, x => { });
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Joins><Join Type=""LEFT"" ListAlias=""{0}""><Eq /></Join></Joins>", list));
+            sut.ToString().ShouldBe($@"<Joins><Join Type=""LEFT"" ListAlias=""{list}""><Eq /></Join></Joins>");
         }
 
-        [Test]
+        [Fact]
         public void AddInnerJoinReturnsAJoinsTagWithAnInnerJoinAndAnEmptyEqTag()
         {
             var list = Fixture.Create<string>();
             var field = Fixture.Create<string>();
             var sut = new Joins();
             sut.AddInnerJoin(list, field);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<Joins><Join Type=""INNER"" ListAlias=""{0}""><Eq><FieldRef Name=""{1}"" RefType=""Id"" /><FieldRef Name=""ID"" List=""{0}"" /></Eq></Join></Joins>", list, field));
+            sut.ToString().ShouldBe(string.Format(@"<Joins><Join Type=""INNER"" ListAlias=""{0}""><Eq><FieldRef Name=""{1}"" RefType=""Id"" /><FieldRef Name=""ID"" List=""{0}"" /></Eq></Join></Joins>", list, field));
         }
     }
 }

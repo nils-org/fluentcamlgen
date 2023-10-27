@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,56 +8,55 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Core;
 
-using NSubstitute;
-
-using NUnit.Framework;
+using Xunit;
 
 using System;
+using Moq;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class BaseCoreElementCtorTests : TestBase
     {
-        [Test]
+        [Fact]
         public void ATagWithoutAdditionalParamsReturnsTheBareTag()
         {
             var tag = Fixture.Create<string>();
-            var sut = Substitute.ForPartsOf<BaseCoreElement>(tag);
+            var sut = new Mock<BaseCoreElement>(tag){CallBase = true}.Object;
             var actual = sut.ToString(false, 0);
-            actual.Should().BeEquivalentTo(string.Format(@"<{0} />", tag));
+            actual.ShouldBe($@"<{tag} />");
         }
 
-        [Test]
+        [Fact]
         public void ATagWithAnAttributeReturnsTheTagAndTheAttribute()
         {
             var tag = Fixture.Create<string>();
             var attrName = Fixture.Create<string>();
             var attrVal = Fixture.Create<string>();
 
-            var sut = Substitute.ForPartsOf<BaseCoreElement>(tag, new Tuple<string, string>(attrName, attrVal));
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"" />", tag, attrName, attrVal));
+            var sut = new Mock<BaseCoreElement>(tag, new Tuple<string, string>(attrName, attrVal)){CallBase = true}.Object;
+            sut.ToString().ShouldBe($@"<{tag} {attrName}=""{attrVal}"" />");
         }
 
-        [Test]
+        [Fact]
         public void ATagWithAnInnerTagReturnsTheTagAndTheNested()
         {
             var tag = Fixture.Create<string>();
             var inner = Fixture.Create<BaseCoreElement>();
 
-            var sut = Substitute.ForPartsOf<BaseCoreElement>(tag, inner);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0}>{1}</{0}>", tag, inner));
+            var sut = new Mock<BaseCoreElement>(tag, inner){CallBase = true}.Object;
+            sut.ToString().ShouldBe(string.Format(@"<{0}>{1}</{0}>", tag, inner));
         }
 
-        [Test]
+        [Fact]
         public void CamlTagAttributeAndInnerCgReturnsTheTagWithAttributeAndTheNestedCg()
         {
             var tag = Fixture.Create<string>();
@@ -67,8 +66,8 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var attrs = new[] { new Tuple<string, string>(attrName, attrVal) };
             var inners = new[] { inner };
 
-            var sut = Substitute.ForPartsOf<BaseCoreElement>(tag, attrs, inners);
-            sut.ToString().Should().BeEquivalentTo(string.Format(@"<{0} {1}=""{2}"">{3}</{0}>", tag, attrName, attrVal, inner));
+            var sut = new Mock<BaseCoreElement>(tag, attrs, inners){CallBase = true}.Object;
+            sut.ToString().ShouldBe(string.Format(@"<{0} {1}=""{2}"">{3}</{0}>", tag, attrName, attrVal, inner));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,17 +8,17 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
-
-using FluentCamlGen.CamlGen.Elements.Value;
+*/
 
 using System;
 using System.Collections.Generic;
+using FluentCamlGen.CamlGen.Elements.Value;
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// Create &lt;View> ... &lt;/View> for ViewXml
+    /// Create &lt;View> ... &lt;/View> for ViewXml.
+    /// <seealso href="https://learn.microsoft.com/en-us/sharepoint/dev/schema/view-schema"/>
     /// </summary>
     public class View : BaseCoreElement
     {
@@ -28,18 +28,19 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add empty Query
+        /// Add empty Query.
         /// </summary>
-        /// <returns>Fluent <see cref="View"/></returns>
+        /// <returns>Fluent <see cref="View"/>.</returns>
         public View Query()
         {
             return Query(x => { });
         }
 
         /// <summary>
-        /// Add Query
+        /// Add Query.
         /// </summary>
-        /// <returns>Fluent <see cref="View"/></returns>
+        /// <param name="action">Fluent configuration of the <see cref="Query"/>.</param>
+        /// <returns>Fluent <see cref="View"/>.</returns>
         public View Query(Action<Query> action)
         {
             var query = new Query();
@@ -49,9 +50,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add ViewFields
+        /// Add ViewFields.
         /// </summary>
-        /// <returns>Fluent <see cref="View"/></returns>
+        /// <param name="action">Fluent configuration of the <see cref="ViewFields"/>.</param>
+        /// <returns>Fluent <see cref="View"/>.</returns>
         public View ViewFields(Action<ViewFields> action)
         {
             var viewFields = new ViewFields();
@@ -61,9 +63,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add ViewFields
+        /// Add ProjectedFields.
         /// </summary>
-        /// <returns>Fluent <see cref="View"/></returns>
+        /// <param name="action">Fluent configuration of the <see cref="ProjectedFields"/>.</param>
+        /// <returns>Fluent <see cref="View"/>.</returns>
         public View ProjectedFields(Action<ProjectedFields> action)
         {
             var viewFields = new ProjectedFields();
@@ -73,9 +76,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add Joins
+        /// Add Joins.
         /// </summary>
-        /// <returns>Fluent <see cref="View"/></returns>
+        /// <param name="action">Fluent configuration of the <see cref="Joins"/>.</param>
+        /// <returns>Fluent <see cref="View"/>.</returns>
         public View Joins(Action<Joins> action)
         {
             var joins = new Joins();
@@ -85,9 +89,10 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add QueryOptions
+        /// Add QueryOptions.
         /// </summary>
-        /// <returns>Fluent <see cref="View"/></returns>
+        /// <param name="action">Fluent configuration of the <see cref="QueryOptions"/>.</param>
+        /// <returns>Fluent <see cref="View"/>.</returns>
         public View QueryOptions(Action<QueryOptions> action)
         {
             var joins = new QueryOptions();
@@ -97,13 +102,14 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         /// <summary>
-        /// Add a RowLimit to this View
+        /// Add a RowLimit to this View.
         /// </summary>
-        /// <param name="rowLimit"></param>
-        /// <returns></returns>
-        public View RowLimit(int rowLimit)
+        /// <param name="rowLimit">The RowLimit.</param>
+        /// <param name="paged">a value that represents the Paged-Attribute, or null to omit it.</param>
+        /// <returns>Fluent <see cref="View"/>.</returns>
+        public View RowLimit(int rowLimit, bool? paged = null)
         {
-            var child = new RowLimit(rowLimit);
+            var child = new RowLimit(rowLimit, paged);
             Childs.Add(child);
             return this;
         }

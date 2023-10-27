@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,15 +8,15 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using System;
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
     /// <summary>
-    /// Create &lt;Join Type="INNER" ListAlias="...">
-    /// <seealso href="http://msdn.microsoft.com/en-us/library/ee535061(v=office.15).aspx"/>
+    /// Create &lt;Join Type="INNER" ListAlias="...">.
+    /// <seealso href="https://learn.microsoft.com/en-us/sharepoint/dev/schema/join-element-view"/>
     /// </summary>
     public class Join : BaseCoreElement
     {
@@ -37,11 +37,14 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         }
 
         internal Join(string listName, CG.JoinType type)
-            : base("Join", new[]
+            : base(
+                "Join",
+                new[]
                 {
                     new Tuple<string, string>("Type", type.ToString()),
-                    new Tuple<string, string>("ListAlias", listName)
-                }, null)
+                    new Tuple<string, string>("ListAlias", listName),
+                },
+                null)
         {
             _innerEq = new Eq();
             Childs.Add(_innerEq);
@@ -50,12 +53,15 @@ namespace FluentCamlGen.CamlGen.Elements.Core
         /// <summary>
         /// Add a &lt;FieldRef>-Attribute
         /// </summary>
+        /// <param name="name">The Field to reference.</param>
+        /// <param name="action">Fluent configuration of the <see cref="FieldRef"/>.</param>
+        /// <returns>Fluent <see cref="Join"/>.</returns>
         public Join AddFieldRef(string name, Action<FieldRef> action)
         {
             _innerEq.AddFieldRef(name, action);
             return this;
         }
 
-        //TODO: AddValue fehlt
+        // TODO: AddValue fehlt
     }
 }

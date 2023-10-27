@@ -14,6 +14,7 @@
     <Authors>Nils Andresen</Authors>
     <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
     <PackageTags>CAML SharePoint generator fluent</PackageTags>
+    <NoWarn>SA1124;SA1309;SA1101;SA1118</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.1|AnyCPU'">
     <OutputPath>bin\Release</OutputPath>
@@ -26,10 +27,13 @@
     <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\resources\GlobalAssemblyInfo.cs" Link="Properties\GlobalAssemblyInfo.cs" />
+    <Compile Include="$(ProjectDir)../../resources/GlobalAssemblyInfo.cs" Link="Properties/GlobalAssemblyInfo.cs" />
+      <AdditionalFiles Include="$(ProjectDir)../stylecop.json" Link="stylecop.json" />
+      <None Include="$(ProjectDir)../.editorconfig" Link=".editorconfig" />
+      <None Include="$(ProjectDir)../../README.md" Link="README.md" PackagePath="" Pack="true" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

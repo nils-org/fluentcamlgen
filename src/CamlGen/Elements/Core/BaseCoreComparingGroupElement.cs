@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,7 +8,7 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 namespace FluentCamlGen.CamlGen.Elements.Core
 {
@@ -16,6 +16,7 @@ namespace FluentCamlGen.CamlGen.Elements.Core
     /// BaseClass for all conainers for comparing elements:
     /// And, Or, Where
     /// </summary>
+    /// <typeparam name="T">Concrete implementing class that inherits from BaseCoreComparingGroupElement.</typeparam>
     public class BaseCoreComparingGroupElement<T> : BaseCoreElement
         where T : BaseCoreComparingGroupElement<T>
     {

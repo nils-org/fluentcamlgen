@@ -1,0 +1,21 @@
+{
+    "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+    "settings": {
+        "indentation": {
+            "indentationSize": 4,
+            "tabSize": 4,
+            "useTabs": false
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "outsideNamespace",
+            "blankLinesBetweenUsingGroups": "allow",
+            "systemUsingDirectivesFirst": true
+        },
+        "documentationRules": {
+            "xmlHeader": false,
+            "copyrightText": "This File is part of FluentCamlGen\n\nThis source is subject to the Microsoft Public License.\nSee http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.\nAll other rights reserved.\n\nTHIS CODE AND INFORMATION IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND,\nEITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.",
+            "documentInternalElements": false,
+            "documentPrivateElements": false
+        }
+    }
+}

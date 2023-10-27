@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,37 +8,55 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
 using FluentCamlGen.CamlGen.Elements.Value;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Value
 {
-    [TestFixture]
+    
     public class RowLimitTests : TestBase
     {
-        [Test]
+        [Fact]
         public void RowLimitWitANumberPrintsTheRowLimit()
         {
             var limit = Fixture.Create<int>();
-            var sut = new RowLimit(limit);
+            var sut = new RowLimit(limit, null);
 
-            sut.ToString().Should().Be(string.Format("<RowLimit>{0}</RowLimit>", limit));
+            sut.ToString().ShouldBe($"<RowLimit>{limit}</RowLimit>");
+        }
+        
+        [Fact]
+        public void RowLimitPagedWitANumberPrintsTheRowLimit()
+        {
+            var limit = Fixture.Create<int>();
+            var sut = new RowLimit(limit, true);
+
+            sut.ToString().ShouldBe($"<RowLimit Paged=\"True\">{limit}</RowLimit>");
+        }
+        
+        [Fact]
+        public void RowLimitNotPagedWitANumberPrintsTheRowLimit()
+        {
+            var limit = Fixture.Create<int>();
+            var sut = new RowLimit(limit, false);
+
+            sut.ToString().ShouldBe($"<RowLimit Paged=\"False\">{limit}</RowLimit>");
         }
 
-        [Test]
+        [Fact]
         public void AViewCanSetARowLimit()
         {
             var limit = Fixture.Create<int>();
             var sut = CG.View().RowLimit(limit);
 
-            sut.ToString().Should().Be(string.Format("<View><RowLimit>{0}</RowLimit></View>", limit));
+            sut.ToString().ShouldBe($"<View><RowLimit>{limit}</RowLimit></View>");
         }
     }
 }

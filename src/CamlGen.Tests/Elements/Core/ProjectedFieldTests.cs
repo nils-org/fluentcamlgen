@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,20 +8,20 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
 using AutoFixture;
 
-using FluentAssertions;
+using Shouldly;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class ProjectedFieldTests : TestBase
     {
-        [Test]
+        [Fact]
         public void BareCgProjectedFieldReturnsAProjectedFieldTagWithAttributes()
         {
             var name = Fixture.Create<string>();
@@ -30,8 +30,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var showFileld = Fixture.Create<string>();
             var sut = CG.ProjectedField(name, type, list, showFileld);
             sut.ToString()
-               .Should()
-               .BeEquivalentTo(string.Format(@"<Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" />", name, type, list, showFileld));
+               .ShouldBe($@"<Field Name=""{name}"" Type=""{type}"" List=""{list}"" ShowField=""{showFileld}"" />");
         }
     }
 }

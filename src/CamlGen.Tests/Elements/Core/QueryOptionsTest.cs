@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,47 +8,47 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
-using FluentAssertions;
+using Shouldly;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace FluentCamlGen.CamlGen.Test.Elements.Core
 {
-    [TestFixture]
+    
     public class QueryOptionsTest
     {
-        [Test]
+        [Fact]
         public void EmptyQueryOptionsReturnsAQueryOptionsTag()
         {
             var sut = CG.QueryOptions();
-            sut.ToString().Should().BeEquivalentTo("<QueryOptions />");
+            sut.ToString().ShouldBe("<QueryOptions />");
         }
 
-        [Test]
+        [Fact]
         public void QueryOptionsWithDatesInUtcReturnsAFilledQueryOptionsTag()
         {
             var sut = CG.QueryOptions(
                         CG.DatesInUtc(true));
-            sut.ToString().Should().BeEquivalentTo("<QueryOptions><DatesInUtc>True</DatesInUtc></QueryOptions>");
+            sut.ToString().ShouldBe("<QueryOptions><DatesInUtc>True</DatesInUtc></QueryOptions>");
         }
 
-        [Test]
+        [Fact]
         public void QueryOptionsInAViewWithFluentlyDatesInUtcReturnsAllNestedTags()
         {
             var sut = CG.View()
                         .QueryOptions(qo => qo
                         .DatesInUtc(true));
-            sut.ToString().Should().BeEquivalentTo("<View><QueryOptions><DatesInUtc>True</DatesInUtc></QueryOptions></View>");
+            sut.ToString().ShouldBe("<View><QueryOptions><DatesInUtc>True</DatesInUtc></QueryOptions></View>");
         }
 
-        [Test]
+        [Fact]
         public void QueryOptionsWithFluentlyExpandUserFieldReturnsTheNestedExpandUserField()
         {
             var sut = CG.QueryOptions()
                         .ExpandUserField(true);
-            sut.ToString().Should().BeEquivalentTo("<QueryOptions><ExpandUserField>True</ExpandUserField></QueryOptions>");
+            sut.ToString().ShouldBe("<QueryOptions><ExpandUserField>True</ExpandUserField></QueryOptions>");
         }
     }
 }

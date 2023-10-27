@@ -1,4 +1,4 @@
-﻿/***
+﻿/*
 This File is part of FluentCamlGen
 
 This source is subject to the Microsoft Public License.
@@ -8,17 +8,23 @@ All other rights reserved.
 THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-***/
+*/
 
+using System;
 using System.Globalization;
 
 namespace FluentCamlGen.CamlGen.Elements.Value
 {
     internal class RowLimit : BaseValueElement
     {
-        internal RowLimit(int rowLimit)
+        internal RowLimit(int rowLimit, bool? paged)
             : base("RowLimit", rowLimit.ToString(CultureInfo.InvariantCulture))
         {
+            if (paged.HasValue)
+            {
+                var val = GetValue(paged.Value);
+                Attributes.Add(new Tuple<string, string>("Paged", val));
+            }
         }
     }
 }
