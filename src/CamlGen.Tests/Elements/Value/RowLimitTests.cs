@@ -27,9 +27,27 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void RowLimitWitANumberPrintsTheRowLimit()
         {
             var limit = Fixture.Create<int>();
-            var sut = new RowLimit(limit);
+            var sut = new RowLimit(limit, null);
 
             sut.ToString().ShouldBe(string.Format("<RowLimit>{0}</RowLimit>", limit));
+        }
+        
+        [Fact]
+        public void RowLimitPagedWitANumberPrintsTheRowLimit()
+        {
+            var limit = Fixture.Create<int>();
+            var sut = new RowLimit(limit, true);
+
+            sut.ToString().ShouldBe(string.Format("<RowLimit Paged=\"TRUE\">{0}</RowLimit>", limit));
+        }
+        
+        [Fact]
+        public void RowLimitNotPagedWitANumberPrintsTheRowLimit()
+        {
+            var limit = Fixture.Create<int>();
+            var sut = new RowLimit(limit, false);
+
+            sut.ToString().ShouldBe(string.Format("<RowLimit Paged=\"FALSE\">{0}</RowLimit>", limit));
         }
 
         [Fact]
