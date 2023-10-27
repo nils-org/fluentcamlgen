@@ -30,7 +30,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var showFileld = Fixture.Create<string>();
             var sut = CG.ProjectedField(name, type, list, showFileld);
             sut.ToString()
-               .ShouldBe(string.Format(@"<Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" />", name, type, list, showFileld));
+               .ShouldBe($@"<Field Name=""{name}"" Type=""{type}"" List=""{list}"" ShowField=""{showFileld}"" />");
         }
     }
 }

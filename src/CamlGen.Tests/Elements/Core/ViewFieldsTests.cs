@@ -36,7 +36,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var name = Fixture.Create<string>();
             var sut = new ViewFields();
             sut.AddFieldRef(name);
-            sut.ToString().ShouldBe(string.Format(@"<ViewFields><FieldRef Name=""{0}"" /></ViewFields>", name));
+            sut.ToString().ShouldBe($@"<ViewFields><FieldRef Name=""{name}"" /></ViewFields>");
         }
 
         [Fact]
@@ -47,7 +47,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var attrVal = Fixture.Create<string>();
             var sut = new ViewFields();
             sut.AddFieldRef(name, r => r.AddAttribute(attrName, attrVal));
-            sut.ToString().ShouldBe(string.Format(@"<ViewFields><FieldRef Name=""{0}"" {1}=""{2}"" /></ViewFields>", name, attrName, attrVal));
+            sut.ToString().ShouldBe($@"<ViewFields><FieldRef Name=""{name}"" {attrName}=""{attrVal}"" /></ViewFields>");
         }
     }
 }

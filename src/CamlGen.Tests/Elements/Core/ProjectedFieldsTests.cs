@@ -41,7 +41,8 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new ProjectedFields();
             sut.AddField(name, type, list, showField);
 
-            sut.ToString().ShouldBe(string.Format(@"<ProjectedFields><Field Name=""{0}"" Type=""{1}"" List=""{2}"" ShowField=""{3}"" /></ProjectedFields>", name, type, list, showField));
+            sut.ToString().ShouldBe(
+                $@"<ProjectedFields><Field Name=""{name}"" Type=""{type}"" List=""{list}"" ShowField=""{showField}"" /></ProjectedFields>");
         }
     }
 }

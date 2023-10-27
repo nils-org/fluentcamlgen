@@ -29,7 +29,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var lhs = Fixture.Create<BaseCoreElement>();
             var rhs = Fixture.Create<BaseCoreElement>();
             var sut = CG.Eq(lhs, rhs);
-            sut.ToString().ShouldBe(string.Format(@"<Eq>{0}{1}</Eq>", lhs, rhs));
+            sut.ToString().ShouldBe($@"<Eq>{lhs}{rhs}</Eq>");
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new Eq();
             sut.AddFieldRef(field);
 
-            sut.ToString().ShouldBe(string.Format(@"<Eq><FieldRef Name=""{0}"" /></Eq>", field));
+            sut.ToString().ShouldBe($@"<Eq><FieldRef Name=""{field}"" /></Eq>");
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new Eq();
             sut.AddValue(CG.ValueType.Number, val);
 
-            sut.ToString().ShouldBe(string.Format(@"<Eq><Value Type=""Number"">{0}</Value></Eq>", val));
+            sut.ToString().ShouldBe($@"<Eq><Value Type=""Number"">{val}</Value></Eq>");
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Core
             var sut = new Eq();
             sut.AddNumberValue(val);
 
-            sut.ToString().ShouldBe(string.Format(@"<Eq><Value Type=""Number"">{0}</Value></Eq>", val));
+            sut.ToString().ShouldBe($@"<Eq><Value Type=""Number"">{val}</Value></Eq>");
         }
     }
 }

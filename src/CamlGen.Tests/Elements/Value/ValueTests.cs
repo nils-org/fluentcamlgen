@@ -25,7 +25,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void SimpleValueReturnsTag()
         {
             var val = Fixture.Create<string>();
-            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
+            var expected = $@"<Value Type=""Number"">{val}</Value>".AsXml();
             var sut = new Val.Value(CG.ValueType.Number, val);
 
             sut.ToString().AsXml().ShouldBe(expected);
@@ -35,7 +35,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void NumberValueReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<double>();
-            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
+            var expected = $@"<Value Type=""Number"">{val}</Value>".AsXml();
             var sut = new Val.NumberValue(val);
 
             sut.ToString().AsXml().ShouldBe(expected);
@@ -45,7 +45,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void NumberValueUsingTheStringCtorReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<string>();
-            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
+            var expected = $@"<Value Type=""Number"">{val}</Value>".AsXml();
             var sut = new Val.NumberValue(val);
 
             sut.ToString().AsXml().ShouldBe(expected);
@@ -55,7 +55,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void NumberValueOnCgReturnsAValueTagWithTypeNumber()
         {
             var val = Fixture.Create<double>();
-            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
+            var expected = $@"<Value Type=""Number"">{val}</Value>".AsXml();
             var sut = CG.NumberValue(val);
 
             sut.ToString().AsXml().ShouldBe(expected);
@@ -65,7 +65,7 @@ namespace FluentCamlGen.CamlGen.Test.Elements.Value
         public void ValueOnCgReturnsAValueTag()
         {
             var val = Fixture.Create<string>();
-            var expected = string.Format(@"<Value Type=""Number"">{0}</Value>", val).AsXml();
+            var expected = $@"<Value Type=""Number"">{val}</Value>".AsXml();
             var sut = CG.Value(CG.ValueType.Number, val);
 
             sut.ToString().AsXml().ShouldBe(expected);
